@@ -10,21 +10,27 @@ IF "%OSDK%"=="" GOTO ErCfg
 ::
 :: Launch the compilation of files
 ::
-SET OSDKNAME=LUDO
-SET OSDKFILE=LUDO
-CALL %OSDK%\bin\make.bat LUDO
+SET OSDKNAME=CAREERS
+SET OSDKFILE=CAREERS
+CALL %OSDK%\bin\make.bat CAREERS
 
-SET OSDKNAME=LUDOMAIN
-SET OSDKFILE=LUDOMAIN
-CALL %OSDK%\bin\make.bat LUDOMAIN
+SET OSDKNAME=CARMAIN
+SET OSDKFILE=CARMAIN
+CALL %OSDK%\bin\make.bat CARMAIN
 
 ::
 :: Assemble the music player
 ::
-ECHO Assembling music player
-%osdk%\bin\xa mymplayer.s -o build\mymplayer.o
-%OSDK%\bin\header -h1 -a0 build\mymplayer.o build\mymplayer.tap $6500
+:: ECHO Assembling music player
+:: %osdk%\bin\xa mymplayer.s -o build\mymplayer.o
+:: %OSDK%\bin\header -h1 -a0 build\mymplayer.o build\mymplayer.tap $6500
 
+::
+:: Assemble the board game data
+::
+ECHO Assembling board game data
+%osdk%\bin\xa carboard.s -o build\carboard.o
+%OSDK%\bin\header -h1 -a0 build\carboard.o build\carboard.tap $9800
 
 ::
 :: Convert musics
@@ -50,24 +56,24 @@ ECHO Assembling music player
 ::
 :: The music player itself is less than 512 bytes without counting the IRQ installation and what nots so could start in $6600, say $6500 for security
 ::
-echo %osdk%
+:: echo %osdk%
 
-SET YM2MYM=%osdk%\Bin\ym2mym.exe -h1 -m15872
+:: SET YM2MYM=%osdk%\Bin\ym2mym.exe -h1 -m15872
 
-%YM2MYM% "Music\R-Type  2 - level 1.ym" build\R-Type.tap                $7600 "Music1"
-%YM2MYM% "Music\Axel F.ym" build\AxelF.tap                              $7600 "Music2"
-%YM2MYM% "Music\Wizball 1.ym" build\Wizzball.tap                        $7600 "Music3"
+:: %YM2MYM% "Music\R-Type  2 - level 1.ym" build\R-Type.tap                $7600 "Music1"
+:: %YM2MYM% "Music\Axel F.ym" build\AxelF.tap                              $7600 "Music2"
+:: %YM2MYM% "Music\Wizball 1.ym" build\Wizzball.tap                        $7600 "Music3"
 
 ::
 :: Rename files so they have friendly names on the disk
 ::
-%OSDK%\bin\taptap ren build\LUDOSCRM.tap "LUDOSCRM" 0
-%OSDK%\bin\taptap ren build\LUDOTITL.tap "LUDOTITL" 0
-%OSDK%\bin\taptap ren build\mymplayer.tap "LUDOMACO" 0
+%OSDK%\bin\taptap ren build\carboard.tap "CARBOARD" 0
+:: %OSDK%\bin\taptap ren build\CARTITL.tap "CARTITL" 0
+:: %OSDK%\bin\taptap ren build\mymplayer.tap "CARMACO" 0
 
 ECHO Building DSK file
-%OSDK%\bin\tap2dsk -iCLS:LUDO -c20:3 -nLUDO build\LUDO.tap build\LUDOMAIN.tap LUDOFOTO.hir build\LUDOTITL.tap build\LUDOSCRM.tap build\mymplayer.tap build\R-Type.tap build\AxelF.tap build\Wizzball.tap build\LUDO.dsk
-%OSDK%\bin\old2mfm build\LUDO.dsk
+%OSDK%\bin\tap2dsk -iCLS:CAREERS -c20:3 -nCAREERS build\carboard.tap CARCHRS.tap build\CAREERS.tap build\CARMAIN.tap build\CAREERS.dsk
+%OSDK%\bin\old2mfm build\CAREERS.dsk
 
 GOTO End
 
