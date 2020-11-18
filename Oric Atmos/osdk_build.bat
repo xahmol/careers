@@ -19,11 +19,11 @@ SET OSDKFILE=CARMAIN
 CALL %OSDK%\bin\make.bat CARMAIN
 
 ::
-:: Assemble the music player
+:: Assemble machine code
 ::
-:: ECHO Assembling music player
-:: %osdk%\bin\xa mymplayer.s -o build\mymplayer.o
-:: %OSDK%\bin\header -h1 -a0 build\mymplayer.o build\mymplayer.tap $6500
+ECHO Assembling machine code
+%osdk%\bin\xa CARMACO.s -o build\CARMACO.o
+%OSDK%\bin\header -h1 -a0 build\CARMACO.o build\CARMACO.tap $6500
 
 ::
 :: Assemble the board game data
@@ -69,10 +69,10 @@ ECHO Assembling board game data
 ::
 %OSDK%\bin\taptap ren build\carboard.tap "CARBOARD" 0
 :: %OSDK%\bin\taptap ren build\CARTITL.tap "CARTITL" 0
-:: %OSDK%\bin\taptap ren build\mymplayer.tap "CARMACO" 0
+%OSDK%\bin\taptap ren build\CARMACO.tap "CARMACO" 0
 
 ECHO Building DSK file
-%OSDK%\bin\tap2dsk -iCLS:CAREERS -c20:3 -nCAREERS build\carboard.tap CARCHRS.tap build\CAREERS.tap build\CARMAIN.tap build\CAREERS.dsk
+%OSDK%\bin\tap2dsk -iCLS:CAREERS -c20:3 -nCAREERS CARCHRS.tap build\CARMACO.tap build\CAREERS.tap build\CARMAIN.tap build\carboard.tap build\CAREERS.dsk
 %OSDK%\bin\old2mfm build\CAREERS.dsk
 
 GOTO End
