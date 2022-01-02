@@ -1709,6 +1709,7 @@
  27080 data2,2,"Je wordt ontslagen.",11,0,0
  27090 data2,2,"Beurscrisis.",12,0,0
  27100 data14,14,"Gekozen in Raad van commissarissen.",10,30000,0
+ 
  27110 data2,2,"Je bent zeeziek",13,0,0
  27120 data11,11,"Prachtig uitzicht op Buenos Aires.",1,2,0
  27130 data2,2,"Je ontmoet ontdekkingsreiziger.",9,2,0
