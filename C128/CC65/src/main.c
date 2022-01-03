@@ -204,8 +204,8 @@ struct CareerfieldStruct careerfield[8][14] =
 {
     {
         {49,47,VDC_LRED   ,"Beautiful Spring weather"  , 1, 2, 0},
-        {49,44,VDC_LRED   ,"Good fishing"              , 1, 2, 0},
-        {49,41,VDC_WHITE  ,"Work on threshing crew"    , 2, 1, 0},
+        {49,44,VDC_WHITE  ,"Work on threshing crew"    , 2, 1, 0},
+        {49,41,VDC_LRED   ,"Good fishing"              , 1, 2, 0},
         {49,38,VDC_LGREEN ,"Gamble in corn"            , 3, 1, 0},
         {43,38,VDC_LYELLOW,"Raise prize steer"         , 4, 2, 4},
         {37,38,VDC_LRED   ,"Mare has twin colts"       , 1, 6, 0},
@@ -285,18 +285,18 @@ struct CareerfieldStruct careerfield[8][14] =
     },
     {
         {91,38,VDC_LRED   ,"Ship is beautiful"         , 1, 2, 0},
-        {85,38,VDC_WHITE  ,"Ship explodes"             ,20, 0, 0},
+        {85,38,VDC_LYELLOW,"Successful take-off"       , 8, 6, 0},
         {79,38,VDC_WHITE  ,"Lose your nerve"           ,21, 0, 0},
-        {73,38,VDC_LYELLOW,"Successful take-off"       , 8, 6, 0},
+        {73,38,VDC_WHITE  ,"Ship explodes"             ,20, 0, 0},
         {67,38,VDC_LYELLOW,"Rescue stewardess"         , 4, 2, 4},
         {61,38,VDC_LGREEN ,"Promotion for bravery"     ,10, 2, 0},
         {61,41,VDC_WHITE  ,"Crash landing"             , 2, 2, 0},
         {61,44,VDC_LYELLOW,"Your are 1st human on moon", 8,16, 0},
-        {67,44,VDC_LYELLOW,"Find life on the moon"     , 8,10, 0},
+        {67,44,VDC_LYELLOW,"Learn secret of moonshine" , 1,10, 0},
         {73,44,VDC_LGREEN ,"Find gold in moon crater"  , 5,10, 0},
         {79,44,VDC_LYELLOW,"Jump over mountain"        ,22,10, 0},
         {85,44,VDC_LYELLOW,"Successful landing"        , 4, 6, 4},
-        {85,47,VDC_LGREEN,"Sell moon-relic to museum"  , 5, 5, 0}
+        {85,47,VDC_LGREEN, "Sell moon-relic to museum" , 5, 5, 0}
     }
 };
 
@@ -338,20 +338,23 @@ struct PlayerdataStruct
     unsigned char money;     // sp(x,3)
     unsigned char happiness; // sp(x,4)
     unsigned char fame;      // sp(x,5)
+    unsigned char winmoney;
+    unsigned char winhappiness;
+    unsigned char winfame;
     unsigned char computer;  // sp(x,6)
     unsigned char skipturn;  // sp(x,7)
     unsigned char cards[20]; // ks(x,y)
 };
 struct PlayerdataStruct player[4];
 
-unsigned char wincondition[20];  //wc(x)
+unsigned char whichcard[20];         //wc(x)
 unsigned char cardreset[15] = {2,2,2,3,2,2,2,3,2,1,1,3,1,1,1};
-unsigned char ai;
-unsigned char gameendflag;  // es
-unsigned char anotherturn;  // ne
-unsigned char playerturn;   // bs
-unsigned char dice_double;  // dd
-unsigned char dice_total;   // dg
+unsigned char fieldinformation = 0;  //ai
+unsigned char gameendflag;           // es
+unsigned char anotherturn;           // ne
+unsigned char playerturn;            // bs
+unsigned char dice_double;           // dd
+unsigned char dice_total;            // dg
 
 unsigned char choice;
 unsigned char xoffset = 28;
@@ -1035,10 +1038,13 @@ void game_reset()
         player[x].money = 2;
         player[x].fame = 0;
         player[x].happiness = 0;
+        player[x].winmoney = 20;
+        player[x].winfame = 20;
+        player[x].winhappiness = 20;
         player[x].skipturn = 0;
         for(y=0;y<11;y++) { player[x].experience[y]=0; }
     }
-    ai=0;
+    fieldinformation=0;
     gameendflag=0;
     anotherturn=0;
     playerturn=0;
@@ -1048,8 +1054,11 @@ void game_reset()
 void inputofnames()
 {
     /* Enter player nanes */
-    unsigned char x;
+    unsigned char x,choice,selected;
+    char allowedkeys[8];
 
+    strcpy(allowedkeys,alldirections);
+    strcat(allowedkeys,"+-");
     menumakeborder(30,8,6,45);
     for(x=0;x<4;x++)
     {
@@ -1067,6 +1076,73 @@ void inputofnames()
         textcolor(COLOR_YELLOW);
         cputs(":    ");
         input(32,12,player[x].name,19);
+        if(player[x].computer==0)
+        {
+            selected = 0;
+            VDC_FillArea(10,32,C_SPACE,43,4,VDC_LYELLOW+VDC_A_ALTCHAR);
+            cputsxy(32,10,player[x].name);
+            cputsxy(32,11,"Select Success Formula (total must be 60):");
+            do
+            {
+                do
+                {
+                    VDC_Plot(12,32,0x66,VDC_LRED);
+                    sprintf(buffer," %2u ",player[x].winhappiness);
+                    VDC_PrintAt(12,33,buffer,selected==0?VDC_WHITE+VDC_A_REVERSE+VDC_A_ALTCHAR:VDC_LYELLOW);
+                    VDC_PrintAt(12,37," + ",VDC_LYELLOW);
+
+                    VDC_Plot(12,40,0x2A,VDC_LYELLOW);
+                    sprintf(buffer," %2u ",player[x].winfame);
+                    VDC_PrintAt(12,41,buffer,selected==1?VDC_WHITE+VDC_A_REVERSE+VDC_A_ALTCHAR:VDC_LYELLOW);
+                    VDC_PrintAt(12,45," + ",VDC_LYELLOW);
+
+                    VDC_Plot(12,48,0x24,VDC_LGREEN);
+                    sprintf(buffer," %2u ",player[x].winmoney);
+                    VDC_PrintAt(12,49,buffer,selected==2?VDC_WHITE+VDC_A_REVERSE+VDC_A_ALTCHAR:VDC_LYELLOW);
+                    sprintf(buffer," =%3u",player[x].winhappiness+player[x].winfame+player[x].winmoney);
+                    VDC_PrintAt(12,53,buffer,VDC_LYELLOW);
+
+                    choice = getkey(allowedkeys,1);
+
+                    switch (choice)
+                    {
+                    case C_LEFT:
+                        if(selected>0) { selected--; } else { selected = 2; }
+                        break;
+
+                    case C_RIGHT:
+                        if(selected<2) { selected++; } else { selected = 0; }
+                        break;
+
+                    case C_UP:
+                    case '+':
+                        if(selected==0 && player[x].winhappiness<60) { player[x].winhappiness++; }
+                        if(selected==1 && player[x].winfame<60) { player[x].winfame++; }
+                        if(selected==2 && player[x].winmoney<60) { player[x].winmoney++; }
+                        break;
+
+                    case C_DOWN:
+                    case '-':
+                        if(selected==0 && player[x].winhappiness>0) { player[x].winhappiness--; }
+                        if(selected==1 && player[x].winfame>0) { player[x].winfame--; }
+                        if(selected==2 && player[x].winmoney>0) { player[x].winmoney--; }
+                        break;
+
+                    default:
+                        break;
+                    }
+
+                } while (choice != C_ENTER);
+
+                if(player[x].winhappiness+player[x].winfame+player[x].winmoney != 60)
+                {
+                    cputsxy(32,13,"Total is not 60, please correct.");
+                }
+
+            } while (player[x].winhappiness+player[x].winfame+player[x].winmoney != 60);
+            
+            VDC_FillArea(10,32,C_SPACE,43,4,VDC_LYELLOW+VDC_A_ALTCHAR);                 
+        }
     }
     windowrestore();
 }
@@ -1100,6 +1176,65 @@ void dice_throw(unsigned char dicenumber)
 
 // Player choices routines
 
+void information_gamescore()
+{
+    unsigned char x,ycoord;
+    unsigned char height = 14;
+
+    for(x=0;x<11;x++)
+    {
+        height += player[playerturn].experience[x];
+    }
+    ycoord = 11 - (height/2);
+
+    menumakeborder(40,ycoord,height,34);
+
+    ycoord+=2;
+
+    gotoxy(42,ycoord);
+    textcolor(COLOR_GREEN);
+    cprintf("Player %u: ",playerturn+1);
+    textcolor(COLOR_CYAN);
+    cputs(player[playerturn].name);
+
+    gotoxy(42,++ycoord);
+    textcolor(COLOR_YELLOW);
+    cprintf("Success Formula:  %2u+ %2u+ %2u=60",player[playerturn].winhappiness,player[playerturn].winfame,player[playerturn].winmoney);
+    VDC_Plot(ycoord,59,0x66,VDC_LRED);
+    VDC_Plot(ycoord,63,0x2A,VDC_LYELLOW);
+    VDC_Plot(ycoord,67,0x24,VDC_LGREEN);
+    
+    cputsxy(42,++ycoord,"Happiness      :   ");
+    textcolor(COLOR_CYAN);
+    cprintf("%3u",player[playerturn].happiness);
+    textcolor(COLOR_YELLOW);
+    VDC_Plot(ycoord,59,0x66,VDC_LRED);
+
+    cputsxy(42,++ycoord,"Fane           :   ");
+    textcolor(COLOR_CYAN);
+    cprintf("%3u",player[playerturn].fame);
+    textcolor(COLOR_YELLOW);
+    VDC_Plot(ycoord,59,0x2A,VDC_LYELLOW);
+
+    cputsxy(42,++ycoord,"Money          :   ");
+    textcolor(COLOR_CYAN);
+    cprintf("%3u,000",player[playerturn].money);
+    textcolor(COLOR_YELLOW);
+    VDC_Plot(ycoord,59,0x24,VDC_LGREEN);
+
+    cputsxy(42,++ycoord,"Salary         :   ");
+    textcolor(COLOR_CYAN);
+    cprintf("%3u,000",player[playerturn].salary);
+    textcolor(COLOR_YELLOW);
+    VDC_Plot(ycoord,59,0x24,VDC_LGREEN);
+
+    cputsxy(42,++ycoord,"College education:");
+
+    cputsxy(42,++ycoord,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
 void turnhuman()
 {
     /* Turn for the human players */
@@ -1119,6 +1254,10 @@ void turnhuman()
         case 13:
             yesno = areyousure();
             if(yesno==1) { gameendflag=5; }
+            break;
+
+        case 52:
+            information_gamescore();
             break;
 
         case 54:
