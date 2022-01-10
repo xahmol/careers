@@ -85,4 +85,4 @@ deploy: $(MAIN)
 
 # To run software in VICE
 vice: $(D64)
-	x128 -autostart $(D64)
+	x128 -autostart $(D81)

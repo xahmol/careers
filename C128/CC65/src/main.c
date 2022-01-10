@@ -175,7 +175,7 @@ struct CareerStruct
 {
     unsigned char length;
     unsigned char returnfield;
-    unsigned char name[20];
+    char name[20];
     unsigned char startfield;
 };
 struct CareerStruct career[8] =
@@ -343,7 +343,7 @@ struct PlayerdataStruct
     unsigned char winfame;
     unsigned char computer;  // sp(x,6)
     unsigned char skipturn;  // sp(x,7)
-    unsigned char cards[20]; // ks(x,y)
+    unsigned char cards[19]; // ks(x,y)
 };
 struct PlayerdataStruct player[4];
 
@@ -453,32 +453,25 @@ unsigned char getkey(char* allowedkeys, unsigned char joyallowed)
                             Empty string means any key allowed
        Output: key value (or joystick converted to key value)    */
 
-    unsigned char key, joy1, joy2;
+    unsigned char key, joy;
 
     do
     {
         key = 0;
         if(joyinterface && joyallowed)
         {
-            joy1 = joy_read(JOY_1);
-            joy2 = joy_read(JOY_2);
-            if(joy1&JOY_BTN_1_MASK) { key = C_ENTER; }
-            if(joy1&JOY_RIGHT_MASK) { key = C_RIGHT; }
-            if(joy1&JOY_LEFT_MASK) { key = C_LEFT; }
-            if(joy1&JOY_DOWN_MASK) { key = C_DOWN; }
-            if(joy1&JOY_UP_MASK) { key = C_UP; }
-            if(joy2&JOY_BTN_1_MASK) { key = C_ENTER; }
-            if(joy2&JOY_RIGHT_MASK) { key = C_RIGHT; }
-            if(joy2&JOY_LEFT_MASK) { key = C_LEFT; }
-            if(joy2&JOY_DOWN_MASK) { key = C_DOWN; }
-            if(joy2&JOY_UP_MASK) { key = C_UP; }
+            joy = joy_read(JOY_2);
+            if(joy&JOY_BTN_1_MASK) { key = C_ENTER; }
+            if(joy&JOY_RIGHT_MASK) { key = C_RIGHT; }
+            if(joy&JOY_LEFT_MASK) { key = C_LEFT; }
+            if(joy&JOY_DOWN_MASK) { key = C_DOWN; }
+            if(joy&JOY_UP_MASK) { key = C_UP; }
             if(key){
                 do
                 {
                     wait(10);
-                    joy1 = joy_read(JOY_1);
-                    joy2 = joy_read(JOY_2);
-                } while (joy1 || joy2);
+                    joy = joy_read(JOY_2);
+                } while (joy);
             }
         }
         if(key == 0)
@@ -837,6 +830,7 @@ unsigned char menumain()
 unsigned char areyousure()
 {
     /* Pull down menu to verify if player is sure */
+
     unsigned char choice;
 
     menumakeborder(8,8,6,30);
@@ -866,6 +860,8 @@ void fileerrormessage(unsigned char error)
 
 void board_reset()
 {
+    /* Clears game board for new game */
+
     xoffset = 48;
     yoffset = 31;
     VDC_LoadScreen("careers.scrn",bootdevice,SCREENMAPADDRESS,1);
@@ -873,6 +869,9 @@ void board_reset()
 
 void board_reposition(unsigned char row, unsigned char col)
 {
+    /* Centers board on given row and col.
+       Input: row and column on gameboard to center on     */
+
     if(col>40) { xoffset = col-40; } else { xoffset = 0; }
     if(xoffset>48) { xoffset=48; }
     if(row>12) { yoffset = row-12; } else { yoffset = 0; }
@@ -882,6 +881,9 @@ void board_reposition(unsigned char row, unsigned char col)
 
 void board_print(unsigned char row, unsigned char col, unsigned char screencode, unsigned char attribute)
 {
+    /* Print on game board.
+       Input: row, column, screencode and attribute */
+
     unsigned int printaddress = SCREENMAPADDRESS + row*BOARD_WIDTH + col;
     POKEB(printaddress,1,screencode);
     POKEB(printaddress+(BOARD_HEIGHT*BOARD_WIDTH)+BOARD_ATTRPADDING,1,attribute);    
@@ -889,6 +891,8 @@ void board_print(unsigned char row, unsigned char col, unsigned char screencode,
 
 void board_scroll()
 {
+    /* Explore board by scrolling board around with cursor keys */
+
     unsigned char choice;
 
     do
@@ -942,6 +946,8 @@ void board_scroll()
 
 void pawn_place(unsigned char playernumber)
 {
+    /* Place pawn on board. Input: player number */
+
     unsigned char row,col,help,x,y;
 
     if (player[playernumber].career==0 || player[playernumber].position==0)
@@ -976,6 +982,9 @@ void pawn_place(unsigned char playernumber)
 
 unsigned char pawn_other(unsigned char playernumber)
 {
+    /* Checks if other pawns are present on location of player's pawn.
+       Input: player number */
+
     unsigned char otherpawnflag = 0;
     unsigned char x;
 
@@ -992,6 +1001,8 @@ unsigned char pawn_other(unsigned char playernumber)
 
 void pawn_erase(unsigned char playernumber)
 {
+    /* Erase pawn on board. Input: player number */
+
     unsigned char help,x,y;
 
     if(pawn_other(playernumber)==0)
@@ -1024,6 +1035,8 @@ void pawn_erase(unsigned char playernumber)
 
 void game_reset()
 {
+    /* Reset all game variables for new game */
+
     unsigned char x,y;
 
     for(x=0;x<15;x++)
@@ -1054,6 +1067,7 @@ void game_reset()
 void inputofnames()
 {
     /* Enter player nanes */
+
     unsigned char x,choice,selected;
     char allowedkeys[8];
 
@@ -1149,6 +1163,11 @@ void inputofnames()
 
 void dice_throw(unsigned char dicenumber)
 {
+    /* Throw the dice(s).
+       Input: number of dice to throw (1 or 2)
+       Output: places total thrown in global variable dice_total
+               Sets flag if both dice are the same in global variable dice_double */
+
     unsigned char dice1, dice2, x;
 
     menumakeborder(60,10,7,11);
@@ -1176,9 +1195,108 @@ void dice_throw(unsigned char dicenumber)
 
 // Player choices routines
 
+// Cards submenu functions
+char* cards_actiontext(unsigned char cardnumber)
+{
+    /* Return text for the action of an opportunity card.
+       Input: card number */
+
+    if(cardnumber==0) { return "Florida vacation"; }
+    if(cardnumber==9) { return "Free choice"; }
+    return career[opportunitycard[cardnumber].careernumber -1].name;
+}
+
+void cards_show()
+{
+    /* Cards submenu: show cards */
+
+    unsigned char opportunity_count = 0;
+    unsigned char experience_count = 0;
+    unsigned char height = 9;
+    unsigned char x, y, ycoord;
+
+    for(x=0;x<19;x++)
+    {
+        if(player[playerturn].cards[x])
+        {
+            if(x<15) { opportunity_count++; } else { experience_count++; }
+        }
+    }
+
+    if(opportunity_count > experience_count)
+    {
+        height += opportunity_count;
+    }
+    else
+    {
+        height += experience_count;
+    }
+
+    ycoord = 11-(height/2);
+    menumakeborder(1,ycoord,height,75);
+
+    ycoord+=2;
+
+    gotoxy(3,ycoord++);
+    textcolor(COLOR_GREEN);
+    cprintf("Player %u: ",playerturn+1);
+    textcolor(COLOR_CYAN);
+    cputs(player[playerturn].name);
+
+    textcolor(COLOR_YELLOW);
+    cputsxy(3,++ycoord,"Opportunity cards");
+    cputsxy(42,ycoord,"Experience cards");
+    cputsxy(3,++ycoord,"Count: Action:             Condition:");
+    cputsxy(42,ycoord,"Count: Number of fields:");
+
+    y = ++ycoord;
+
+    textcolor(COLOR_CYAN);
+
+    for(x=0;x<15;x++)
+    {
+        if(player[playerturn].cards[x])
+        {
+            gotoxy(3,y);
+            cprintf("%2u     %s",player[playerturn].cards[x],cards_actiontext(x));
+            cputsxy(30,y++,opportunitycard[x].conditionfree==0?"Normal":"Free");
+        }
+    }
+
+    if(y==ycoord)
+    {
+        cputsxy(3,ycoord,"No opportunity cards owned");
+    }
+
+    y = ycoord;
+
+    for(x=0;x<4;x++)
+    {
+        if(player[playerturn].cards[x+15])
+        {
+            gotoxy(42,y++);
+            cprintf("%2u     %u",player[playerturn].cards[x],x+1);
+        }
+    }
+
+    if(y==ycoord)
+    {
+        cputsxy(42,ycoord,"No experience cards owned");
+    }
+
+    textcolor(COLOR_YELLOW);
+    cputsxy(3,ycoord+height-7,"Press key.");
+    getkey("",1);
+
+    windowrestore();
+}
+
+// Information submenu functions
 void information_gamescore()
 {
-    unsigned char x,ycoord;
+    /* Information submeny: Show game score */
+
+    unsigned char x,ycoord, count;
     unsigned char height = 14;
 
     for(x=0;x<11;x++)
@@ -1210,7 +1328,7 @@ void information_gamescore()
     textcolor(COLOR_YELLOW);
     VDC_Plot(ycoord,59,0x66,VDC_LRED);
 
-    cputsxy(42,++ycoord,"Fane           :   ");
+    cputsxy(42,++ycoord,"Fame           :   ");
     textcolor(COLOR_CYAN);
     cprintf("%3u",player[playerturn].fame);
     textcolor(COLOR_YELLOW);
@@ -1230,10 +1348,37 @@ void information_gamescore()
 
     cputsxy(42,++ycoord,"College education:");
 
+    count = ycoord;
+    textcolor(COLOR_CYAN);
+
+    for(x=0;x<4;x++)
+    {
+        if(player[playerturn].experience[x]) { cputsxy(42,++ycoord,pulldownmenutitles[9][x]); }
+    }
+    if(count==ycoord) { cputsxy(42,++ycoord,"None"); }
+
+    textcolor(COLOR_YELLOW);
+    cputsxy(42,++ycoord,"Occupation record:");
+
+    textcolor(COLOR_CYAN);
+
+    count = ycoord;
+
+    for(x=0;x<7;x++)
+    {
+        if(player[playerturn].experience[4+x]) { cputsxy(42,++ycoord,career[x==0?x:x+1].name); }
+    }
+    if(count==ycoord) { cputsxy(42,++ycoord,"None"); }
+
+    ycoord++;
+
+    textcolor(COLOR_YELLOW);
     cputsxy(42,++ycoord,"Press key.");
     getkey("",1);
     windowrestore();
 }
+
+// Player turn functions
 
 void turnhuman()
 {
@@ -1254,6 +1399,10 @@ void turnhuman()
         case 13:
             yesno = areyousure();
             if(yesno==1) { gameendflag=5; }
+            break;
+
+        case 41:
+            cards_show();
             break;
 
         case 52:
@@ -1297,6 +1446,8 @@ void graphicsinit()
 
 void loadintro()
 {
+    /* Game start up: loading data and title screen */
+    
     unsigned char error;
 
     /* Game intro */
