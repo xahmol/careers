@@ -1019,14 +1019,14 @@ void pawn_erase(unsigned char playernumber)
             {
                 for(x=0;x<3;x++)
                 {
-                    board_print(ring[player[playernumber].position-1].ycoord+y,ring[player[playernumber].position-1].xcoord+x,y==2?0x64:C_SPACE,ring[player[playernumber].position-1].color+VDC_A_REVERSE);
+                    board_print(ring[player[playernumber].position-1].ycoord+y,ring[player[playernumber].position-1].xcoord+x,y==2?C_BLOCKUNDER:C_SPACE,ring[player[playernumber].position-1].color+VDC_A_REVERSE);
                 }
             }
             if (help == 0) { player[playernumber].position == 0; }
         }
         else
         {
-            board_print(careerfield[player[playernumber].career-1][player[playernumber].position-1].ycoord,careerfield[player[playernumber].career-1][player[playernumber].position-1].xcoord,0x64,careerfield[player[playernumber].career-1][player[playernumber].position-1].color+VDC_A_REVERSE);
+            board_print(careerfield[player[playernumber].career-1][player[playernumber].position-1].ycoord,careerfield[player[playernumber].career-1][player[playernumber].position-1].xcoord,C_BLOCKUNDER,careerfield[player[playernumber].career-1][player[playernumber].position-1].color+VDC_A_REVERSE);
         }
     }
 }
@@ -1100,17 +1100,17 @@ void inputofnames()
             {
                 do
                 {
-                    VDC_Plot(12,32,0x66,VDC_LRED);
+                    VDC_Plot(12,32,C_HEART,VDC_LRED);
                     sprintf(buffer," %2u ",player[x].winhappiness);
                     VDC_PrintAt(12,33,buffer,selected==0?VDC_WHITE+VDC_A_REVERSE+VDC_A_ALTCHAR:VDC_LYELLOW);
                     VDC_PrintAt(12,37," + ",VDC_LYELLOW);
 
-                    VDC_Plot(12,40,0x2A,VDC_LYELLOW);
+                    VDC_Plot(12,40,C_STAR,VDC_LYELLOW);
                     sprintf(buffer," %2u ",player[x].winfame);
                     VDC_PrintAt(12,41,buffer,selected==1?VDC_WHITE+VDC_A_REVERSE+VDC_A_ALTCHAR:VDC_LYELLOW);
                     VDC_PrintAt(12,45," + ",VDC_LYELLOW);
 
-                    VDC_Plot(12,48,0x24,VDC_LGREEN);
+                    VDC_Plot(12,48,C_DOLLAR,VDC_LGREEN);
                     sprintf(buffer," %2u ",player[x].winmoney);
                     VDC_PrintAt(12,49,buffer,selected==2?VDC_WHITE+VDC_A_REVERSE+VDC_A_ALTCHAR:VDC_LYELLOW);
                     sprintf(buffer," =%3u",player[x].winhappiness+player[x].winfame+player[x].winmoney);
@@ -1318,33 +1318,33 @@ void information_gamescore()
     gotoxy(42,++ycoord);
     textcolor(COLOR_YELLOW);
     cprintf("Success Formula:  %2u+ %2u+ %2u=60",player[playerturn].winhappiness,player[playerturn].winfame,player[playerturn].winmoney);
-    VDC_Plot(ycoord,59,0x66,VDC_LRED);
-    VDC_Plot(ycoord,63,0x2A,VDC_LYELLOW);
-    VDC_Plot(ycoord,67,0x24,VDC_LGREEN);
+    VDC_Plot(ycoord,59,C_HEART,VDC_LRED);
+    VDC_Plot(ycoord,63,C_STAR,VDC_LYELLOW);
+    VDC_Plot(ycoord,67,C_DOLLAR,VDC_LGREEN);
     
     cputsxy(42,++ycoord,"Happiness      :   ");
     textcolor(COLOR_CYAN);
     cprintf("%3u",player[playerturn].happiness);
     textcolor(COLOR_YELLOW);
-    VDC_Plot(ycoord,59,0x66,VDC_LRED);
+    VDC_Plot(ycoord,59,C_HEART,VDC_LRED);
 
     cputsxy(42,++ycoord,"Fame           :   ");
     textcolor(COLOR_CYAN);
     cprintf("%3u",player[playerturn].fame);
     textcolor(COLOR_YELLOW);
-    VDC_Plot(ycoord,59,0x2A,VDC_LYELLOW);
+    VDC_Plot(ycoord,59,C_STAR,VDC_LYELLOW);
 
     cputsxy(42,++ycoord,"Money          :   ");
     textcolor(COLOR_CYAN);
     cprintf("%3u,000",player[playerturn].money);
     textcolor(COLOR_YELLOW);
-    VDC_Plot(ycoord,59,0x24,VDC_LGREEN);
+    VDC_Plot(ycoord,59,C_DOLLAR,VDC_LGREEN);
 
     cputsxy(42,++ycoord,"Salary         :   ");
     textcolor(COLOR_CYAN);
     cprintf("%3u,000",player[playerturn].salary);
     textcolor(COLOR_YELLOW);
-    VDC_Plot(ycoord,59,0x24,VDC_LGREEN);
+    VDC_Plot(ycoord,59,C_DOLLAR,VDC_LGREEN);
 
     cputsxy(42,++ycoord,"College education:");
 
@@ -1374,6 +1374,71 @@ void information_gamescore()
 
     textcolor(COLOR_YELLOW);
     cputsxy(42,++ycoord,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void information_colorlegend()
+{
+    char colorblock[2] = { C_BLOCKUNDER,C_BLOCKUNDER };
+
+    menumakeborder(45,2,20,32);
+    textcolor(COLOR_GREEN);
+    cputsxy(47,4,"Legend of colors used");
+    textcolor(COLOR_YELLOW);
+    cputsxy(47,6,"Colors of board outer ring:");
+    VDC_PlotString(7,47,colorblock,2,VDC_LCYAN+VDC_A_REVERSE);
+    cputsxy(50,7,"Cornerfield activities");
+    VDC_PlotString(8,47,colorblock,2,VDC_DYELLOW+VDC_A_REVERSE);
+    cputsxy(50,8,"Receive opportunity card");
+    VDC_PlotString(9,47,colorblock,2,VDC_WHITE+VDC_A_REVERSE);
+    cputsxy(50,9,"Begin career");
+    VDC_PlotString(10,47,colorblock,2,VDC_LPURPLE+VDC_A_REVERSE);
+    cputsxy(50,10,"Various activities");
+
+    cputsxy(47,12,"Colors of career track fields:");
+    VDC_PlotString(13,47,colorblock,2,VDC_WHITE+VDC_A_REVERSE);
+    cputsxy(50,13,"Various");
+    VDC_PlotString(14,47,colorblock,2,VDC_LRED+VDC_A_REVERSE);
+    cputsxy(50,14,"Receive happiness    ( )");
+    VDC_Plot(14,72,C_HEART,VDC_LRED);
+    VDC_PlotString(15,47,colorblock,2,VDC_LYELLOW+VDC_A_REVERSE);
+    cputsxy(50,15,"Receive fame         (*)");
+    VDC_PlotString(16,47,colorblock,2,VDC_LGREEN+VDC_A_REVERSE);
+    cputsxy(50,16,"Receive money/salary ( )");
+    VDC_Plot(16,72,C_DOLLAR,VDC_LGREEN);
+    VDC_Plot(17,47,C_BLOCKUNDER,VDC_LYELLOW+VDC_A_REVERSE);
+    VDC_Plot(17,48,C_BLOCKUNDER,VDC_LRED+VDC_A_REVERSE);
+    cputsxy(50,17,"Combination happiness/fame");
+    VDC_Plot(18,47,C_BLOCKUNDER,VDC_LYELLOW+VDC_A_REVERSE);
+    VDC_Plot(18,48,C_BLOCKUNDER,VDC_LGREEN+VDC_A_REVERSE);
+    cputsxy(50,18,"Combination happiness/money");
+    cputsxy(47,20,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void information_credits()
+{
+    /* Print version information and credits */
+
+    char version[30];
+    sprintf(version,
+            "Version: v%i%i - %c%c%c%c%c%c%c%c-%c%c%c%c",
+            VERSION_MAJOR, VERSION_MINOR,
+            BUILD_YEAR_CH0, BUILD_YEAR_CH1, BUILD_YEAR_CH2, BUILD_YEAR_CH3, BUILD_MONTH_CH0, BUILD_MONTH_CH1, BUILD_DAY_CH0, BUILD_DAY_CH1,BUILD_HOUR_CH0, BUILD_HOUR_CH1, BUILD_MIN_CH0, BUILD_MIN_CH1);
+    menumakeborder(5,5,11,70);
+    textcolor(COLOR_CYAN);
+    printcentered("C A R R E E R S",7,7,70);
+    textcolor(COLOR_WHITE);
+    printcentered(version,7,8,70);
+    textcolor(COLOR_YELLOW);
+    printcentered("Written in 2022 by Xander Mol",7,10,70);
+    printcentered("Converted to C from the C128 original written in BASIC in 1992",7,11,70);
+    printcentered("See source code on Github for full code credits.",7,13,70);
+    textcolor(COLOR_GREEN);
+    printcentered("Press a key.",7,15,70);
+    textcolor(COLOR_YELLOW);
     getkey("",1);
     windowrestore();
 }
@@ -1408,6 +1473,10 @@ void turnhuman()
         case 52:
             information_gamescore();
             break;
+        
+        case 53:
+            information_colorlegend();
+            break;
 
         case 54:
             menumakeborder(60,10,6,18);
@@ -1417,6 +1486,10 @@ void turnhuman()
             cputsxy(62,15,"RETURN/fire=end.");
             board_scroll();
             windowrestore();
+            break;
+        
+        case 55:
+            information_credits();
             break;
 
         default:

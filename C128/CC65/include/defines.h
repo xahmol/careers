@@ -25,14 +25,20 @@ extern char version[22];
 
 /* References to redefined chars */
 /* Frame border graphics */
-#define C_RIGHTLINE 0x67
-#define C_LEFTLINE  0x74
-#define C_UPLINE    0x63
-#define C_LOWLINE   0x64
-#define C_UPRIGHT   0x6D
-#define C_UPLEFT    0x6E
-#define C_LOWRIGHT  0x69
-#define C_LOWLEFT   0x6B
+#define C_RIGHTLINE  0x67
+#define C_LEFTLINE   0x74
+#define C_UPLINE     0x63
+#define C_LOWLINE    0x64
+#define C_UPRIGHT    0x6D
+#define C_UPLEFT     0x6E
+#define C_LOWRIGHT   0x69
+#define C_LOWLEFT    0x6B
+
+/* Board graphics */
+#define C_BLOCKUNDER 0x64
+#define C_HEART      0x66
+#define C_STAR       0x2A
+#define C_DOLLAR     0x24
 
 /* References to steering chars */
 #define C_LEFT      157
