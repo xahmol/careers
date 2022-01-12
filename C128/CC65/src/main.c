@@ -1,12 +1,12 @@
 /*
 CAREERS
-Written in 1992, 2021 by Xander Mol
+Written in 1992, 2022 by Xander Mol
 
 # https://github.com/xahmol/careers
 # https://www.idreamtin8bits.com/
 
 Originally written in 1992 in Commodore BASIC 7.0 for the Commodore 128
-Rewritten for C128 in C using CC65 in 2021
+Rewritten for C128 in C using CC65 in 2022
 
 Code and resources from others used:
 
@@ -1193,9 +1193,60 @@ void dice_throw(unsigned char dicenumber)
     windowrestore();;
 }
 
-// Player choices routines
+unsigned char player_collegeexperience()
+{
+    /* Routine to check if player went to college before.
+       Output is 1 for yes, 0 for no */
 
-// Cards submenu functions
+    if(player[playerturn].experience[0] || player[playerturn].experience[1] || player[playerturn].experience[2] || player[playerturn].experience[3])
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+unsigned char card_selectopportunity()
+{
+    /* Selects an opportunity card randomly, returns card number */
+
+    unsigned char card_count = 0;
+    unsigned char card_select = 0;
+    unsigned char x,y,counter;
+
+    for(x=0;x<15;x++)
+    {
+        card_count += opportunitycard[x].available;
+    }
+    if(card_count==0) { return 255; }
+    do
+    {
+        card_select = rand()%card_count;
+        counter=0;
+        for(x=0;x<15;x++)
+        {
+            for(y=0;y<opportunitycard[x].available;y++)
+            {
+                if(counter==card_select)
+                {
+                    card_select = y;
+                    y = opportunitycard[x].available;
+                    x=15;
+                }
+                else
+                {
+                    counter++;
+                }
+            }
+        }
+    } while (card_select == 11 && player_collegeexperience() && card_count > 1);
+    if(card_select=11 && player_collegeexperience() ) { return 255; }
+    opportunitycard[card_select].available--;
+    return card_select;
+}
+
 char* cards_actiontext(unsigned char cardnumber)
 {
     /* Return text for the action of an opportunity card.
@@ -1206,6 +1257,70 @@ char* cards_actiontext(unsigned char cardnumber)
     return career[opportunitycard[cardnumber].careernumber -1].name;
 }
 
+// Board field action routines
+
+// Payday
+void ring_payday()
+{
+    menumakeborder(40,8,8,35);
+    gotoxy(42,10);
+    cputs("You landed on ");
+    textcolor(COLOR_GREEN);
+    cputs("START");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+    gotoxy(42,12);
+    cputs("Collect double salary:");
+    VDC_Plot(13,42,C_DOLLAR,VDC_LGREEN);
+    gotoxy(44,13);
+    textcolor(COLOR_CYAN);
+    cprintf("%3u,000",player[playerturn].salary*2);
+    textcolor(COLOR_YELLOW);
+    cputsxy(42,15,"Press key.");
+    if(!fieldinformation)
+    {
+        player[playerturn].money += player[playerturn].salary*2;
+    }
+    getkey("",1);
+    windowrestore();
+}
+
+// Opportunity knocks
+void ring_opportunity()
+{
+    unsigned char card_select;
+
+    menumakeborder(40,8,8,35);
+    gotoxy(42,10);
+    cputs("You receive an ");
+    textcolor(COLOR_GREEN);
+    cputs("OPPORTUNITY");
+    textcolor(COLOR_YELLOW);
+    cputs(" card.");
+    if(!fieldinformation)
+    {
+        card_select = card_selectopportunity();
+        if(card_select != 255)
+        {
+            player[playerturn].cards[card_select]++;
+            gotoxy(42,12);
+            cprintf("Activity:   %s",cards_actiontext(card_select));
+            gotoxy(42,13);
+            cprintf("Condition:  %s",opportunitycard[card_select].conditionfree==0?"Normal":"Free");
+        }
+        else
+        {
+            cputsxy(42,12,"No opportunitycards left.");
+        }
+    }
+    cputsxy(42,15,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+// Player choices routines
+
+// Cards submenu functions
 void cards_show()
 {
     /* Cards submenu: show cards */
@@ -1429,7 +1544,7 @@ void information_credits()
             BUILD_YEAR_CH0, BUILD_YEAR_CH1, BUILD_YEAR_CH2, BUILD_YEAR_CH3, BUILD_MONTH_CH0, BUILD_MONTH_CH1, BUILD_DAY_CH0, BUILD_DAY_CH1,BUILD_HOUR_CH0, BUILD_HOUR_CH1, BUILD_MIN_CH0, BUILD_MIN_CH1);
     menumakeborder(5,5,11,70);
     textcolor(COLOR_CYAN);
-    printcentered("C A R R E E R S",7,7,70);
+    printcentered("C A R E E R S",7,7,70);
     textcolor(COLOR_WHITE);
     printcentered(version,7,8,70);
     textcolor(COLOR_YELLOW);
