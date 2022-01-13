@@ -335,8 +335,8 @@ struct PlayerdataStruct
     char experience[11];     // sp$(x,1)
     unsigned char career;    // sp(x,0)
     unsigned char position;  // sp(x,1)
-    unsigned char salary;    // sp(x,2)
-    unsigned char money;     // sp(x,3)
+    unsigned long salary;    // sp(x,2)
+    unsigned long money;     // sp(x,3)
     unsigned char happiness; // sp(x,4)
     unsigned char fame;      // sp(x,5)
     unsigned char winmoney;
@@ -883,15 +883,6 @@ void fileerrormessage(unsigned char error)
 
 // Board display and movement routines
 
-void board_reset()
-{
-    /* Clears game board for new game */
-
-    xoffset = 48;
-    yoffset = 31;
-    VDC_LoadScreen("careers.scrn",bootdevice,SCREENMAPADDRESS,1);
-}
-
 void board_reposition(unsigned char row, unsigned char col)
 {
     /* Centers board on given row and col.
@@ -1056,6 +1047,18 @@ void pawn_erase(unsigned char playernumber)
     }
 }
 
+void board_reset()
+{
+    /* Clears game board for new game */
+
+    unsigned char x;
+
+    xoffset = 48;
+    yoffset = 31;
+
+    for(x=0;x<4;x++) { pawn_erase(x); }
+}
+
 /* Game loop routines */
 
 void game_reset()
@@ -1072,8 +1075,8 @@ void game_reset()
     {
         player[x].career = 0;
         player[x].position = 1;
-        player[x].salary = 2;
-        player[x].money = 2;
+        player[x].salary = 2000;
+        player[x].money = 2000;
         player[x].fame = 0;
         player[x].happiness = 0;
         player[x].winmoney = 20;
@@ -1284,9 +1287,10 @@ char* cards_actiontext(unsigned char cardnumber)
 
 // Board field action routines
 
-// Payday
 void ring_payday()
 {
+    // Payday
+
     menumakeborder(40,8,8,35);
     gotoxy(42,10);
     cputs("You landed on ");
@@ -1299,7 +1303,7 @@ void ring_payday()
     VDC_Plot(13,42,C_DOLLAR,VDC_LGREEN);
     gotoxy(44,13);
     textcolor(COLOR_CYAN);
-    cprintf("%3u,000",player[playerturn].salary*2);
+    cprintf("%6lu",player[playerturn].salary*2);
     textcolor(COLOR_YELLOW);
     cputsxy(42,15,"Press key.");
     if(!fieldinformation)
@@ -1310,9 +1314,10 @@ void ring_payday()
     windowrestore();
 }
 
-// Opportunity knocks
 void ring_opportunity()
 {
+    // Opportunity knocks
+
     unsigned char card_select;
 
     menumakeborder(40,8,8,35);
@@ -1339,6 +1344,90 @@ void ring_opportunity()
         }
     }
     cputsxy(42,15,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void ring_paytaxes()
+{
+    // Pay taxes
+
+    unsigned long tax_amount = 0;
+
+    menumakeborder(40,8,7,35);
+    gotoxy(42,10);
+    cputs("You landed on ");
+    textcolor(COLOR_GREEN);
+    cputs("PAY TAXES");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+
+    if(player[playerturn].salary<3001) { tax_amount = player[playerturn].salary / 10; }
+    if(player[playerturn].salary>3000 && player[playerturn].salary<10000) { tax_amount = player[playerturn].salary / 2; }
+    if(player[playerturn].salary>9999) { tax_amount = (player[playerturn].salary / 100)*90; }
+    if(tax_amount > player[playerturn].money) { tax_amount = player[playerturn].money; }
+
+    gotoxy(42,12);
+    cputs("Pay: ");
+    VDC_Plot(12,47,C_DOLLAR,VDC_LGREEN);
+    gotoxy(49,12);
+    textcolor(COLOR_CYAN);
+    cprintf("%6lu",tax_amount);
+    textcolor(COLOR_YELLOW);
+    cputsxy(42,14,"Press key.");
+
+    if(!fieldinformation)
+    {
+        player[playerturn].money -= tax_amount;
+    }
+    getkey("",1);
+    windowrestore();
+}
+
+void ring_farming()
+{
+    // Farming
+
+    unsigned char start_select = 0;
+
+    menumakeborder(40,8,11,35);
+    gotoxy(42,10);
+    cputs("You may start ");
+    textcolor(COLOR_GREEN);
+    cputs("FARMING");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+
+    if(player[playerturn].experience[4])
+    {
+        cputsxy(42,12,"Due to your farming experience");
+        cputsxy(42,13,"no costs are involved.");
+    }
+    else
+    {
+        cputsxy(42,12,"Pay $1000 for seed and");
+        cputsxy(42,13,"supplies.");
+    }
+
+    if(!fieldinformation && (player[playerturn].money>1000 || player[playerturn].experience[4]))
+    {
+        if(player[playerturn].computer) { start_select = 1; }
+        else
+        {
+            cputsxy(42,15,"Do you want to start?");
+            start_select = menupulldown(69,16,6);
+        }
+        if(start_select)
+        {
+            player[playerturn].career == 1;
+            player[playerturn].position == 0;
+            if(!player[playerturn].experience[4])
+            {
+                player[playerturn].money -= 1000;
+            }
+        }
+    }
+
     getkey("",1);
     windowrestore();
 }
@@ -1476,13 +1565,13 @@ void information_gamescore()
 
     cputsxy(42,++ycoord,"Money          :   ");
     textcolor(COLOR_CYAN);
-    cprintf("%3u,000",player[playerturn].money);
+    cprintf("%6lu",player[playerturn].money);
     textcolor(COLOR_YELLOW);
     VDC_Plot(ycoord,59,C_DOLLAR,VDC_LGREEN);
 
     cputsxy(42,++ycoord,"Salary         :   ");
     textcolor(COLOR_CYAN);
-    cprintf("%3u,000",player[playerturn].salary);
+    cprintf("%6lu",player[playerturn].salary);
     textcolor(COLOR_YELLOW);
     VDC_Plot(ycoord,59,C_DOLLAR,VDC_LGREEN);
 
@@ -1676,7 +1765,7 @@ void loadintro()
     //loadconfigfile();
 
     // Load game board screen map to memory
-    board_reset();
+    VDC_LoadScreen("careers.scrn",bootdevice,SCREENMAPADDRESS,1);
 
     // Imstall joystick driver
     error = joy_install(&joy_static_stddrv);

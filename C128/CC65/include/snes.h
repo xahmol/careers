@@ -29,7 +29,7 @@
 
 struct SNES_Struct
 {
-    unsigned char first;  // B,Y,SELECT,START,UP,DOWN,LEFT,RIGHT bits
+    unsigned char first;   // B,Y,SELECT,START,UP,DOWN,LEFT,RIGHT bits
     unsigned char second;  // A,X,BACK_L,BACK_R bits
 };
 extern struct SNES_Struct SNES;
