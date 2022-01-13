@@ -9,9 +9,7 @@
 //   https://retrogamecoders.com/trse-snes-controller/
 
 //Includes
-#include <stdio.h>
 #include <peekpoke.h>
-#include "defines.h"
 #include "snes.h"
 
 //Variables
