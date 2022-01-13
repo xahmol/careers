@@ -11,7 +11,7 @@
 # - ZIP packages installed: sudo apt-get install zip
 # - wput command installed: sudo apt-get install wput
 
-SOURCESMAIN = src/main.c src/vdc_core.c src/sidplay.c
+SOURCESMAIN = src/main.c src/vdc_core.c src/sidplay.c src/snes.c
 SOURCESLIB = src/vdc_core_assembly.s src/sidplay_assembly.s
 OBJECTS = careers.maco.prg careers.chrs.prg careers.chra.prg careers.scrn.prg
 
@@ -80,8 +80,8 @@ clean:
 	
 # To deploy software to UII+ enter make deploy. Obviously C128 needs to powered on with UII+ and USB drive connected.
 deploy: $(MAIN)
-	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST)
-#	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST2)
+#	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST)
+	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST2)
 
 # To run software in VICE
 vice: $(D64)

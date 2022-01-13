@@ -71,6 +71,7 @@ BUT WITHOUT ANY WARRANTY. USE THEM AT YOUR OWN RISK!
 #include <joystick.h>
 #include "vdc_core.h"
 #include "sidplay.h"
+#include "snes.h"
 #include "defines.h"
 
 //Window data
@@ -451,14 +452,18 @@ unsigned char getkey(char* allowedkeys, unsigned char joyallowed)
     /* Function to wait on valid key or joystick press/move
        Input: allowedkeys = String with valid key press options
                             Empty string means any key allowed
-       Output: key value (or joystick converted to key value)    */
+       Output: key value (or joystick converted to key value)
+       Global joyinterface variable needs to be set:
+       0 = none, 1 = port 2 joystick, 2 = SNES pad via user port */
 
     unsigned char key, joy;
 
     do
     {
         key = 0;
-        if(joyinterface && joyallowed)
+
+        //Joystick in port 2
+        if(joyinterface==1 && joyallowed)
         {
             joy = joy_read(JOY_2);
             if(joy&JOY_BTN_1_MASK) { key = C_ENTER; }
@@ -474,6 +479,26 @@ unsigned char getkey(char* allowedkeys, unsigned char joyallowed)
                 } while (joy);
             }
         }
+
+        // SNES pad via user port
+        if(joyinterface==2 && joyallowed)
+        {
+            snes_read();
+            if(SNES.first&SNES_SELECT || SNES.first&SNES_B ) { key = C_ENTER; }
+            if(SNES.first&SNES_RIGHT) { key = C_RIGHT; }
+            if(SNES.first&SNES_LEFT) { key = C_LEFT; }
+            if(SNES.first&SNES_DOWN) { key = C_DOWN; }
+            if(SNES.first&SNES_UP) { key = C_UP; }
+            if(key){
+                do
+                {
+                    wait(10);
+                    snes_read();
+                } while (SNES.first);
+            }
+        }
+
+        // Default to checking keyboard if nothing detected yet
         if(key == 0)
         {
             if(kbhit())
@@ -1639,9 +1664,9 @@ void loadintro()
     unsigned char error;
 
     /* Game intro */
-    char joys[4];
+    char joys[10];
     char music[4];
-    char validkeys[6] = {'j','J','m', 'M', C_ENTER, 0 };
+    char validkeys[6] = {'c','C','m', 'M', C_ENTER, 0 };
     unsigned char key;
 
     /* Title screen */
@@ -1664,25 +1689,46 @@ void loadintro()
         cputsxy(0,24,"Joystick driver unavailable.");
     }
 
+    // Initialise SNES pad
+    snes_init();
+
     /* Load and start first music file */
     //LoadMusic("careers.mus1");
 
     /* Wait for ENTER of FIRE while player can toggle music */ 
     printcentered("Press ENTER or FIRE to start game.",0,22,80);
-    printcentered("J=toggle joystick, M=toggle music.",0,23,80);
+    printcentered("C=toggle controls, M=toggle music.",0,23,80);
 
     do
     {
-        if(joyinterface) { strcpy(joys,"Yes"); } else { strcpy(joys,"No "); }
+        switch (joyinterface)
+        {
+        case 0:
+            strcpy(joys,"Keys only");
+            break;
+
+        case 1:
+            strcpy(joys,"Joystick ");
+            break;
+
+        case 2:
+            strcpy(joys,"SNES pad ");
+            break;
+        
+        default:
+            break;
+        }
         if(musicnumber) { strcpy(music,"Yes"); } else { strcpy(music,"No "); }
-        sprintf(buffer,"Joystick: %s  Music: %s", joys,music);
+        sprintf(buffer,"Controls: %s  Music: %s", joys,music);
         printcentered(buffer,0,20,80);
         key = getkey(validkeys,1);
         switch (key)
         {
-        case 'j':
-        case 'J':
-            if(error == JOY_ERR_OK) { joyinterface = (joyinterface)? 0 : 1; }
+        case 'c':
+        case 'C':
+            joyinterface++;
+            if(error != JOY_ERR_OK && joyinterface==1) { joyinterface = 2; }
+            if(joyinterface>2) { joyinterface=0; }
             break;
 
         case 'm':
