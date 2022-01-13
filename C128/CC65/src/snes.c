@@ -46,6 +46,24 @@ void snes_read()
 {
     // Read buttons pressed on SNES pad
 
+    // Test buttons pressed with testing SNES.first and SNES.second with
+    // if(SNES.<<first or second>> & <<predefined mask for button )
+
+    // Masks for SNES.first:
+    // - SNES_B      
+    // - SNES_Y      
+    // - SNES_SELECT 
+    // - SNES_START  
+    // - SNES_UP    
+    // - SNES_DOWN   
+    // - SNES_LEFT   
+    // - SNES_RIGHT
+    // Masks for SNES.second:
+    // - SNES_A      
+    // - SNES_X      
+    // - SNES_BACK_L 
+    // - SNES_BACK_R 
+
     // Get the 12 value of the buttons on the SNES pad
 
     // Pulse GPIO pin 5
@@ -53,16 +71,16 @@ void snes_read()
     POKE(USER_PORT, 0x00);          // %00000000
 
     // Read from the serialized data
-    SNES.first  = snes_readdata()    ;  // B on bit 0 of byte 1
-    SNES.first += snes_readdata()*  2;  // Y on bit 1 of byte 1
-    SNES.first += snes_readdata()*  4;  // SELECT on bit 2 of byte 1
-    SNES.first += snes_readdata()*  8;  // START on bit 3 of byte 1
-    SNES.first += snes_readdata()* 16;  // UP on bit 4 of byte 1
-    SNES.first += snes_readdata()* 32;  // DOWN on bit 5 of byte 1
-    SNES.first += snes_readdata()* 64;  // LEFT on bit 6 of byte 1
-    SNES.first += snes_readdata()*128;  // RIGHT on bit 7 of byte 1
+    SNES.first   = snes_readdata()    ;  // B on bit 0 of byte 1
+    SNES.first  += snes_readdata()*  2;  // Y on bit 1 of byte 1
+    SNES.first  += snes_readdata()*  4;  // SELECT on bit 2 of byte 1
+    SNES.first  += snes_readdata()*  8;  // START on bit 3 of byte 1
+    SNES.first  += snes_readdata()* 16;  // UP on bit 4 of byte 1
+    SNES.first  += snes_readdata()* 32;  // DOWN on bit 5 of byte 1
+    SNES.first  += snes_readdata()* 64;  // LEFT on bit 6 of byte 1
+    SNES.first  += snes_readdata()*128;  // RIGHT on bit 7 of byte 1
     SNES.second  = snes_readdata()    ;  // A on bit 0 of byte 2
     SNES.second += snes_readdata()*  2;  // X on bit 1 of byte 2
-    SNES.second += snes_readdata()*  4;  // BACK_L on bit 0 of byte 2
-    SNES.second += snes_readdata()*  8;  // BACK_R on bit 0 of byte 2
+    SNES.second += snes_readdata()*  4;  // BACK_L on bit 2 of byte 2
+    SNES.second += snes_readdata()*  8;  // BACK_R on bit 3 of byte 2
 }
