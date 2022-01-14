@@ -611,7 +611,46 @@ int input(unsigned char xpos, unsigned char ypos, char *str, unsigned char size)
         }
     }
     return 0;
-}  
+}
+
+unsigned char input_number(unsigned char xpos, unsigned char ypos, unsigned char minvalue, unsigned char maxvalue)
+{
+    // Function to input a number using the cursor keys (or joystick/pad)
+
+    unsigned char answer = minvalue;
+    unsigned char key;
+
+    textcolor(COLOR_WHITE);
+
+    do
+    {
+        gotoxy(xpos,ypos);
+        cprintf("%u  ",answer);
+        key = getkey(alldirections,1);
+        switch (key)
+        {
+        case C_DOWN:
+        case C_LEFT:
+            if(answer>minvalue) { answer--; } else { answer=maxvalue; }
+            break;
+
+        case C_UP:
+        case C_RIGHT:
+            if(answer<maxvalue) { answer++; } else { answer=minvalue; }
+            break;
+        
+        default:
+            break;
+        }
+
+    } while (key != C_ENTER);
+
+    textcolor(COLOR_CYAN);
+    gotoxy(xpos,ypos);
+    cprintf("%u  ",answer);
+    textcolor(COLOR_YELLOW);
+    return answer;
+}
 
 /* Functions for windowing and menu system */
 
@@ -1287,6 +1326,8 @@ char* cards_actiontext(unsigned char cardnumber)
 
 // Board field action routines
 
+// Outer ring fiels
+
 void ring_payday()
 {
     // Payday
@@ -1428,8 +1469,186 @@ void ring_farming()
         }
     }
 
+    cputsxy(42,15,"Press key.");
     getkey("",1);
     windowrestore();
+}
+
+void ring_automobileshow()
+{
+    // Automobile show
+
+    signed char bought = 0;
+    signed char maxbought;
+    signed char maxhappiness;
+
+    menumakeborder(40,5,15,35);
+    gotoxy(42,7);
+    cputs("You are at the ");
+    textcolor(COLOR_GREEN);
+    cputs("AUTOMOBILE SHOW");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+
+    cputsxy(42, 9,"You may spend up to 1 year's");
+    cputsxy(42,10,"salary for new car.");
+    cputsxy(42,11,"Score 1   for each $1000");
+    VDC_Plot(11,50,C_HEART,VDC_LRED);
+    cputsxy(42,12,"you spend.");
+    if(player[playerturn].happiness)
+    {
+        cputsxy(42,13,"Lose  1   for just looking.");
+        VDC_Plot(13,50,C_HEART,VDC_LRED);
+    }
+    if(!fieldinformation)
+    {
+        if(player[playerturn].money>999 && player[playerturn].salary>999)
+        {
+            cputsxy(42,15,"How many times $1000 do you");
+            cputsxy(42,16,"want to spend?");
+            if(player[playerturn].computer)
+            {
+                bought = (player[playerturn].money-2000)/1000;
+                if(bought*1000>player[playerturn].salary) { bought = player[playerturn].salary/1000; }
+                maxhappiness = 20 - player[playerturn].happiness;
+                if(bought>0 && maxhappiness>0)
+                {
+                    if(bought>maxhappiness) { bought= maxhappiness; }
+                }
+                else { bought=0; }
+                textcolor(COLOR_CYAN);
+                gotoxy(42,17);
+                cprintf("%u",bought);
+                textcolor(COLOR_YELLOW);
+            }
+            else
+            {
+                maxbought = player[playerturn].money/1000;
+                if(maxbought*1000>player[playerturn].salary) { maxbought = player[playerturn].salary/1000; }
+                bought = input_number(42,17,0,maxbought);
+            }
+            player[playerturn].money -= bought*1000;
+            player[playerturn].happiness += bought;
+        }
+        if(player[playerturn].happiness>0 && bought==0)
+        {
+            player[playerturn].happiness--;
+        }
+    }
+    cputsxy(42,19,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void ring_college()
+{
+    // College
+
+    unsigned char start_select = 0;
+
+    menumakeborder(40,8,10,35);
+    gotoxy(42,10);
+    cputs("You may enter ");
+    textcolor(COLOR_GREEN);
+    cputs("COLLEGE");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+
+    if(player[playerturn].experience[0] ||
+       player[playerturn].experience[1] ||
+       player[playerturn].experience[2] ||
+       player[playerturn].experience[3])
+    {
+        cputsxy(42,12,"However, you already did go");
+        cputsxy(42,13,"to college and may not enter");
+        cputsxy(42,14,"again. Throw again.");
+        start_select = 255;
+    }
+    if(player[playerturn].money<500 && !start_select)
+    {
+        cputsxy(42,12,"However, you do not have");
+        cputsxy(42,13,"money for tuition fee.");
+        start_select = 254;
+    }
+    else
+    {
+        cputsxy(42,12,"Cost:");
+        VDC_Plot(12,48,C_DOLLAR,VDC_LGREEN);
+        textcolor(COLOR_CYAN);
+        cputsxy(50,12,"500");
+        textcolor(COLOR_YELLOW);
+    }
+    if(!fieldinformation)
+    {
+        if(!start_select)
+        {
+            if(player[playerturn].computer)
+            {
+                start_select=1;
+            }
+            else
+            {
+                cputsxy(42,14,"Do you want to enter?");
+                start_select=menupulldown(69,15,6);
+                cputsxy(42,14,"                     ");
+            }
+            if(start_select==1)
+            {
+                player[playerturn].career = 2;
+                player[playerturn].position = 0;
+                player[playerturn].money -= 500;
+            }
+        }
+        if(start_select==255)
+        {
+            anotherturn = 1;
+        }
+    }
+
+    cputsxy(42,16,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+// Go to correct field action
+
+void board_gotofieldaction()
+{
+    if(!player[playerturn].career)
+    {
+        // Outer ring field selection
+        switch (player[playerturn].position)
+        {
+        case 1:
+            ring_payday();
+            break;
+        
+        case 2:
+        case 4:
+        case 6:
+            ring_opportunity();
+            break;
+
+        case 3:
+            ring_paytaxes();
+            break;
+        
+        case 5:
+            ring_farming();
+            break;
+
+        case 7:
+            ring_automobileshow();
+            break;
+        
+        case 8:
+            ring_college();
+            break; 
+        
+        default:
+            break;
+        }
+    }
 }
 
 // Player choices routines
@@ -1521,9 +1740,47 @@ void cards_show()
 }
 
 // Information submenu functions
+void information_fieldinfo()
+{
+    // Information submenu: show information on a field
+
+    unsigned char help_pos = player[playerturn].position;
+    unsigned char help_car = player[playerturn].career;
+    unsigned char answer;
+
+    menumakeborder(40,8,5,37);
+    cputsxy(42,10,"For how much fields further do you");
+    cputsxy(42,11,"want to view the field information?");
+    answer = input_number(67,12,1,12);
+    windowrestore();
+
+    fieldinformation = 1;
+    player[playerturn].position += answer;
+
+    if(!help_car)
+    {
+        if(player[playerturn].position >32) { player[playerturn].position -= 32; }
+    }
+    else
+    {
+        if(player[playerturn].position > career[help_car].length)
+        {
+            player[playerturn].career = 0;
+            player[playerturn].position = player[playerturn].position - career[help_car].length + career[help_car].returnfield;
+            if(player[playerturn].position >32) { player[playerturn].position -= 32; }
+        }
+    }
+
+    board_gotofieldaction();
+
+    fieldinformation = 0;
+    player[playerturn].position = help_pos;
+    player[playerturn].career = help_car;
+}
+
 void information_gamescore()
 {
-    /* Information submeny: Show game score */
+    /* Information submenu: Show game score */
 
     unsigned char x,ycoord, count;
     unsigned char height = 14;
@@ -1699,6 +1956,10 @@ void turnhuman()
             cards_show();
             break;
 
+        case 51:
+            information_fieldinfo();
+            break;
+
         case 52:
             information_gamescore();
             break;
@@ -1858,8 +2119,8 @@ void main()
     loadintro();
 
     //Show game interface
+    clrscr(); 
     menuplacebar();
-    VDC_CopyViewPortToVDC(SCREENMAPADDRESS,1,BOARD_WIDTH,BOARD_HEIGHT,xoffset,yoffset,0,2,60,23);
 
     //Ask for loading save game
     menumakeborder(40,8,6,35);
