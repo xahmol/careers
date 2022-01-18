@@ -13,10 +13,120 @@
 
 /* Global variables */
 
+// Menu system variables
+
+struct WindowStruct
+{
+    unsigned int address;
+    unsigned char ypos;
+    unsigned char height;
+};
+extern struct WindowStruct Window[9];
+
+extern unsigned int windowaddress;
+extern unsigned char windownumber;
+
+//Menu data
+extern unsigned char menubaroptions;
+extern unsigned char pulldownmenunumber;
+extern char menubartitles[5][12];
+extern unsigned char menubarcoords[5];
+extern unsigned char pulldownmenuoptions[11];
+extern char pulldownmenutitles[11][5][17];
+
+// Global variables
 extern unsigned char bootdevice;
 extern char DOSstatus[40];
 extern char buffer[81];
 extern char version[22];
+extern unsigned char overlay_active;
+
+extern char updownenter[4];
+extern char leftright[3];
+extern char alldirections[6];
+
+extern unsigned char musicnumber;
+extern unsigned char joyinterface;
+extern unsigned char autosavetoggle;
+
+// Game variables
+
+// Board, cards and careers data
+struct RingStruct
+{
+    unsigned char xcoord;
+    unsigned char ycoord;
+    unsigned char color;
+    unsigned char outcome;
+};
+extern struct RingStruct ring[32];
+
+struct CareerStruct
+{
+    unsigned char length;
+    unsigned char returnfield;
+    char name[20];
+    unsigned char startfield;
+};
+extern struct CareerStruct career[8];
+
+struct CareerfieldStruct
+{
+    unsigned char xcoord;
+    unsigned char ycoord;
+    unsigned char color;
+    char text[27];
+    unsigned char outcome;
+    unsigned char amount1;
+    unsigned char amount2;
+};
+extern struct CareerfieldStruct careerfield[8][14];
+
+struct OpportunitycardStruct
+{
+    unsigned char conditionfree;
+    unsigned char careernumber;
+    unsigned char available;                         // ka(x)
+};
+extern struct OpportunitycardStruct opportunitycard[15];
+
+//Pawn, field and dice graphics string data
+extern char dicegraphics[6][3][4];
+
+extern char pawngraphics[3][3];
+
+// Player and game data
+struct PlayerdataStruct
+{
+    char name[20];           // sp$(x,0)
+    char experience[11];     // sp$(x,1)
+    unsigned char career;    // sp(x,0)
+    unsigned char position;  // sp(x,1)
+    unsigned long salary;    // sp(x,2)
+    unsigned long money;     // sp(x,3)
+    unsigned char happiness; // sp(x,4)
+    unsigned char fame;      // sp(x,5)
+    unsigned char winmoney;
+    unsigned char winhappiness;
+    unsigned char winfame;
+    unsigned char computer;  // sp(x,6)
+    unsigned char skipturn;  // sp(x,7)
+    unsigned char cards[19]; // ks(x,y)
+};
+extern struct PlayerdataStruct player[4];
+
+extern unsigned char whichcard[20];         //wc(x)
+extern unsigned char cardreset[15];
+extern unsigned char fieldinformation;  //ai
+extern unsigned char gameendflag;           // es
+extern unsigned char anotherturn;           // ne
+extern unsigned char playerturn;            // bs
+extern unsigned char dice_double;           // dd
+extern unsigned char dice_total;            // dg
+
+extern unsigned char choice;
+extern unsigned char xoffset;
+extern unsigned char yoffset;
 
 /* Game board dimensions */
 #define BOARD_WIDTH         108
