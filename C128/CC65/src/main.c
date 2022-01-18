@@ -1610,6 +1610,221 @@ void ring_college()
     windowrestore();
 }
 
+void ring_hospital()
+{
+    // Hospital
+
+    menumakeborder(40,6,15,35);
+    gotoxy(42,8);
+    cputs("You are in the ");
+    textcolor(COLOR_GREEN);
+    cputs("HOSPITAL");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+
+    cputsxy(42,10,"You are laid up until you throw");
+    cputsxy(42,11,"5 or less. You may not use op-");
+    cputsxy(42,12,"portunity or experience cards;");
+    cputsxy(42,13,"but you may pay Doctor (if no");
+    cputsxy(42,14,"Doctor, pay Bank) half your");
+    cputsxy(42,15,"Salary for Special treatment");
+    cputsxy(42,16,"before any throw and go on");
+    cputsxy(42,17,"that throw.");
+
+    cputsxy(42,19,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void ring_payfoodbills()
+{
+    // Pay food bills
+
+    menumakeborder(40,8,7,35);
+    gotoxy(42,10);
+    cputs("You have to ");
+    textcolor(COLOR_GREEN);
+    cputs("PAY FOOD BILLS");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+
+    cputsxy(42,12,"Cost:   ");
+    cprintf("%lu",player[playerturn].money/4);
+    VDC_Plot(12,48,C_DOLLAR,VDC_LGREEN);
+
+    if(!fieldinformation)
+    {
+        player[playerturn].money -= (player[playerturn].money/4);
+    }
+
+    cputsxy(42,14,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void ring_business()
+{
+    // Business
+
+    unsigned char free_entry = 0;
+    unsigned char start_select = 0;
+
+    menumakeborder(40,8,11,35);
+    gotoxy(42,10);
+    cputs("You may join ");
+    textcolor(COLOR_GREEN);
+    cputs("BIG BUSINESS");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+
+    if(player[playerturn].experience[5] || player_collegeexperience())
+    {
+        cputsxy(42,12,"Due to your experience/education");
+        cputsxy(42,13,"no costs are involved.");
+        free_entry=1;
+    }
+    else
+    {
+        cputsxy(42,12,"Pay $500 employment fee.");
+    }
+
+    if(!fieldinformation)
+    {
+        if(player[playerturn].money>499 || free_entry)
+        {
+            if(player[playerturn].computer)
+            {
+                start_select=1;
+            }
+            else
+            {
+                cputsxy(42,15,"Do you want to start?");
+                start_select = menupulldown(69,16,6);
+            }
+        }
+        if(start_select==1)
+        {
+            player[playerturn].career = 3;
+            player[playerturn].position = 0;
+            if(!free_entry) { player[playerturn].money -= 500; }
+        }
+    }
+
+    cputsxy(42,17,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void ring_artgallery()
+{
+    // Art gallery
+
+    unsigned char bought = 0;
+    unsigned char maxbought = 0;
+
+    menumakeborder(40,5,16,35);
+    gotoxy(42,7);
+    cputs("You are at the ");
+    textcolor(COLOR_GREEN);
+    cputs("ART GALLERY");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+
+    cputsxy(42,9,"You may buy old masters");
+    cputsxy(42,10,"for $3000 each. Throw");
+    cputsxy(42,11,"one die and score 1 *");
+    cputsxy(42,12,"times the number thrown");
+    cputsxy(42,13,"for each picture bought.");
+    cputsxy(42,14,"Limit: 2 to a customer.");
+
+    if(!fieldinformation && player[playerturn].money>2999)
+    {
+        cputsxy(42,16,"How many do you wamt to buy?");
+        if(player[playerturn].computer)
+        {
+            if(player[playerturn].fame<20)
+            {
+                bought = (player[playerturn].money>5999 && player[playerturn].fame<19)? 2:1;
+            }
+            gotoxy(42,17);
+            textcolor(COLOR_CYAN);
+            cprintf("%u",bought);
+            textcolor(COLOR_YELLOW);
+        }
+        else
+        {
+            maxbought = player[playerturn].money / 3000;
+            if(maxbought > 2) { maxbought =2; }
+            bought = input_number(42,15,0,maxbought);
+        }
+        player[playerturn].money -= bought*3000;
+        if(bought)
+        {
+            dice_throw(bought);
+            player[playerturn].fame += dice_total;
+        }
+        gotoxy(42,18);
+        cprintf("* %u received.",dice_total);
+    }
+
+    cputsxy(42,20,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void ring_sea()
+{
+    // Sea
+
+    unsigned char free_entry = 0;
+    unsigned char start_select = 0;
+
+    menumakeborder(40,8,11,35);
+    gotoxy(42,10);
+    cputs("You may go to ");
+    textcolor(COLOR_GREEN);
+    cputs("SEA");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+
+    if(player[playerturn].experience[6])
+    {
+        cputsxy(42,12,"Due to your experience");
+        cputsxy(42,13,"no costs are involved.");
+        free_entry=1;
+    }
+    else
+    {
+        cputsxy(42,12,"Pay $100 for Union dues.");
+    }
+
+    if(!fieldinformation)
+    {
+        if(player[playerturn].money>99 || free_entry)
+        {
+            if(player[playerturn].computer)
+            {
+                start_select = 1;
+            }
+            else
+            {
+                cputsxy(42,15,"Do you want this?");
+                start_select = menupulldown(69,16,6);
+            }
+            if(start_select==1)
+            {
+                player[playerturn].career = 4;
+                player[playerturn].position = 0;
+                if(!free_entry) { player[playerturn].money -= 100; }
+            }
+        }
+    }
+
+    cputsxy(42,17,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
 // Go to correct field action
 
 void board_gotofieldaction()
@@ -1626,6 +1841,9 @@ void board_gotofieldaction()
         case 2:
         case 4:
         case 6:
+        case 10:
+        case 13:
+        case 16:
             ring_opportunity();
             break;
 
@@ -1643,7 +1861,27 @@ void board_gotofieldaction()
         
         case 8:
             ring_college();
-            break; 
+            break;
+
+        case 9:
+            ring_hospital();
+            break;
+
+        case 11:
+            ring_payfoodbills();
+            break;
+
+        case 12:
+            ring_business();
+            break;
+
+        case 14:
+            ring_artgallery();
+            break;
+
+        case 15:
+            ring_sea();
+            break;
         
         default:
             break;
@@ -1751,7 +1989,7 @@ void information_fieldinfo()
     menumakeborder(40,8,5,37);
     cputsxy(42,10,"For how much fields further do you");
     cputsxy(42,11,"want to view the field information?");
-    answer = input_number(67,12,1,12);
+    answer = input_number(67,12,1,32);
     windowrestore();
 
     fieldinformation = 1;
@@ -1844,7 +2082,7 @@ void information_gamescore()
     if(count==ycoord) { cputsxy(42,++ycoord,"None"); }
 
     textcolor(COLOR_YELLOW);
-    cputsxy(42,++ycoord,"Occupation record:");
+    cputsxy(42,++ycoord,"Occupation record (count):");
 
     textcolor(COLOR_CYAN);
 
@@ -1852,7 +2090,11 @@ void information_gamescore()
 
     for(x=0;x<7;x++)
     {
-        if(player[playerturn].experience[4+x]) { cputsxy(42,++ycoord,career[x==0?x:x+1].name); }
+        if(player[playerturn].experience[4+x])
+        {
+            gotoxy(42,++ycoord);
+            cprintf("%s (%u)",career[x==0?x:x+1].name,player[playerturn].experience[4+x]);
+        }
     }
     if(count==ycoord) { cputsxy(42,++ycoord,"None"); }
 
