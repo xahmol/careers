@@ -76,6 +76,7 @@ BUT WITHOUT ANY WARRANTY. USE THEM AT YOUR OWN RISK!
 #include "ring1.h"
 #include "ring2.h"
 #include "ring3.h"
+#include "ring4.h"
 
 //Window data
 struct WindowStruct Window[9];
@@ -1315,6 +1316,10 @@ void board_gotofieldaction()
         case 13:
         case 16:
         case 18:
+        case 21:
+        case 24:
+        case 26:
+        case 29:
             loadoverlay(1);
             ring_opportunity();
             break;
@@ -1372,6 +1377,46 @@ void board_gotofieldaction()
         case 19:
             loadoverlay(3);
             ring_payrent();
+            break;
+
+        case 20:
+            loadoverlay(3);
+            ring_politics();
+            break;
+        
+        case 22:
+            loadoverlay(3);
+            ring_shoppingspree();
+            break;
+        
+        case 23:
+            loadoverlay(3);
+            ring_hollywood();
+            break;
+
+        case 25:
+            loadoverlay(3);
+            ring_floridavacation();
+            break;
+        
+        case 27:
+            loadoverlay(4);
+            ring_stockmarket();
+            break;
+        
+        case 28:
+            loadoverlay(4);
+            ring_uranium();
+            break;
+        
+        case 30:
+            loadoverlay(4);
+            ring_yachtharbor();
+            break;
+
+        case 31:
+            loadoverlay(4);
+            ring_moon();
             break;
         
         default:

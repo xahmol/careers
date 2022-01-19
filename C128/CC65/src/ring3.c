@@ -113,3 +113,171 @@ void ring_payrent()
     getkey("",1);
     windowrestore();
 }
+
+void ring_politics()
+{
+    // Politics
+
+    unsigned char free_entry = 0;
+    unsigned char start_select = 0;
+
+    menumakeborder(40,8,11,35);
+    gotoxy(42,10);
+    cputs("You may run for office ");
+    textcolor(COLOR_GREEN);
+    cputs("(POLITICS)");
+    textcolor(COLOR_YELLOW);
+
+    if(player[playerturn].experience[7] || player[playerturn].experience[0])
+    {
+        cputsxy(42,12,"Due to your experience/education");
+        cputsxy(42,13,"no costs are involved.");
+        free_entry=1;
+    }
+    else
+    {
+        cputsxy(42,12,"Pay $3000 for campaign fund.");
+    }
+
+    if(!fieldinformation)
+    {
+        if(player[playerturn].money>2999 || free_entry)
+        {
+            if(player[playerturn].computer)
+            {
+                start_select = 1;
+            }
+            else
+            {
+                cputsxy(42,15,"Do you want this?");
+                start_select = menupulldown(69,16,6);
+            }
+            if(start_select==1)
+            {
+                player[playerturn].career = 5;
+                player[playerturn].position = 0;
+                if(!free_entry) { player[playerturn].money -= 3000; }
+            }
+        }
+    }
+
+    cputsxy(42,17,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void ring_shoppingspree()
+{
+    unsigned long spent = 0;
+    menumakeborder(40,8,15,35);
+    gotoxy(42,10);
+    textcolor(COLOR_GREEN);
+    cputs("SHOPPING SPREE");
+    textcolor(COLOR_YELLOW);
+
+    if(!player[playerturn].money)
+    {
+        cputsxy(42,12,"Because you do not have money");
+        cputsxy(42,13,"nothing has been bought.");
+    }
+    else
+    {
+        cputsxy(42,12,"Throw 1 die to find out");
+        cputsxy(42,13,"what has been spent on");
+        cputsxy(42,14,"a shopping spree.");
+        cputsxy(42,15,"Pay number thrown times");
+        cputsxy(42,16,"10% of your cash on hand.");
+
+        if(!fieldinformation)
+        {
+            dice_throw(1);
+            spent = (player[playerturn].money/10)*dice_total;
+            cputsxy(42,18,"Cost:   ");
+            cprintf("%lu",spent);
+            VDC_Plot(18,48,C_DOLLAR,VDC_LGREEN);
+            player[playerturn].money -= spent;
+        }
+    }
+
+    cputsxy(42,20,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void ring_hollywood()
+{
+    // Hollywood
+
+    unsigned char free_entry = 0;
+    unsigned char start_select = 0;
+
+    menumakeborder(40,8,11,35);
+    gotoxy(42,10);
+    cputs("You may enter ");
+    textcolor(COLOR_GREEN);
+    cputs("HOLLYWOOD");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+
+    if(player[playerturn].experience[8])
+    {
+        cputsxy(42,12,"Due to your experience");
+        cputsxy(42,13,"no costs are involved.");
+        free_entry=1;
+    }
+    else
+    {
+        cputsxy(42,12,"Pay $1000 for new clothes.");
+    }
+
+    if(!fieldinformation)
+    {
+        if(player[playerturn].money>999 || free_entry)
+        {
+            if(player[playerturn].computer)
+            {
+                start_select = 1;
+            }
+            else
+            {
+                cputsxy(42,15,"Do you want this?");
+                start_select = menupulldown(69,16,6);
+            }
+            if(start_select==1)
+            {
+                player[playerturn].career = 6;
+                player[playerturn].position = 0;
+                if(!free_entry) { player[playerturn].money -= 1000; }
+            }
+        }
+    }
+
+    cputsxy(42,17,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void ring_floridavacation()
+{
+    // Park bench
+
+    menumakeborder(40,6,14,35);
+    gotoxy(42,8);
+    textcolor(COLOR_GREEN);
+    cputs("FLORIDA VACATION");
+    textcolor(COLOR_YELLOW);
+
+    cputsxy(42,10,"Score 4   when you land here");
+    VDC_Plot(10,50,C_HEART,VDC_LRED);
+    cputsxy(42,11,"and   2   each time you stay.");
+    VDC_Plot(11,50,C_HEART,VDC_LRED);
+    cputsxy(42,12,"You may stay on throws 7 or");
+    cputsxy(42,13,"less. But you may leave on");
+    cputsxy(42,14,"any throw.");
+
+    if(!fieldinformation) { player[playerturn].happiness += 4; }
+
+    cputsxy(42,18,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
