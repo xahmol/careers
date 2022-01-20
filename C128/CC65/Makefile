@@ -11,7 +11,7 @@
 # - ZIP packages installed: sudo apt-get install zip
 # - wput command installed: sudo apt-get install wput
 
-SOURCESMAIN = src/main.c src/ring1.c src/ring2.c src/ring3.c src/ring4.c src/vdc_core.c src/sidplay.c src/snes.c
+SOURCESMAIN = src/main.c src/ring1.c src/ring2.c src/ring3.c src/ring4.c src/careerfields.c src/vdc_core.c src/sidplay.c src/snes.c
 SOURCESLIB = src/vdc_core_assembly.s src/sidplay_assembly.s
 OBJECTS = careers.maco.prg careers.chrs.prg careers.chra.prg careers.scrn.prg
 
@@ -59,6 +59,7 @@ $(D64):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D64) -write careers.ovl2.prg careers.ovl2
 	c1541 -attach $(D64) -write careers.ovl3.prg careers.ovl3
 	c1541 -attach $(D64) -write careers.ovl4.prg careers.ovl4
+	c1541 -attach $(D64) -write careers.ovl5.prg careers.ovl5
 
 $(D71):	$(MAIN) $(OBJECTS)
 	c1541 -format "careers,xm" d71 $(D71)
@@ -71,6 +72,7 @@ $(D71):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D71) -write careers.ovl2.prg careers.ovl2
 	c1541 -attach $(D71) -write careers.ovl3.prg careers.ovl3
 	c1541 -attach $(D71) -write careers.ovl4.prg careers.ovl4
+	c1541 -attach $(D71) -write careers.ovl5.prg careers.ovl5
 
 $(D81):	$(MAIN) $(OBJECTS)
 	c1541 -format "careers,xm" d81 $(D81)
@@ -83,6 +85,7 @@ $(D81):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D81) -write careers.ovl2.prg careers.ovl2
 	c1541 -attach $(D81) -write careers.ovl3.prg careers.ovl3
 	c1541 -attach $(D81) -write careers.ovl4.prg careers.ovl4
+	c1541 -attach $(D81) -write careers.ovl5.prg careers.ovl5
 
 #$(ZIP): $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(README)
 #	zip $@ $^

@@ -77,6 +77,7 @@ BUT WITHOUT ANY WARRANTY. USE THEM AT YOUR OWN RISK!
 #include "ring2.h"
 #include "ring3.h"
 #include "ring4.h"
+#include "careerfields.h"
 
 //Window data
 struct WindowStruct Window[9];
@@ -306,6 +307,7 @@ unsigned char fieldinformation = 0;  //ai
 unsigned char gameendflag;           // es
 unsigned char anotherturn;           // ne
 unsigned char playerturn;            // bs
+unsigned char waitkeyflag;
 unsigned char dice_double;           // dd
 unsigned char dice_total;            // dg
 
@@ -1299,10 +1301,13 @@ char* cards_actiontext(unsigned char cardnumber)
 
 void board_gotofieldaction()
 {
-    if(!player[playerturn].career)
+    unsigned char careernr = player[playerturn].career;
+    unsigned char position = player[playerturn].position;
+
+    if(!careernr)
     {
         // Outer ring field selection
-        switch (player[playerturn].position)
+        switch (position)
         {
         case 1:
             loadoverlay(1);
@@ -1418,9 +1423,109 @@ void board_gotofieldaction()
             loadoverlay(4);
             ring_moon();
             break;
+
+        case 32:
+            loadoverlay(4);
+            ring_statueinthepark();
+            break;
         
         default:
             break;
+        }
+    }
+    else
+    {
+        waitkeyflag = 0;
+        loadoverlay(5);
+        career_generic(careernr-1,position);
+        switch (careerfield[careernr-1][position].outcome)
+        {
+        case 1:
+            career_gethappiness(careernr-1,position);
+            break;
+        
+        case 2:
+            career_getexperiencecard(careernr-1,position);
+            break;
+        
+        case 3:
+            career_getmoneytimesdie(careernr-1,position);
+            break;
+
+        case 4:
+            career_gethappinessandfame(careernr-1,position);
+            break;
+
+        case 5:
+            career_getmoney(careernr-1,position);
+            break;
+
+        case 6:
+            career_loosehalfmoney();
+            break;
+
+        case 7:
+            career_skipturn();
+            break;
+        
+        case 8:
+            career_getfame(careernr-1,position);
+            break;
+
+        case 9:
+            career_getopportunitycard(careernr-1,position);
+            break;
+
+        case 10:
+            career_getsalary(careernr-1,position);
+            break;
+
+        case 11:
+            career_gotoparkbench();
+            break;
+
+        case 12:
+            career_loosehalfsalary();
+            break;
+        
+        case 13:
+            career_gotohospital();
+            break;
+
+        case 14:
+            career_getmoneyandfame(careernr-1,position);
+            break;
+        
+        case 15:
+            career_loosehalffame();
+            break;
+
+        case 16:
+            career_getfamenohappiness(careernr-1,position);
+            break;
+        
+        case 17:
+            career_getsalarytimesdie(careernr-1,position);
+            break;
+
+        case 18:
+            career_throwagain();
+            break;
+
+        case 19:
+            career_loosemoneyorparkbench(careernr-1,position);
+            break;
+
+        default:
+            break;
+        }
+        if(!waitkeyflag)
+        {
+            career_waitforkey();
+        }
+        else
+        {
+            board_gotofieldaction();
         }
     }
 }
@@ -1525,23 +1630,25 @@ void information_fieldinfo()
     menumakeborder(40,8,5,37);
     cputsxy(42,10,"For how much fields further do you");
     cputsxy(42,11,"want to view the field information?");
-    answer = input_number(67,12,1,32);
+    answer = input_number(67,12,1,12);
     windowrestore();
 
     fieldinformation = 1;
-    player[playerturn].position += answer;
+    //player[playerturn].position += answer;
+    player[playerturn].position = answer-1;
+    player[playerturn].career = 7;
 
-    if(!help_car)
+    if(!player[playerturn].career)
     {
         if(player[playerturn].position >32) { player[playerturn].position -= 32; }
     }
     else
     {
-        if(player[playerturn].position > career[help_car].length)
+        if(player[playerturn].position > career[player[playerturn].career-1].length-1)
         {
-            player[playerturn].career = 0;
-            player[playerturn].position = player[playerturn].position - career[help_car].length + career[help_car].returnfield;
+            player[playerturn].position = player[playerturn].position - career[player[playerturn].career-1].length + career[player[playerturn].career-1].returnfield;
             if(player[playerturn].position >32) { player[playerturn].position -= 32; }
+            player[playerturn].career = 0;
         }
     }
 

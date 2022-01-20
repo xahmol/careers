@@ -5,5 +5,6 @@ void ring_stockmarket();
 void ring_uranium();
 void ring_yachtharbor();
 void ring_moon();
+void ring_statueinthepark();
 
 #endif // __RING4_H_

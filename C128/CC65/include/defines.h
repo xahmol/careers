@@ -121,6 +121,7 @@ extern unsigned char fieldinformation;  //ai
 extern unsigned char gameendflag;           // es
 extern unsigned char anotherturn;           // ne
 extern unsigned char playerturn;            // bs
+extern unsigned char waitkeyflag;
 extern unsigned char dice_double;           // dd
 extern unsigned char dice_total;            // dg
 

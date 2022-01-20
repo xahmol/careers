@@ -337,3 +337,98 @@ void ring_moon()
     getkey("",1);
     windowrestore();
 }
+
+void ring_statueinthepark()
+{
+    unsigned char bought = 4;
+    unsigned char maxfame = 0;
+    unsigned long maxmoney = 0;
+    unsigned long spent = 0;
+
+    menumakeborder(40,5,17,35);
+    gotoxy(42,7);
+    textcolor(COLOR_GREEN);
+    cputs("STATUE IN THE PARK");
+    textcolor(COLOR_YELLOW);
+
+    cputsxy(42, 9,"You may buy statue of self for");
+    cputsxy(42,10,"home town. Score fame as follows:");
+    cputsxy(42,11,"Pay:      Score:");
+    cputsxy(42,12,"   4000    4");
+    VDC_Plot(12,42,C_DOLLAR,VDC_LGREEN);
+    VDC_Plot(12,55,C_STAR,VDC_LYELLOW);
+    cputsxy(42,13,"   8000   10");
+    VDC_Plot(13,42,C_DOLLAR,VDC_LGREEN);
+    VDC_Plot(13,55,C_STAR,VDC_LYELLOW);
+    cputsxy(42,14,"  12000   16");
+    VDC_Plot(14,42,C_DOLLAR,VDC_LGREEN);
+    VDC_Plot(14,55,C_STAR,VDC_LYELLOW);
+
+    if(!fieldinformation && player[playerturn].money>3999)
+    {
+        cputsxy(42,16,"How much do you want to spend?");
+        if(player[playerturn].computer)
+        {
+            if(player[playerturn].money>19999)
+            {
+                maxmoney = player[playerturn].money-20000;
+            }
+            else
+            {
+                maxmoney = 0;
+            }
+            if(player[playerturn].fame<20)
+            {
+                maxfame = 20 - player[playerturn].fame;
+            }
+            if(maxmoney>4000 && maxfame>0) { bought = 1; }
+            if(maxmoney>8000 && maxfame>9) { bought = 2; }
+            if(maxmoney>12000 && maxfame>15) { bought = 3; }
+        }
+        else
+        {
+            do
+            {
+                bought = menupulldown(60,17,9);
+                if(bought==2 && player[playerturn].money<7999) { bought=0; }
+                if(bought==3 && player[playerturn].money<11999) { bought=0; }
+            } while (!bought);            
+        }
+        switch (bought)
+        {
+        case 1:
+            spent = 4000;
+            maxfame = 4;
+            break;
+
+        case 2:
+            spent = 8000;
+            maxfame = 10;
+            break;
+        
+        case 3:
+            spent = 12000;
+            maxfame = 16;
+            break;
+        
+        case 4:
+            spent = 0;
+            maxfame = 0;
+            break;
+        
+        default:
+            break;
+        }
+
+        cputsxy(42,18,"Cost: ");
+        textcolor(COLOR_CYAN);
+        cprintf("%lu",spent);
+        textcolor(COLOR_YELLOW);
+        player[playerturn].money -= spent;
+        player[playerturn].fame-= maxfame;
+    }
+
+    cputsxy(42,20,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
