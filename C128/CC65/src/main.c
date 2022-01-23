@@ -77,7 +77,10 @@ BUT WITHOUT ANY WARRANTY. USE THEM AT YOUR OWN RISK!
 #include "ring2.h"
 #include "ring3.h"
 #include "ring4.h"
-#include "careerfields.h"
+#include "career1.h"
+#include "career2.h"
+#include "menu1.h"
+#include "menu2.h"
 
 //Window data
 struct WindowStruct Window[9];
@@ -138,6 +141,7 @@ char DOSstatus[40];
 char buffer[81];
 char version[22];
 unsigned char overlay_active = 0;
+unsigned int overlayaddress[9];
 
 char updownenter[4] = {C_DOWN,C_UP,C_ENTER,0};
 char leftright[3] = {C_LEFT,C_RIGHT,0};
@@ -180,100 +184,100 @@ struct CareerStruct career[8] =
 struct CareerfieldStruct careerfield[8][14] =
 {
     {
-        {49,47,VDC_LRED   ,"Beautiful Spring weather"  , 1, 2, 0},
-        {49,44,VDC_WHITE  ,"Work on threshing crew"    , 2, 1, 0},
-        {49,41,VDC_LRED   ,"Good fishing"              , 1, 2, 0},
-        {49,38,VDC_LGREEN ,"Gamble in corn"            , 3, 1, 0},
-        {43,38,VDC_LYELLOW,"Raise prize steer"         , 4, 2, 4},
-        {37,38,VDC_LRED   ,"Mare has twin colts"       , 1, 6, 0},
-        {37,41,VDC_LGREEN ,"Bumper crop"               , 5, 5, 0},
-        {37,44,VDC_LRED   ,"Splendid Autumn colors"    , 1, 2, 0},
-        {37,47,VDC_WHITE  ,"Hailstorm"                 , 6, 0, 0}
+        {49,47,VDC_LRED   ,0, 1, 2, 0},
+        {49,44,VDC_WHITE  ,0, 2, 1, 0},
+        {49,41,VDC_LRED   ,0, 1, 2, 0},
+        {49,38,VDC_LGREEN ,0, 3, 1, 0},
+        {43,38,VDC_LYELLOW,0, 4, 2, 4},
+        {37,38,VDC_LRED   ,0, 1, 6, 0},
+        {37,41,VDC_LGREEN ,0, 5, 5, 0},
+        {37,44,VDC_LRED   ,0, 1, 2, 0},
+        {37,47,VDC_WHITE  ,0, 6, 0, 0}
     },  
     {  
-        {19,47,VDC_LRED   ,"Fall in love"              , 1, 4, 0},
-        {19,44,VDC_WHITE  ,"Grades not high enough"    , 7, 0, 0},
-        {25,44,VDC_LRED   ,"Elected to honor society"  , 1, 2, 0},
-        {25,41,VDC_LRED   ,"Lead junior prom"          , 1, 2, 0},
-        {25,38,VDC_WHITE  ,"Sweetheart has rich uncle" , 9, 2, 0},
-        {19,38,VDC_LYELLOW,"All-American athlete"      , 8, 6, 0},
-        {13,38,VDC_WHITE  ,"Honor graduate"            , 9, 2, 0}
+        {19,47,VDC_LRED   ,0, 1, 4, 0},
+        {19,44,VDC_WHITE  ,0, 7, 0, 0},
+        {25,44,VDC_LRED   ,0, 1, 2, 0},
+        {25,41,VDC_LRED   ,0, 1, 2, 0},
+        {25,38,VDC_WHITE  ,0, 9, 2, 0},
+        {19,38,VDC_LYELLOW,0, 8, 6, 0},
+        {13,38,VDC_WHITE  ,0, 9, 2, 0}
     }, 
     { 
-        {13,32,VDC_WHITE  ,"Learning business"         , 2, 1, 0},
-        {19,32,VDC_WHITE  ,"Lunch with boss"           , 9, 1, 0},
-        {25,32,VDC_LGREEN ,"Boss likes you"            ,10, 1, 0},
-        {31,32,VDC_WHITE  ,"Argue with boss"           , 7, 0, 0},
-        {31,29,VDC_LGREEN ,"Invent new production plan", 5, 2, 0},
-        {31,26,VDC_LGREEN ,"Promotion to front office" ,10, 2, 0},
-        {31,23,VDC_WHITE  ,"Swing big deal"            , 2, 1, 0},
-        {25,23,VDC_LRED   ,"Gorgeous secretary"        , 1, 4, 0},
-        {19,23,VDC_WHITE  ,"Too ambitious"             ,11, 0, 0},
-        {19,26,VDC_WHITE  ,"Business slump"            ,12, 0, 0},
-        {13,26,VDC_LGREEN ,"Elected to Board"          ,10, 3, 0}
+        {13,32,VDC_WHITE  ,0, 2, 1, 0},
+        {19,32,VDC_WHITE  ,0, 9, 1, 0},
+        {25,32,VDC_LGREEN ,0,10, 1, 0},
+        {31,32,VDC_WHITE  ,0, 7, 0, 0},
+        {31,29,VDC_LGREEN ,0, 5, 2, 0},
+        {31,26,VDC_LGREEN ,0,10, 2, 0},
+        {31,23,VDC_WHITE  ,0, 2, 1, 0},
+        {25,23,VDC_LRED   ,0, 1, 4, 0},
+        {19,23,VDC_WHITE  ,0,11, 0, 0},
+        {19,26,VDC_WHITE  ,0,12, 0, 0},
+        {13,26,VDC_LGREEN ,0,10, 3, 0}
     },
     {
-        {13,17,VDC_WHITE  ,"Sea-sick"                  ,13, 0, 0},
-        {19,17,VDC_LRED   ,"See sights of Buenos Aires", 1, 2, 0},
-        {25,17,VDC_WHITE  ,"Meet famous traveller"     , 9, 2, 0},
-        {31,17,VDC_WHITE  ,"Bad storm"                 , 2, 1, 0},
-        {31,14,VDC_LGREEN ,"Find buried treasure"      , 3, 1, 0},
-        {31,11,VDC_LRED   ,"Land at Tahiti"            , 1, 4, 0},
-        {25,11,VDC_LRED   ,"Swim in tropical lagoon"   , 1, 6, 0},
-        {19,11,VDC_WHITE  ,"Go beach-combing"          , 7, 0, 0},
-        {19, 8,VDC_LRED   ,"Terrific shore-leave"      , 1, 8, 0}
+        {13,17,VDC_WHITE  ,0,13, 0, 0},
+        {19,17,VDC_LRED   ,0, 1, 2, 0},
+        {25,17,VDC_WHITE  ,0, 9, 2, 0},
+        {31,17,VDC_WHITE  ,0, 2, 1, 0},
+        {31,14,VDC_LGREEN ,0, 3, 1, 0},
+        {31,11,VDC_LRED   ,0, 1, 4, 0},
+        {25,11,VDC_LRED   ,0, 1, 6, 0},
+        {19,11,VDC_WHITE  ,0, 7, 0, 0},
+        {19, 8,VDC_LRED   ,0, 1, 8, 0}
     },
     {
-        {43, 8,VDC_WHITE  ,"Lose in primaries"         ,11, 0, 0},
-        {43,11,VDC_WHITE  ,"Lunch with royalty"        , 9, 2, 0},
-        {43,14,VDC_LYELLOW,"Oppose crime"              , 8, 4, 0},
-        {43,17,VDC_LRED   ,"Judge beauty contest"      , 1, 2, 0},
-        {49,17,VDC_WHITE  ,"Ring 1000 doorbells"       , 2, 2, 0},
-        {55,17,VDC_LYELLOW,"Sign six treaties"         , 8, 6, 0},
-        {61,17,VDC_LYELLOW,"Appointed supreme court"   , 4, 2, 4},
-        {61,14,VDC_LYELLOW,"Conduct investigation"     , 8, 8, 0},
-        {61,11,VDC_LYELLOW,"Sell life story"           ,14, 4, 5},
-        {55,11,VDC_WHITE  ,"Caught with mink"          ,15, 0, 0},
-        {55, 8,VDC_LYELLOW,"Win by a landslide"        , 8,12, 0}
+        {43, 8,VDC_WHITE  ,0,11, 0, 0},
+        {43,11,VDC_WHITE  ,0, 9, 2, 0},
+        {43,14,VDC_LYELLOW,0, 8, 4, 0},
+        {43,17,VDC_LRED   ,0, 1, 2, 0},
+        {49,17,VDC_WHITE  ,0, 2, 2, 0},
+        {55,17,VDC_LYELLOW,0, 8, 6, 0},
+        {61,17,VDC_LYELLOW,0, 4, 2, 4},
+        {61,14,VDC_LYELLOW,0, 8, 8, 0},
+        {61,11,VDC_LYELLOW,0,14, 4, 5},
+        {55,11,VDC_WHITE  ,0,15, 0, 0},
+        {55, 8,VDC_LYELLOW,0, 8,12, 0}
     },
     {
-        {73, 8,VDC_LYELLOW,"Pose for calendar"         , 8, 2, 0},
-        {73,11,VDC_WHITE  ,"Date with star"            , 2, 1, 0},
-        {73,14,VDC_WHITE  ,"Director likes you"        , 9, 2, 0},
-        {73,17,VDC_LYELLOW,"Marry foreign prince(ss)"  , 4, 6, 2},
-        {79,17,VDC_LGREEN ,"TV contract"               ,10, 1, 0},
-        {85,17,VDC_WHITE  ,"Fanmail drops off slightly",12, 0, 0},
-        {85,14,VDC_LYELLOW,"Scandal"                   ,16,10, 0},
-        {85,11,VDC_LGREEN ,"Reach stardom"             ,17, 1, 0},
-        {91,11,VDC_LYELLOW,"Win Oscar"                 , 8,12, 0}
+        {73, 8,VDC_LYELLOW,0, 8, 2, 0},
+        {73,11,VDC_WHITE  ,0, 2, 1, 0},
+        {73,14,VDC_WHITE  ,0, 9, 2, 0},
+        {73,17,VDC_LYELLOW,0, 4, 6, 2},
+        {79,17,VDC_LGREEN ,0,10, 1, 0},
+        {85,17,VDC_WHITE  ,0,12, 0, 0},
+        {85,14,VDC_LYELLOW,0,16,10, 0},
+        {85,11,VDC_LGREEN ,0,17, 1, 0},
+        {91,11,VDC_LYELLOW,0, 8,12, 0}
     },
     {
-        {91,23,VDC_LRED   ,"Scenery is beautiful"      , 1, 2, 0},
-        {85,23,VDC_WHITE  ,"Fast burro"                ,18, 0, 0},
-        {79,23,VDC_WHITE  ,"Lose half your gear"       ,19, 2, 0},
-        {73,23,VDC_LRED   ,"See rare butterfly"        , 1, 2, 0},
-        {73,26,VDC_WHITE  ,"Pick & Shovel work"        , 2, 2, 0},
-        {73,29,VDC_LRED   ,"Breathless view of Andes"  , 1, 4, 0},
-        {73,32,VDC_WHITE  ,"Fall off cliff"            ,13, 0, 0},
-        {79,32,VDC_LGREEN ,"Find small lode of gems"   , 5,10, 0},
-        {85,32,VDC_LYELLOW,"Find Inca ruins"           , 4, 2, 4},
-        {85,29,VDC_LRED   ,"Climb famous peak"         , 1, 6, 0},
-        {91,29,VDC_LGREEN ,"Find rich uranium ore"     , 5,20, 0}
+        {91,23,VDC_LRED   ,0, 1, 2, 0},
+        {85,23,VDC_WHITE  ,0,18, 0, 0},
+        {79,23,VDC_WHITE  ,0,19, 2, 0},
+        {73,23,VDC_LRED   ,0, 1, 2, 0},
+        {73,26,VDC_WHITE  ,0, 2, 2, 0},
+        {73,29,VDC_LRED   ,0, 1, 4, 0},
+        {73,32,VDC_WHITE  ,0,13, 0, 0},
+        {79,32,VDC_LGREEN ,0, 5,10, 0},
+        {85,32,VDC_LYELLOW,0, 4, 2, 4},
+        {85,29,VDC_LRED   ,0, 1, 6, 0},
+        {91,29,VDC_LGREEN ,0, 5,20, 0}
     },
     {
-        {91,38,VDC_LRED   ,"Ship is beautiful"         , 1, 2, 0},
-        {85,38,VDC_LYELLOW,"Successful take-off"       , 8, 6, 0},
-        {79,38,VDC_WHITE  ,"Lose your nerve"           ,21, 0, 0},
-        {73,38,VDC_WHITE  ,"Ship explodes"             ,20, 0, 0},
-        {67,38,VDC_LYELLOW,"Rescue stewardess"         , 4, 2, 4},
-        {61,38,VDC_LGREEN ,"Promotion for bravery"     ,10, 2, 0},
-        {61,41,VDC_WHITE  ,"Crash landing"             , 2, 2, 0},
-        {61,44,VDC_LYELLOW,"Your are 1st human on moon", 8,16, 0},
-        {67,44,VDC_LYELLOW,"Learn secret of moonshine" , 1,10, 0},
-        {73,44,VDC_LGREEN ,"Find gold in moon crater"  , 5,10, 0},
-        {79,44,VDC_LYELLOW,"Jump over mountain"        ,22,10, 0},
-        {85,44,VDC_LYELLOW,"Successful landing"        , 4, 6, 4},
-        {85,47,VDC_LGREEN, "Sell moon-relic to museum" , 5, 5, 0}
+        {91,38,VDC_LRED   ,0, 1, 2, 0},
+        {85,38,VDC_LYELLOW,0, 8, 6, 0},
+        {79,38,VDC_WHITE  ,0,21, 0, 0},
+        {73,38,VDC_WHITE  ,0,20, 0, 0},
+        {67,38,VDC_LYELLOW,0, 4, 2, 4},
+        {61,38,VDC_LGREEN ,0,10, 2, 0},
+        {61,41,VDC_WHITE  ,0, 2, 2, 0},
+        {61,44,VDC_LYELLOW,0, 8,16, 0},
+        {67,44,VDC_LRED   ,0, 1,10, 0},
+        {73,44,VDC_LGREEN ,0, 5,10, 0},
+        {79,44,VDC_LYELLOW,0,22,10, 0},
+        {85,44,VDC_LYELLOW,0, 4, 6, 4},
+        {85,47,VDC_LGREEN, 0, 5, 5, 0}
     }
 };
 
@@ -308,6 +312,7 @@ unsigned char gameendflag;           // es
 unsigned char anotherturn;           // ne
 unsigned char playerturn;            // bs
 unsigned char waitkeyflag;
+unsigned char paidforleave;
 unsigned char dice_double;           // dd
 unsigned char dice_total;            // dg
 
@@ -893,6 +898,78 @@ void fileerrormessage(unsigned char error)
     windowrestore();    
 }
 
+/* Config file and save functions */
+
+void saveconfigfile()
+{
+    // Function to save config file
+
+    char filename[] = "career.cfg";
+    unsigned char error;
+
+    // Remove old file
+    remove(filename);
+
+    // Set device ID
+	cbm_k_setlfs(0, getcurrentdevice(), 0);
+
+    // Set filename
+	cbm_k_setnam(filename);
+
+    // Set bank to 0
+    SetLoadSaveBank(0);
+
+    // Save saveslots memory
+	error = cbm_k_save(SAVESLOTS, SAVESLOTS+85);
+
+    if (error) { fileerrormessage(error); }
+}
+
+void loadconfigfile()
+{
+    // Load configuration file or create one if not present
+
+    char filename[] = "career.cfg";
+    unsigned int address;
+    unsigned char x,y;
+
+    // Set device ID
+	cbm_k_setlfs(0, getcurrentdevice(), 0);
+
+	// Set filename
+	cbm_k_setnam(filename);
+
+	// Set bank to 0
+	SetLoadSaveBank(0);
+	
+	// Load config from file to memory
+	address = cbm_k_load(0,SAVESLOTS);
+
+    if (address>SAVESLOTS) {
+        address=SAVESLOTS+5;
+        for(y=0;y<5;y++)
+        {
+            for(x=0;x<16;x++)
+            {
+                pulldownmenutitles[10][y][x]=PEEK(address++);
+            }
+        }
+    }
+    else
+    {
+        memset((char*)SAVESLOTS,0,85);
+        address=SAVESLOTS+5;
+        for(y=0;y<5;y++)
+        {
+            for(x=0;x<16;x++)
+            {
+                POKE(address++,pulldownmenutitles[10][y][x]);
+            }
+        }
+        saveconfigfile();
+    }
+}
+
 // Board display and movement routines
 
 void board_reposition(unsigned char row, unsigned char col)
@@ -917,59 +994,6 @@ void board_print(unsigned char row, unsigned char col, unsigned char screencode,
     POKEB(printaddress+(BOARD_HEIGHT*BOARD_WIDTH)+BOARD_ATTRPADDING,1,attribute);    
 }
 
-void board_scroll()
-{
-    /* Explore board by scrolling board around with cursor keys */
-
-    unsigned char choice;
-
-    do
-    {
-        choice = getkey(alldirections,1);
-
-        switch (choice)
-        {
-        case C_LEFT:
-            if(xoffset>0)
-            {
-                VDC_ScrollCopy(SCREENMAPADDRESS,1,BOARD_WIDTH,BOARD_HEIGHT,xoffset,yoffset,0,2,60,23,2);
-                xoffset--;
-            }
-            break;
-
-        case C_RIGHT:
-            if(xoffset<48)
-            {
-                VDC_ScrollCopy(SCREENMAPADDRESS,1,BOARD_WIDTH,BOARD_HEIGHT,xoffset,yoffset,0,2,60,23,1);
-                xoffset++;
-            }
-            break;
-
-        case C_UP:
-            if(yoffset>0)
-            {
-                VDC_ScrollCopy(SCREENMAPADDRESS,1,BOARD_WIDTH,BOARD_HEIGHT,xoffset,yoffset,0,2,60,23,4);
-                yoffset--;
-            }
-            break;
-
-        case C_DOWN:
-            if(yoffset<31)
-            {
-                VDC_ScrollCopy(SCREENMAPADDRESS,1,BOARD_WIDTH,BOARD_HEIGHT,xoffset,yoffset,0,2,60,23,8);
-                yoffset++;
-            }
-            break;
-        
-        default:
-            break;
-        }
-
-    } while (choice != C_ENTER);
-
-    board_reposition(ring[player[playerturn].position-1].ycoord,ring[player[playerturn].position-1].xcoord);
-}
-
 // Pawn placement routines
 
 void pawn_place(unsigned char playernumber)
@@ -980,14 +1004,14 @@ void pawn_place(unsigned char playernumber)
 
     if (player[playernumber].career==0 || player[playernumber].position==0)
     {
-        row=ring[player[playernumber].position-1].ycoord;
-        col=ring[player[playernumber].position-1].xcoord;
         help = 255;
         if (player[playernumber].position==0)
         {
             help = 0;
-            player[playernumber].position==career[player[playernumber].career-1].startfield;
+            player[playernumber].position=career[player[playernumber].career-1].startfield;
         }
+        row=ring[player[playernumber].position-1].ycoord;
+        col=ring[player[playernumber].position-1].xcoord;
         for(y=0;y<3;y++)
         {
             for(x=0;x<3;x++)
@@ -996,7 +1020,7 @@ void pawn_place(unsigned char playernumber)
             }
         }
         board_print(row+1,col+1,0x31+playernumber,VDC_WHITE);
-        if (help == 0) { player[playernumber].position == 0; }
+        if (help == 0) { player[playernumber].position = 0; }
     }
     else
     {
@@ -1019,7 +1043,7 @@ unsigned char pawn_other(unsigned char playernumber)
     for(x=0;x<4;x++)
     {
         if(player[playernumber].career==player[x].career && player[playernumber].position==player[x].position && x!=playernumber)
-        { otherpawnflag == x; }
+        { otherpawnflag = x; }
     }
 
     if (otherpawnflag>0) { pawn_place(otherpawnflag); }
@@ -1041,7 +1065,7 @@ void pawn_erase(unsigned char playernumber)
             if (player[playernumber].position==0)
             {
                 help = 0;
-                player[playernumber].position==career[player[playernumber].career-1].startfield;
+                player[playernumber].position=career[player[playernumber].career-1].startfield;
             }
             for(y=0;y<3;y++)
             {
@@ -1050,7 +1074,7 @@ void pawn_erase(unsigned char playernumber)
                     board_print(ring[player[playernumber].position-1].ycoord+y,ring[player[playernumber].position-1].xcoord+x,y==2?C_BLOCKUNDER:C_SPACE,ring[player[playernumber].position-1].color+VDC_A_REVERSE);
                 }
             }
-            if (help == 0) { player[playernumber].position == 0; }
+            if (help == 0) { player[playernumber].position = 0; }
         }
         else
         {
@@ -1304,6 +1328,12 @@ void board_gotofieldaction()
     unsigned char careernr = player[playerturn].career;
     unsigned char position = player[playerturn].position;
 
+    if (position==0)
+    {
+        position=career[careernr-1].startfield;
+        careernr=0;
+    }
+
     if(!careernr)
     {
         // Outer ring field selection
@@ -1437,47 +1467,53 @@ void board_gotofieldaction()
     {
         waitkeyflag = 0;
         loadoverlay(5);
-        career_generic(careernr-1,position);
-        switch (careerfield[careernr-1][position].outcome)
+        career_generic(careernr-1,position-1);
+        switch (careerfield[careernr-1][position-1].outcome)
         {
         case 1:
-            career_gethappiness(careernr-1,position);
+            career_gethappiness(careernr-1,position-1);
             break;
         
         case 2:
-            career_getexperiencecard(careernr-1,position);
+            career_getexperiencecard(careernr-1,position-1);
             break;
         
         case 3:
-            career_getmoneytimesdie(careernr-1,position);
+            career_getmoneytimesdie(careernr-1,position-1);
             break;
 
         case 4:
-            career_gethappinessandfame(careernr-1,position);
+            career_gethappinessandfame(careernr-1,position-1);
             break;
 
         case 5:
-            career_getmoney(careernr-1,position);
+            loadoverlay(6);
+            career_getmoney(careernr-1,position-1);
             break;
 
         case 6:
+            loadoverlay(6);
             career_loosehalfmoney();
             break;
 
         case 7:
+            loadoverlay(6);
             career_skipturn();
             break;
         
         case 8:
-            career_getfame(careernr-1,position);
+            loadoverlay(6);
+            career_getfame(careernr-1,position-1);
             break;
 
         case 9:
-            career_getopportunitycard(careernr-1,position);
+            loadoverlay(6);
+            career_getopportunitycard(careernr-1,position-1);
             break;
 
         case 10:
-            career_getsalary(careernr-1,position);
+            loadoverlay(6);
+            career_getsalary(careernr-1,position-1);
             break;
 
         case 11:
@@ -1485,6 +1521,7 @@ void board_gotofieldaction()
             break;
 
         case 12:
+            loadoverlay(6);
             career_loosehalfsalary();
             break;
         
@@ -1493,32 +1530,47 @@ void board_gotofieldaction()
             break;
 
         case 14:
-            career_getmoneyandfame(careernr-1,position);
+            loadoverlay(6);
+            career_getmoneyandfame(careernr-1,position-1);
             break;
         
         case 15:
+            loadoverlay(6);
             career_loosehalffame();
             break;
 
         case 16:
-            career_getfamenohappiness(careernr-1,position);
+            loadoverlay(6);
+            career_getfamenohappiness(careernr-1,position-1);
             break;
         
         case 17:
-            career_getsalarytimesdie(careernr-1,position);
+            loadoverlay(6);
+            career_getsalarytimesdie(careernr-1,position-1);
             break;
 
         case 18:
+            loadoverlay(6);
             career_throwagain();
             break;
 
         case 19:
-            career_loosemoneyorparkbench(careernr-1,position);
+            career_loosemoneyorparkbench(careernr-1,position-1);
+            break;
+
+        case 20:
+            loadoverlay(6);
+            career_looseallfame();
+            break;
+
+        case 21:
+            career_getfamebuthospital(careernr-1,position-1);
             break;
 
         default:
             break;
         }
+        loadoverlay(5);
         if(!waitkeyflag)
         {
             career_waitforkey();
@@ -1531,92 +1583,6 @@ void board_gotofieldaction()
 }
 
 // Player choices routines
-
-// Cards submenu functions
-void cards_show()
-{
-    /* Cards submenu: show cards */
-
-    unsigned char opportunity_count = 0;
-    unsigned char experience_count = 0;
-    unsigned char height = 9;
-    unsigned char x, y, ycoord;
-
-    for(x=0;x<19;x++)
-    {
-        if(player[playerturn].cards[x])
-        {
-            if(x<15) { opportunity_count++; } else { experience_count++; }
-        }
-    }
-
-    if(opportunity_count > experience_count)
-    {
-        height += opportunity_count;
-    }
-    else
-    {
-        height += experience_count;
-    }
-
-    ycoord = 11-(height/2);
-    menumakeborder(1,ycoord,height,75);
-
-    ycoord+=2;
-
-    gotoxy(3,ycoord++);
-    textcolor(COLOR_GREEN);
-    cprintf("Player %u: ",playerturn+1);
-    textcolor(COLOR_CYAN);
-    cputs(player[playerturn].name);
-
-    textcolor(COLOR_YELLOW);
-    cputsxy(3,++ycoord,"Opportunity cards");
-    cputsxy(42,ycoord,"Experience cards");
-    cputsxy(3,++ycoord,"Count: Action:             Condition:");
-    cputsxy(42,ycoord,"Count: Number of fields:");
-
-    y = ++ycoord;
-
-    textcolor(COLOR_CYAN);
-
-    for(x=0;x<15;x++)
-    {
-        if(player[playerturn].cards[x])
-        {
-            gotoxy(3,y);
-            cprintf("%2u     %s",player[playerturn].cards[x],cards_actiontext(x));
-            cputsxy(30,y++,opportunitycard[x].conditionfree==0?"Normal":"Free");
-        }
-    }
-
-    if(y==ycoord)
-    {
-        cputsxy(3,ycoord,"No opportunity cards owned");
-    }
-
-    y = ycoord;
-
-    for(x=0;x<4;x++)
-    {
-        if(player[playerturn].cards[x+15])
-        {
-            gotoxy(42,y++);
-            cprintf("%2u     %u",player[playerturn].cards[x],x+1);
-        }
-    }
-
-    if(y==ycoord)
-    {
-        cputsxy(42,ycoord,"No experience cards owned");
-    }
-
-    textcolor(COLOR_YELLOW);
-    cputsxy(3,ycoord+height-7,"Press key.");
-    getkey("",1);
-
-    windowrestore();
-}
 
 // Information submenu functions
 void information_fieldinfo()
@@ -1634,9 +1600,7 @@ void information_fieldinfo()
     windowrestore();
 
     fieldinformation = 1;
-    //player[playerturn].position += answer;
-    player[playerturn].position = answer-1;
-    player[playerturn].career = 7;
+    player[playerturn].position += answer;
 
     if(!player[playerturn].career)
     {
@@ -1659,161 +1623,6 @@ void information_fieldinfo()
     player[playerturn].career = help_car;
 }
 
-void information_gamescore()
-{
-    /* Information submenu: Show game score */
-
-    unsigned char x,ycoord, count;
-    unsigned char height = 14;
-
-    for(x=0;x<11;x++)
-    {
-        height += player[playerturn].experience[x];
-    }
-    ycoord = 11 - (height/2);
-
-    menumakeborder(40,ycoord,height,34);
-
-    ycoord+=2;
-
-    gotoxy(42,ycoord);
-    textcolor(COLOR_GREEN);
-    cprintf("Player %u: ",playerturn+1);
-    textcolor(COLOR_CYAN);
-    cputs(player[playerturn].name);
-
-    gotoxy(42,++ycoord);
-    textcolor(COLOR_YELLOW);
-    cprintf("Success Formula:  %2u+ %2u+ %2u=60",player[playerturn].winhappiness,player[playerturn].winfame,player[playerturn].winmoney);
-    VDC_Plot(ycoord,59,C_HEART,VDC_LRED);
-    VDC_Plot(ycoord,63,C_STAR,VDC_LYELLOW);
-    VDC_Plot(ycoord,67,C_DOLLAR,VDC_LGREEN);
-    
-    cputsxy(42,++ycoord,"Happiness      :   ");
-    textcolor(COLOR_CYAN);
-    cprintf("%3u",player[playerturn].happiness);
-    textcolor(COLOR_YELLOW);
-    VDC_Plot(ycoord,59,C_HEART,VDC_LRED);
-
-    cputsxy(42,++ycoord,"Fame           :   ");
-    textcolor(COLOR_CYAN);
-    cprintf("%3u",player[playerturn].fame);
-    textcolor(COLOR_YELLOW);
-    VDC_Plot(ycoord,59,C_STAR,VDC_LYELLOW);
-
-    cputsxy(42,++ycoord,"Money          :   ");
-    textcolor(COLOR_CYAN);
-    cprintf("%6lu",player[playerturn].money);
-    textcolor(COLOR_YELLOW);
-    VDC_Plot(ycoord,59,C_DOLLAR,VDC_LGREEN);
-
-    cputsxy(42,++ycoord,"Salary         :   ");
-    textcolor(COLOR_CYAN);
-    cprintf("%6lu",player[playerturn].salary);
-    textcolor(COLOR_YELLOW);
-    VDC_Plot(ycoord,59,C_DOLLAR,VDC_LGREEN);
-
-    cputsxy(42,++ycoord,"College education:");
-
-    count = ycoord;
-    textcolor(COLOR_CYAN);
-
-    for(x=0;x<4;x++)
-    {
-        if(player[playerturn].experience[x]) { cputsxy(42,++ycoord,pulldownmenutitles[9][x]); }
-    }
-    if(count==ycoord) { cputsxy(42,++ycoord,"None"); }
-
-    textcolor(COLOR_YELLOW);
-    cputsxy(42,++ycoord,"Occupation record (count):");
-
-    textcolor(COLOR_CYAN);
-
-    count = ycoord;
-
-    for(x=0;x<7;x++)
-    {
-        if(player[playerturn].experience[4+x])
-        {
-            gotoxy(42,++ycoord);
-            cprintf("%s (%u)",career[x==0?x:x+1].name,player[playerturn].experience[4+x]);
-        }
-    }
-    if(count==ycoord) { cputsxy(42,++ycoord,"None"); }
-
-    ycoord++;
-
-    textcolor(COLOR_YELLOW);
-    cputsxy(42,++ycoord,"Press key.");
-    getkey("",1);
-    windowrestore();
-}
-
-void information_colorlegend()
-{
-    char colorblock[2] = { C_BLOCKUNDER,C_BLOCKUNDER };
-
-    menumakeborder(45,2,20,32);
-    textcolor(COLOR_GREEN);
-    cputsxy(47,4,"Legend of colors used");
-    textcolor(COLOR_YELLOW);
-    cputsxy(47,6,"Colors of board outer ring:");
-    VDC_PlotString(7,47,colorblock,2,VDC_LCYAN+VDC_A_REVERSE);
-    cputsxy(50,7,"Cornerfield activities");
-    VDC_PlotString(8,47,colorblock,2,VDC_DYELLOW+VDC_A_REVERSE);
-    cputsxy(50,8,"Receive opportunity card");
-    VDC_PlotString(9,47,colorblock,2,VDC_WHITE+VDC_A_REVERSE);
-    cputsxy(50,9,"Begin career");
-    VDC_PlotString(10,47,colorblock,2,VDC_LPURPLE+VDC_A_REVERSE);
-    cputsxy(50,10,"Various activities");
-
-    cputsxy(47,12,"Colors of career track fields:");
-    VDC_PlotString(13,47,colorblock,2,VDC_WHITE+VDC_A_REVERSE);
-    cputsxy(50,13,"Various");
-    VDC_PlotString(14,47,colorblock,2,VDC_LRED+VDC_A_REVERSE);
-    cputsxy(50,14,"Receive happiness    ( )");
-    VDC_Plot(14,72,C_HEART,VDC_LRED);
-    VDC_PlotString(15,47,colorblock,2,VDC_LYELLOW+VDC_A_REVERSE);
-    cputsxy(50,15,"Receive fame         (*)");
-    VDC_PlotString(16,47,colorblock,2,VDC_LGREEN+VDC_A_REVERSE);
-    cputsxy(50,16,"Receive money/salary ( )");
-    VDC_Plot(16,72,C_DOLLAR,VDC_LGREEN);
-    VDC_Plot(17,47,C_BLOCKUNDER,VDC_LYELLOW+VDC_A_REVERSE);
-    VDC_Plot(17,48,C_BLOCKUNDER,VDC_LRED+VDC_A_REVERSE);
-    cputsxy(50,17,"Combination happiness/fame");
-    VDC_Plot(18,47,C_BLOCKUNDER,VDC_LYELLOW+VDC_A_REVERSE);
-    VDC_Plot(18,48,C_BLOCKUNDER,VDC_LGREEN+VDC_A_REVERSE);
-    cputsxy(50,18,"Combination happiness/money");
-    cputsxy(47,20,"Press key.");
-    getkey("",1);
-    windowrestore();
-}
-
-void information_credits()
-{
-    /* Print version information and credits */
-
-    char version[30];
-    sprintf(version,
-            "Version: v%i%i - %c%c%c%c%c%c%c%c-%c%c%c%c",
-            VERSION_MAJOR, VERSION_MINOR,
-            BUILD_YEAR_CH0, BUILD_YEAR_CH1, BUILD_YEAR_CH2, BUILD_YEAR_CH3, BUILD_MONTH_CH0, BUILD_MONTH_CH1, BUILD_DAY_CH0, BUILD_DAY_CH1,BUILD_HOUR_CH0, BUILD_HOUR_CH1, BUILD_MIN_CH0, BUILD_MIN_CH1);
-    menumakeborder(5,5,11,70);
-    textcolor(COLOR_CYAN);
-    printcentered("C A R E E R S",7,7,70);
-    textcolor(COLOR_WHITE);
-    printcentered(version,7,8,70);
-    textcolor(COLOR_YELLOW);
-    printcentered("Written in 2022 by Xander Mol",7,10,70);
-    printcentered("Converted to C from the C128 original written in BASIC in 1992",7,11,70);
-    printcentered("See source code on Github for full code credits.",7,13,70);
-    textcolor(COLOR_GREEN);
-    printcentered("Press a key.",7,15,70);
-    textcolor(COLOR_YELLOW);
-    getkey("",1);
-    windowrestore();
-}
-
 // Player turn functions
 
 void turnhuman()
@@ -1829,7 +1638,7 @@ void turnhuman()
         {
         case 12:
             yesno = areyousure();
-            if(yesno==1) { gameendflag=6; board_reset(); }
+            if(yesno==1) { gameendflag=6; game_reset(); }
             break;
 
         case 13:
@@ -1837,7 +1646,36 @@ void turnhuman()
             if(yesno==1) { gameendflag=5; }
             break;
 
+        case 21:
+            loadoverlay(8);
+            savegame(0);
+            break;
+
+        case 22:
+            yesno = areyousure();
+            if(yesno==1)
+            {
+                gameendflag=7;
+                loadoverlay(8);
+                loadgame();
+            }
+            break;
+
+        case 23:
+                if(autosavetoggle==1)
+                {
+                    autosavetoggle=0;
+                    strcpy(pulldownmenutitles[1][2],"Autosave on ");
+                }
+                else
+                {
+                    autosavetoggle=1;
+                    strcpy(pulldownmenutitles[1][2],"Autosave off");
+                }
+                break;
+
         case 41:
+            loadoverlay(7);
             cards_show();
             break;
 
@@ -1846,24 +1684,22 @@ void turnhuman()
             break;
 
         case 52:
+            loadoverlay(7);
             information_gamescore();
             break;
         
         case 53:
+            loadoverlay(7);
             information_colorlegend();
             break;
 
         case 54:
-            menumakeborder(60,10,6,18);
-            cputsxy(62,12,"Move board around");
-            cputsxy(62,13,"with cursor keys");
-            cputsxy(62,14,"or joystick.");
-            cputsxy(62,15,"RETURN/fire=end.");
+            loadoverlay(8);
             board_scroll();
-            windowrestore();
             break;
         
         case 55:
+            loadoverlay(7);
             information_credits();
             break;
 
@@ -1896,7 +1732,8 @@ void loadintro()
 {
     /* Game start up: loading data and title screen */
     
-    unsigned char error;
+    unsigned char error,x,y;
+    unsigned int address = CTEXTADDRESS;
 
     /* Game intro */
     char joys[10];
@@ -1908,10 +1745,30 @@ void loadintro()
     //VDC_LoadScreen("ludo.tscr",LOADSAVEBUFFER,1,1);
 
     /* Load and read game config file */
-    //loadconfigfile();
+    loadconfigfile();
 
     // Load game board screen map to memory
     VDC_LoadScreen("careers.scrn",bootdevice,SCREENMAPADDRESS,1);
+
+    // Load career texts and sets string pointers
+	cbm_k_setlfs(0,bootdevice, 0);
+	cbm_k_setnam("careers.ctxt");
+	SetLoadSaveBank(1);
+	cbm_k_load(0,CTEXTADDRESS);
+	SetLoadSaveBank(0);
+
+    // Set career text address pointers
+    for(x=0;x<8;x++)
+    {
+        y=0;
+        do
+        {
+            careerfield[x][y].textaddress = address++;
+            while (PEEKB(address++,1) !=0);
+            y++;
+        } while (PEEKB(address,1) !=0);
+        address++;
+    }
 
     // Imstall joystick driver
     error = joy_install(&joy_static_stddrv);
@@ -1989,6 +1846,8 @@ void loadintro()
 
 void main()
 {
+    //unsigned char x,y;
+
     // Obtain device number the application was started from
     bootdevice = getcurrentdevice();
 
@@ -2012,7 +1871,7 @@ void main()
     cputsxy(42,10,"Load old game?");
     choice = menupulldown(69,11,6);
     windowrestore();
-    //if(choice==1) { gameendflag=7; loadgame(); }
+    if(choice==1) { loadoverlay(8); gameendflag=7; loadgame(); }
 
     srand(clock());
 
@@ -2036,6 +1895,31 @@ void main()
             gameendflag=0;
             pawn_erase(playerturn);
             pawn_place(playerturn);
+
+            //// Testing fields
+            //fieldinformation=1;
+            //for(x=0;x<32;x++)
+            //{
+            //    pawn_erase(playerturn);
+            //    player[playerturn].career=0;
+            //    player[playerturn].position=x+1;
+            //    pawn_place(playerturn);
+            //    board_gotofieldaction();
+            //}
+            //// Testing careers
+            //for(y=0;y<8;y++)
+            //{
+            //    for(x=0;x<career[y].length+1;x++)
+            //    {
+            //        pawn_erase(playerturn);
+            //        player[playerturn].career=y+1;
+            //        player[playerturn].position=x;
+            //        pawn_place(playerturn);
+            //        board_gotofieldaction();
+            //    }
+            //}
+            //exit(1);
+
             if(player[playerturn].computer==0)
             {
                 turnhuman();

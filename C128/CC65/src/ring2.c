@@ -296,3 +296,127 @@ void ring_parkbench()
     getkey("",1);
     windowrestore();
 }
+
+void ring_leavehospital()
+{
+    unsigned char numberofdoctors = 0;
+    unsigned long totalpaid = 0;
+    unsigned char x;
+
+    for(x=0;x<4;x++)
+    {
+        if(player[x].experience[1]) { numberofdoctors++; }
+    }
+    if(numberofdoctors)
+    {
+        totalpaid = (player[playerturn].salary/2)*numberofdoctors;
+    }
+    else
+    {
+        totalpaid = player[playerturn].salary/2;
+    }
+
+    menumakeborder(40,8,9,35);
+    gotoxy(42,8);
+    cputs("You are still in the ");
+    textcolor(COLOR_GREEN);
+    cputs("HOSPITAL");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+
+    cputsxy(42,10,"To leave you have to throw");
+    cputsxy(42,11,"5 or less.");
+
+    if(!(player[playerturn].money < totalpaid))
+    {
+        cputsxy(42,12,"Or do you want to pay");
+        gotoxy(44,13);
+        cprintf("%lu to leave?",totalpaid);
+        VDC_Plot(13,42,C_DOLLAR,VDC_LGREEN);
+        paidforleave = menupulldown(69,14,6)==1?1:0;
+        if(paidforleave)
+        {
+            player[playerturn].money -= totalpaid;
+            for(x=0;x<4;x++)
+            {
+                if(player[x].experience[1])
+                {
+                    player[x].money += player[playerturn].salary/2;
+                }
+            }
+        }
+    }
+
+    cputsxy(42,15,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void ring_leaveparkbench()
+{
+    unsigned long totalpaid = player[playerturn].money/2;
+
+    menumakeborder(40,8,9,35);
+    gotoxy(42,8);
+    cputs("You are still on the ");
+    textcolor(COLOR_GREEN);
+    cputs("PARK BENCH");
+    textcolor(COLOR_YELLOW);
+    cputs(".");
+
+    cputsxy(42,10,"To leave you have to throw");
+    cputsxy(42,11,"7, 11 or double.");
+
+    if(!(player[playerturn].money < totalpaid))
+    {
+        cputsxy(42,12,"Or do you want to pay");
+        gotoxy(44,13);
+        cprintf("%lu to leave?",totalpaid);
+        VDC_Plot(13,42,C_DOLLAR,VDC_LGREEN);
+        paidforleave = menupulldown(69,14,6)==1?1:0;
+        if(paidforleave)
+        {
+            player[playerturn].money -= totalpaid;
+        }
+    }
+
+    cputsxy(42,15,"Press key.");
+    getkey("",1);
+    windowrestore();
+}
+
+void ring_leavefloridavacation()
+{
+    if(player[playerturn].computer)
+    {
+        if(player[playerturn].computer<20)
+        {
+            gameendflag = 10;
+            player[playerturn].happiness += 2;
+        }
+    }
+    else
+    {
+        menumakeborder(40,8,9,35);
+        gotoxy(42,8);
+        cputs("You are still on ");
+        textcolor(COLOR_GREEN);
+        cputs("FLORIDA VACATION");
+        textcolor(COLOR_YELLOW);
+        cputs(".");
+
+        cputsxy(42,10,"Do you want to stay for");
+        cputsxy(44,11,"2?");
+        VDC_Plot(42,11,C_HEART,VDC_LRED);
+
+        if(menupulldown(69,14,6)==1) {
+            gameendflag = 10;
+            player[playerturn].happiness += 2;
+        }
+
+        cputsxy(42,15,"Press key.");
+        getkey("",1);
+        windowrestore();
+    }   
+}
+

@@ -215,8 +215,8 @@ void ring_farming()
         }
         if(start_select)
         {
-            player[playerturn].career == 1;
-            player[playerturn].position == 0;
+            player[playerturn].career = 1;
+            player[playerturn].position = 0;
             if(!player[playerturn].experience[4])
             {
                 player[playerturn].money -= 1000;

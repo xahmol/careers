@@ -11,9 +11,9 @@
 # - ZIP packages installed: sudo apt-get install zip
 # - wput command installed: sudo apt-get install wput
 
-SOURCESMAIN = src/main.c src/ring1.c src/ring2.c src/ring3.c src/ring4.c src/careerfields.c src/vdc_core.c src/sidplay.c src/snes.c
-SOURCESLIB = src/vdc_core_assembly.s src/sidplay_assembly.s
-OBJECTS = careers.maco.prg careers.chrs.prg careers.chra.prg careers.scrn.prg
+SOURCESMAIN = src/main.c src/ring1.c src/ring2.c src/ring3.c src/ring4.c src/career1.c src/career2.c src/menu1.c src/menu2.c src/vdc_core.c src/sidplay.c src/snes.c
+SOURCESLIB = src/vdc_core_assembly.s src/sidplay_assembly.s src/careertext.s
+OBJECTS = careers.maco.prg careers.chrs.prg careers.chra.prg careers.scrn.prg careers.ctxt.prg careers.ovl1.prg careers.ovl2.prg careers.ovl3.prg careers.ovl4.prg careers.ovl5.prg careers.ovl6.prg careers.ovl7.prg careers.ovl8.prg
 
 ZIP = careers-v010-$(shell date "+%Y%m%d-%H%M").zip
 D64 = careers.d64
@@ -29,7 +29,7 @@ MAIN = careers.prg
 
 CC65_TARGET = c128
 CC = cl65
-CFLAGS  = -t $(CC65_TARGET) --create-dep $(<:.c=.d) -O -I include
+CFLAGS  = -t $(CC65_TARGET) --create-dep $(<:.c=.d) -Os -I include
 LDFLAGSMAIN = -t $(CC65_TARGET) -C careers-cc65config.cfg -m $(MAIN).map
 
 ########################################
@@ -60,6 +60,10 @@ $(D64):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D64) -write careers.ovl3.prg careers.ovl3
 	c1541 -attach $(D64) -write careers.ovl4.prg careers.ovl4
 	c1541 -attach $(D64) -write careers.ovl5.prg careers.ovl5
+	c1541 -attach $(D64) -write careers.ovl6.prg careers.ovl6
+	c1541 -attach $(D64) -write careers.ovl7.prg careers.ovl7
+	c1541 -attach $(D64) -write careers.ovl8.prg careers.ovl8
+	c1541 -attach $(D64) -write careers.ctxt.prg careers.ctxt
 
 $(D71):	$(MAIN) $(OBJECTS)
 	c1541 -format "careers,xm" d71 $(D71)
@@ -73,6 +77,10 @@ $(D71):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D71) -write careers.ovl3.prg careers.ovl3
 	c1541 -attach $(D71) -write careers.ovl4.prg careers.ovl4
 	c1541 -attach $(D71) -write careers.ovl5.prg careers.ovl5
+	c1541 -attach $(D71) -write careers.ovl6.prg careers.ovl6
+	c1541 -attach $(D71) -write careers.ovl7.prg careers.ovl7
+	c1541 -attach $(D71) -write careers.ovl8.prg careers.ovl8
+	c1541 -attach $(D71) -write careers.ctxt.prg careers.ctxt
 
 $(D81):	$(MAIN) $(OBJECTS)
 	c1541 -format "careers,xm" d81 $(D81)
@@ -86,6 +94,10 @@ $(D81):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D81) -write careers.ovl3.prg careers.ovl3
 	c1541 -attach $(D81) -write careers.ovl4.prg careers.ovl4
 	c1541 -attach $(D81) -write careers.ovl5.prg careers.ovl5
+	c1541 -attach $(D81) -write careers.ovl6.prg careers.ovl6
+	c1541 -attach $(D81) -write careers.ovl7.prg careers.ovl7
+	c1541 -attach $(D81) -write careers.ovl8.prg careers.ovl8
+	c1541 -attach $(D81) -write careers.ctxt.prg careers.ctxt
 
 #$(ZIP): $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(README)
 #	zip $@ $^
@@ -95,8 +107,8 @@ clean:
 	
 # To deploy software to UII+ enter make deploy. Obviously C128 needs to powered on with UII+ and USB drive connected.
 deploy: $(MAIN)
-#	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST)
-	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST2)
+	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST)
+#	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST2)
 
 # To run software in VICE
 vice: $(D64)

@@ -18,12 +18,14 @@ unsigned char menupulldown(unsigned char xpos, unsigned char ypos, unsigned char
 unsigned char menumain();
 unsigned char areyousure();
 void fileerrormessage(unsigned char error);
+void saveconfigfile();
+void loadconfigfile();
 void board_reposition(unsigned char row, unsigned char col);
 void board_print(unsigned char row, unsigned char col, unsigned char screencode, unsigned char attribute);
-void board_scroll();
 void pawn_place(unsigned char playernumber);
 unsigned char pawn_other(unsigned char playernumber);
 void pawn_erase(unsigned char playernumber);
+void board_reset();
 void game_reset();
 void inputofnames();
 void dice_throw(unsigned char dicenumber);

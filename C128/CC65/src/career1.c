@@ -1,7 +1,7 @@
 /*
 CAREERS
 
-Routines for career fields
+Routines for career fields, part 1
 
 Written in 1992, 2022 by Xander Mol
 
@@ -81,10 +81,12 @@ BUT WITHOUT ANY WARRANTY. USE THEM AT YOUR OWN RISK!
 #pragma code-name ("OVERLAY5");
 #pragma rodata-name ("OVERLAY5");
 
-// Career fields
+// Career fields part 1
 
 void career_generic(unsigned char careernr, unsigned char position)
 {
+    unsigned int address = careerfield[careernr][position].textaddress;
+
     // Career generic
     menumakeborder(30,8,12,45);
     cputsxy(32,10,"Career: ");
@@ -92,7 +94,10 @@ void career_generic(unsigned char careernr, unsigned char position)
     cprintf("%s",career[careernr].name);
     textcolor(COLOR_YELLOW);
     gotoxy(32,12);
-    cprintf("%s",careerfield[careernr][position].text);
+    do
+    {
+        cputc(PEEKB(address++,1));
+    } while (PEEKB(address,1)!=0);
 }
 
 void career_waitforkey()
@@ -166,89 +171,6 @@ void career_gethappinessandfame(unsigned char careernr, unsigned char position)
     }
 }
 
-void career_getmoney(unsigned char careernr, unsigned char position)
-{
-    unsigned long money = careerfield[careernr][position].amount1*1000;
-    gotoxy(32,14);
-    cprintf("Receive:   %lu",money);
-    VDC_Plot(14,41,C_DOLLAR,VDC_LGREEN);
-    if(!fieldinformation)
-    {
-        player[playerturn].money += money;
-    }
-}
-
-void career_loosehalfmoney()
-{
-    unsigned long money = player[playerturn].money/2;
-
-    gotoxy(32,14);
-    cprintf("Lose   :   %lu",money);
-    VDC_Plot(14,41,C_DOLLAR,VDC_LGREEN);
-    if(!fieldinformation)
-    {
-        player[playerturn].money -= money;
-    }
-}
-
-void career_skipturn()
-{
-    cputsxy(32,14,"Lose next turn.");
-    if(!fieldinformation) { player[playerturn].skipturn=1; }
-}
-
-void career_getfame(unsigned char careernr, unsigned char position)
-{
-    gotoxy(32,14);
-    cprintf("Receive:   %u",careerfield[careernr][position].amount1);
-    VDC_Plot(14,41,C_STAR,VDC_LYELLOW);
-    if(!fieldinformation)
-    {
-        player[playerturn].fame += careerfield[careernr][position].amount1;
-    }
-}
-
-void career_getopportunitycard(unsigned char careernr, unsigned char position)
-{
-    unsigned char cards = careerfield[careernr][position].amount1;
-    unsigned char x, selected;
-
-    gotoxy(32,14);
-    cprintf("Receive: %u opportunity card%s.",cards,(cards==1)?"":"s");
-
-    if(!fieldinformation)
-    {
-        for(x=0;x<cards;x++)
-        {
-            selected = card_selectopportunity();
-            if(selected==255)
-            {
-                cputsxy(32,16+x,"No opportunitycards left.");
-                x=cards;
-            }
-            else
-            {
-                player[playerturn].cards[selected]++;
-                gotoxy(32,16+x);
-                cprintf("Card %u: %s %s",x+1,cards_actiontext(selected),opportunitycard[selected].conditionfree==0?"Normal":"Free");
-
-            }
-        }
-    }
-}
-
-void career_getsalary(unsigned char careernr, unsigned char position)
-{
-    unsigned long salary = careerfield[careernr][position].amount1*1000;
-    gotoxy(32,14);
-    cprintf("Receive:   %lu salary increase.",salary);
-    VDC_Plot(14,41,C_DOLLAR,VDC_LGREEN);
-    if(!fieldinformation)
-    {
-        player[playerturn].salary += salary;
-    }
-}
-
 void career_gotoparkbench()
 {
     cputsxy(32,14,"Go to park bench.");
@@ -263,19 +185,6 @@ void career_gotoparkbench()
     }
 }
 
-void career_loosehalfsalary()
-{
-    unsigned long salary = player[playerturn].salary/2;
-
-    gotoxy(32,14);
-    cprintf("Lose   :   %lu salary",salary);
-    VDC_Plot(14,41,C_DOLLAR,VDC_LGREEN);
-    if(!fieldinformation)
-    {
-        player[playerturn].salary -= salary;
-    }
-}
-
 void career_gotohospital()
 {
     cputsxy(32,14,"Go to hospital.");
@@ -287,76 +196,6 @@ void career_gotohospital()
         player[playerturn].career=0;
         player[playerturn].career=9;
         pawn_place(playerturn);
-    }
-}
-
-void career_getmoneyandfame(unsigned char careernr, unsigned char position)
-{
-    unsigned long money = careerfield[careernr][position].amount2*1000;
-
-    gotoxy(32,14);
-    cprintf("Receive:   %u and",careerfield[careernr][position].amount1);
-    VDC_Plot(14,41,C_STAR,VDC_LYELLOW);
-    gotoxy(43,15);
-    cprintf("%lu",money);
-    VDC_Plot(15,41,C_DOLLAR,VDC_LGREEN);
-    if(!fieldinformation)
-    {
-        player[playerturn].fame += careerfield[careernr][position].amount1;
-        player[playerturn].money += money;
-    }
-}
-
-void career_loosehalffame()
-{
-    unsigned char fame = player[playerturn].fame/2;
-
-    gotoxy(32,14);
-    cprintf("Lose   :   %u",fame);
-    VDC_Plot(14,41,C_STAR,VDC_LYELLOW);
-    if(!fieldinformation)
-    {
-        player[playerturn].fame -= fame;
-    }
-}
-
-void career_getfamenohappiness(unsigned char careernr, unsigned char position)
-{
-    gotoxy(32,14);
-    cprintf("Receive:   %u,",careerfield[careernr][position].amount1);
-    VDC_Plot(14,41,C_STAR,VDC_LYELLOW);
-    cputsxy(32,15,"but you lose all your happiness.");
-    if(!fieldinformation)
-    {
-        player[playerturn].fame += careerfield[careernr][position].amount1;
-        player[playerturn].happiness = 0;
-    }
-}
-
-void career_getsalarytimesdie(unsigned char careernr, unsigned char position)
-{
-    unsigned long salary = careerfield[careernr][position].amount1*1000;
-
-    gotoxy(32,14);
-    cprintf("Receive:   %lu salary * throw of one die.",salary);
-    VDC_Plot(14,41,C_DOLLAR,VDC_LGREEN);
-    if(!fieldinformation)
-    {
-        dice_throw(1);
-        cputsxy(32,16,"Received: ");
-        textcolor(COLOR_CYAN);
-        cprintf("%lu salary increase.",salary*dice_total);
-        textcolor(COLOR_YELLOW);
-        player[playerturn].salary += salary*dice_total;
-    }
-}
-
-void career_throwagain()
-{
-    cputsxy(32,14,"Throw again.");
-    if(!fieldinformation)
-    {
-        anotherturn=1;
     }
 }
 
@@ -396,6 +235,20 @@ void career_loosemoneyorparkbench(unsigned char careernr, unsigned char position
     }
 }
 
-
-
-
+void career_getfamebuthospital(unsigned char careernr, unsigned char position)
+{
+    gotoxy(32,14);
+    cprintf("Receive:   %u",careerfield[careernr][position].amount1);
+    cputsxy(32,15,"but go to hospital.");
+    VDC_Plot(14,41,C_STAR,VDC_LYELLOW);
+    if(!fieldinformation)
+    {
+        player[playerturn].fame += careerfield[careernr][position].amount1;
+        career_waitforkey();
+        waitkeyflag = 1;
+        pawn_erase(playerturn);
+        player[playerturn].career=0;
+        player[playerturn].career=9;
+        pawn_place(playerturn);
+    }
+}

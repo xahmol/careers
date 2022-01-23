@@ -5,11 +5,16 @@
 #define MACOSTART           0x1300      // Start of machine code area
 #define MACOSIZE            0x0800      // Length of machine code area
 
+/* Bank 0 save data adress mapping */
+#define SAVESLOTS           0x0C00      // Using RS232 buffer
+#define SAVEGAMEMEM         0x0C55      // Also using RS232 buffer
+
 /* Bank 1 memory addresses mapping */
-#define LOADSAVEBUFFER      0x2000      // 4 Kilobytes load and save buffer
-#define SIDBASEADDRESS      0x3000      // 8 Kilobytes for SID data
-#define WINDOWBASEADDRESS   0x5000      // Base address for windows system data
-#define SCREENMAPADDRESS    0x7000      // Base for screen map
+#define SIDBASEADDRESS      0x2000      // 8 Kilobytes for SID data
+#define WINDOWBASEADDRESS   0x4000      // Base address for windows system data
+#define SCREENMAPADDRESS    0x6000      // Base for screen map, size 11.712 bytes
+#define CTEXTADDRESS        0x8DC0      // Career fields texts, size 1.500 bytes
+#define LOADSAVEBUFFER      0x939C      // Overlaps overlays
 
 /* Global variables */
 
@@ -40,6 +45,7 @@ extern char DOSstatus[40];
 extern char buffer[81];
 extern char version[22];
 extern unsigned char overlay_active;
+extern unsigned int overlayaddress[9];
 
 extern char updownenter[4];
 extern char leftright[3];
@@ -75,7 +81,7 @@ struct CareerfieldStruct
     unsigned char xcoord;
     unsigned char ycoord;
     unsigned char color;
-    char text[27];
+    unsigned int textaddress;
     unsigned char outcome;
     unsigned char amount1;
     unsigned char amount2;
@@ -122,6 +128,7 @@ extern unsigned char gameendflag;           // es
 extern unsigned char anotherturn;           // ne
 extern unsigned char playerturn;            // bs
 extern unsigned char waitkeyflag;
+extern unsigned char paidforleave;
 extern unsigned char dice_double;           // dd
 extern unsigned char dice_total;            // dg
 
