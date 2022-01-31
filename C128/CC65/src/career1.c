@@ -102,8 +102,7 @@ void career_generic(unsigned char careernr, unsigned char position)
 
 void career_waitforkey()
 {
-    cputsxy(32,19,"Press key.");
-    getkey("",1);
+    presskeyprompt(32,19);
     windowrestore();
 }
 
@@ -251,4 +250,59 @@ void career_getfamebuthospital(unsigned char careernr, unsigned char position)
         player[playerturn].career=9;
         pawn_place(playerturn);
     }
+}
+
+void career_endofcareer()
+{
+    // End of career routine'
+
+    unsigned char card_select, degree_select;
+    if(player[playerturn].career!=2)
+    {
+        menumakeborder(40,8,7,35);
+        cputsxy(42,10,"You receive an experience card.");
+        card_select=rand()%4+1;
+        cputsxy(42,11,"With this card you can move");
+        gotoxy(42,12);
+        cprintf("%u fields.",card_select);
+        player[playerturn].cards[14+card_select]++;
+        if(player[playerturn].career==1)
+        {
+            player[playerturn].experience[4]++;
+        }
+        else
+        {
+            player[playerturn].experience[player[playerturn].career+2]++;
+        }
+        presskeyprompt(42,14);
+    }
+    else
+    {
+        menumakeborder(30,5,12,45);
+        cputsxy(32,7,"Your salary is raised with   2000");
+        VDC_Plot(7,59,C_DOLLAR,VDC_LGREEN);
+        cputsxy(32,9,"You also can choose one of these degrees:");
+        cputsxy(33,11,"Law              (Business, Politics)");
+        cputsxy(33,12,"Medicine         (Business, Hospital)");
+        cputsxy(33,13,"Science          (Business, Moon)");
+        cputsxy(33,14,"Engineering      (Business, Uranium)");
+        cputsxy(32,16,"Make your choice.");
+        if(player[playerturn].computer)
+        {
+            degree_select=3;
+        }
+        else
+        {
+            degree_select=menupulldown(32,10,10);
+        }
+        textcolor(COLOR_CYAN);
+        cputsxy(33,10+degree_select,pulldownmenutitles[9][degree_select-1]);
+        textcolor(COLOR_YELLOW);
+        player[playerturn].experience[degree_select-1]=1;
+        player[playerturn].salary+=2000;
+        player[playerturn].cards[11]=0;
+        cputsxy(31,16,"                  ");
+        presskeyprompt(32,16);
+    }
+    windowrestore();
 }

@@ -3,13 +3,14 @@
 
 unsigned char dosCommand(const unsigned char lfn, const unsigned char drive, const unsigned char sec_addr, const char *cmd);
 unsigned int cmd(const unsigned char device, const char *cmd);
-unsigned char loadoverlay(char *name);
+void loadoverlay(char *name);
 void wait(clock_t wait_cycles);
 void cspaces(unsigned char number);
 void printcentered(char* text, unsigned char xpos, unsigned char ypos, unsigned char width);
 unsigned char getkey(char* allowedkeys, unsigned char joyallowed);
 int input(unsigned char xpos, unsigned char ypos, char *str, unsigned char size);
 unsigned char input_number(unsigned char xpos, unsigned char ypos, unsigned char minvalue, unsigned char maxvalue);
+void presskeyprompt(unsigned char xpos, unsigned char ypos);
 void windowsave(unsigned char ypos, unsigned char height);
 void windowrestore();
 void menumakeborder(unsigned char xpos, unsigned char ypos, unsigned char height, unsigned char width);

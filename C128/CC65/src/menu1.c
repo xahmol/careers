@@ -153,7 +153,7 @@ void cards_show()
         if(player[playerturn].cards[x+15])
         {
             gotoxy(42,y++);
-            cprintf("%2u     %u",player[playerturn].cards[x],x+1);
+            cprintf("%2u     %u",player[playerturn].cards[x+15],x+1);
         }
     }
 
@@ -163,9 +163,7 @@ void cards_show()
     }
 
     textcolor(COLOR_YELLOW);
-    cputsxy(3,ycoord+height-7,"Press key.");
-    getkey("",1);
-
+    presskeyprompt(3,ycoord+height-7);
     windowrestore();
 }
 
@@ -255,8 +253,7 @@ void information_gamescore()
     ycoord++;
 
     textcolor(COLOR_YELLOW);
-    cputsxy(42,++ycoord,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,++ycoord);
     windowrestore();
 }
 
@@ -295,8 +292,7 @@ void information_colorlegend()
     VDC_Plot(18,47,C_BLOCKUNDER,VDC_LYELLOW+VDC_A_REVERSE);
     VDC_Plot(18,48,C_BLOCKUNDER,VDC_LGREEN+VDC_A_REVERSE);
     cputsxy(50,18,"Combination happiness/money");
-    cputsxy(47,20,"Press key.");
-    getkey("",1);
+    presskeyprompt(47,20);
     windowrestore();
 }
 

@@ -11,5 +11,6 @@ void career_gotoparkbench();
 void career_gotohospital();
 void career_loosemoneyorparkbench(unsigned char careernr, unsigned char position);
 void career_getfamebuthospital(unsigned char careernr, unsigned char position);
+void career_endofcareer();
 
 #endif // __CAREER2_H_

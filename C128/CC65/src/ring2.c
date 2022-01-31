@@ -104,8 +104,7 @@ void ring_payfoodbills()
         player[playerturn].money -= (player[playerturn].money/4);
     }
 
-    cputsxy(42,14,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,14);
     windowrestore();
 }
 
@@ -156,9 +155,7 @@ void ring_business()
             if(!free_entry) { player[playerturn].money -= 500; }
         }
     }
-
-    cputsxy(42,17,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,17);
     windowrestore();
 }
 
@@ -213,9 +210,7 @@ void ring_artgallery()
         gotoxy(42,18);
         cprintf("* %u received.",dice_total);
     }
-
-    cputsxy(42,20,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,20);
     windowrestore();
 }
 
@@ -266,9 +261,7 @@ void ring_sea()
             }
         }
     }
-
-    cputsxy(42,17,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,17);
     windowrestore();
 }
 
@@ -292,8 +285,7 @@ void ring_parkbench()
     cputsxy(42,15,"clothes before any throw and go");
     cputsxy(42,16,"on that throw.");
 
-    cputsxy(42,18,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,18);
     windowrestore();
 }
 
@@ -317,22 +309,22 @@ void ring_leavehospital()
     }
 
     menumakeborder(40,8,9,35);
-    gotoxy(42,8);
+    gotoxy(42,10);
     cputs("You are still in the ");
     textcolor(COLOR_GREEN);
     cputs("HOSPITAL");
     textcolor(COLOR_YELLOW);
     cputs(".");
 
-    cputsxy(42,10,"To leave you have to throw");
-    cputsxy(42,11,"5 or less.");
+    cputsxy(42,12,"To leave you have to throw");
+    cputsxy(42,13,"5 or less.");
 
     if(!(player[playerturn].money < totalpaid))
     {
-        cputsxy(42,12,"Or do you want to pay");
-        gotoxy(44,13);
+        cputsxy(42,14,"Or do you want to pay");
+        gotoxy(44,15);
         cprintf("%lu to leave?",totalpaid);
-        VDC_Plot(13,42,C_DOLLAR,VDC_LGREEN);
+        VDC_Plot(15,42,C_DOLLAR,VDC_LGREEN);
         paidforleave = menupulldown(69,14,6)==1?1:0;
         if(paidforleave)
         {
@@ -346,9 +338,7 @@ void ring_leavehospital()
             }
         }
     }
-
-    cputsxy(42,15,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,16);
     windowrestore();
 }
 
@@ -357,31 +347,29 @@ void ring_leaveparkbench()
     unsigned long totalpaid = player[playerturn].money/2;
 
     menumakeborder(40,8,9,35);
-    gotoxy(42,8);
+    gotoxy(42,10);
     cputs("You are still on the ");
     textcolor(COLOR_GREEN);
     cputs("PARK BENCH");
     textcolor(COLOR_YELLOW);
     cputs(".");
 
-    cputsxy(42,10,"To leave you have to throw");
-    cputsxy(42,11,"7, 11 or double.");
+    cputsxy(42,12,"To leave you have to throw");
+    cputsxy(42,13,"7, 11 or double.");
 
     if(!(player[playerturn].money < totalpaid))
     {
-        cputsxy(42,12,"Or do you want to pay");
-        gotoxy(44,13);
+        cputsxy(42,14,"Or do you want to pay");
+        gotoxy(44,15);
         cprintf("%lu to leave?",totalpaid);
-        VDC_Plot(13,42,C_DOLLAR,VDC_LGREEN);
+        VDC_Plot(15,42,C_DOLLAR,VDC_LGREEN);
         paidforleave = menupulldown(69,14,6)==1?1:0;
         if(paidforleave)
         {
             player[playerturn].money -= totalpaid;
         }
     }
-
-    cputsxy(42,15,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,16);
     windowrestore();
 }
 
@@ -398,25 +386,34 @@ void ring_leavefloridavacation()
     else
     {
         menumakeborder(40,8,9,35);
-        gotoxy(42,8);
+        gotoxy(42,10);
         cputs("You are still on ");
         textcolor(COLOR_GREEN);
         cputs("FLORIDA VACATION");
         textcolor(COLOR_YELLOW);
         cputs(".");
 
-        cputsxy(42,10,"Do you want to stay for");
-        cputsxy(44,11,"2?");
-        VDC_Plot(42,11,C_HEART,VDC_LRED);
+        cputsxy(42,12,"Do you want to stay for");
+        cputsxy(44,13,"2?");
+        VDC_Plot(13,42,C_HEART,VDC_LRED);
 
         if(menupulldown(69,14,6)==1) {
             gameendflag = 10;
             player[playerturn].happiness += 2;
         }
-
-        cputsxy(42,15,"Press key.");
-        getkey("",1);
+        presskeyprompt(42,15);
         windowrestore();
     }   
 }
 
+void receive_salary()
+{
+    menumakeborder(40,8,7,35);
+    cputsxy(42,10,"You receive salary.");
+    VDC_Plot(12,42,C_DOLLAR,VDC_LGREEN);
+    gotoxy(44,12);
+    cprintf("%lu",player[playerturn].salary);
+    player[playerturn].money+=player[playerturn].salary;
+    presskeyprompt(42,14);
+    windowrestore();
+}

@@ -10,6 +10,7 @@ void career_getfamenohappiness(unsigned char careernr, unsigned char position);
 void career_getsalarytimesdie(unsigned char careernr, unsigned char position);
 void career_throwagain();
 void career_looseallfame();
+void career_looaseallcash();
 void career_getmoney(unsigned char careernr, unsigned char position);
 void career_loosehalfmoney();
 void career_skipturn();

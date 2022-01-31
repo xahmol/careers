@@ -131,9 +131,7 @@ void ring_stockmarket()
         player[playerturn].money += salestotal;
         player[playerturn].money -= bought*3000;
     }
-
-    cputsxy(42,20,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,20);
     windowrestore();
 }
 
@@ -184,9 +182,7 @@ void ring_uranium()
             }
         }
     }
-
-    cputsxy(42,17,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,17);
     windowrestore();
 }
 
@@ -279,9 +275,7 @@ void ring_yachtharbor()
         player[playerturn].money -= spent;
         player[playerturn].happiness-= maxhappiness;
     }
-
-    cputsxy(42,20,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,20);
     windowrestore();
 }
 
@@ -332,9 +326,7 @@ void ring_moon()
             }
         }
     }
-
-    cputsxy(42,17,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,17);
     windowrestore();
 }
 
@@ -427,8 +419,6 @@ void ring_statueinthepark()
         player[playerturn].money -= spent;
         player[playerturn].fame-= maxfame;
     }
-
-    cputsxy(42,20,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,20);
     windowrestore();
 }

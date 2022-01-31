@@ -101,12 +101,11 @@ void ring_payday()
     textcolor(COLOR_CYAN);
     cprintf("%6lu",player[playerturn].salary*2);
     textcolor(COLOR_YELLOW);
-    cputsxy(42,15,"Press key.");
+    presskeyprompt(42,15);
     if(!fieldinformation)
     {
         player[playerturn].money += player[playerturn].salary*2;
     }
-    getkey("",1);
     windowrestore();
 }
 
@@ -139,8 +138,7 @@ void ring_opportunity()
             cputsxy(42,12,"No opportunitycards left.");
         }
     }
-    cputsxy(42,15,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,15);
     windowrestore();
 }
 
@@ -170,13 +168,11 @@ void ring_paytaxes()
     textcolor(COLOR_CYAN);
     cprintf("%6lu",tax_amount);
     textcolor(COLOR_YELLOW);
-    cputsxy(42,14,"Press key.");
-
+    presskeyprompt(42,14);
     if(!fieldinformation)
     {
         player[playerturn].money -= tax_amount;
     }
-    getkey("",1);
     windowrestore();
 }
 
@@ -223,9 +219,7 @@ void ring_farming()
             }
         }
     }
-
-    cputsxy(42,15,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,17);
     windowrestore();
 }
 
@@ -290,8 +284,7 @@ void ring_automobileshow()
             player[playerturn].happiness--;
         }
     }
-    cputsxy(42,19,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,19);
     windowrestore();
 }
 
@@ -359,9 +352,7 @@ void ring_college()
             anotherturn = 1;
         }
     }
-
-    cputsxy(42,16,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,16);
     windowrestore();
 }
 
@@ -386,7 +377,6 @@ void ring_hospital()
     cputsxy(42,16,"before any throw and go on");
     cputsxy(42,17,"that throw.");
 
-    cputsxy(42,19,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,19);
     windowrestore();
 }

@@ -109,8 +109,7 @@ void ring_payrent()
         player[playerturn].money -= rent;
     }
 
-    cputsxy(42,14,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,14);
     windowrestore();
 }
 
@@ -161,8 +160,7 @@ void ring_politics()
         }
     }
 
-    cputsxy(42,17,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,17);
     windowrestore();
 }
 
@@ -199,8 +197,7 @@ void ring_shoppingspree()
         }
     }
 
-    cputsxy(42,20,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,20);
     windowrestore();
 }
 
@@ -251,9 +248,7 @@ void ring_hollywood()
             }
         }
     }
-
-    cputsxy(42,17,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,17);
     windowrestore();
 }
 
@@ -277,7 +272,6 @@ void ring_floridavacation()
 
     if(!fieldinformation) { player[playerturn].happiness += 4; }
 
-    cputsxy(42,18,"Press key.");
-    getkey("",1);
+    presskeyprompt(42,18);
     windowrestore();
 }

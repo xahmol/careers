@@ -215,6 +215,15 @@ void career_looseallfame()
     }
 }
 
+void career_looaseallcash()
+{
+    cputsxy(32,14,"Lose all your cash.");
+    if(!fieldinformation)
+    {
+        player[playerturn].money = 0;
+    }
+}
+
 void career_getmoney(unsigned char careernr, unsigned char position)
 {
     unsigned long money = careerfield[careernr][position].amount1*1000;

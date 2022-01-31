@@ -8,6 +8,7 @@
 /* Bank 0 save data adress mapping */
 #define SAVESLOTS           0x0C00      // Using RS232 buffer
 #define SAVEGAMEMEM         0x0C55      // Also using RS232 buffer
+#define OVERLAYBANK0        0xC000      // Start address overlay storage bank 0
 
 /* Bank 1 memory addresses mapping */
 #define SIDBASEADDRESS      0x2000      // 8 Kilobytes for SID data
@@ -17,6 +18,18 @@
 #define LOADSAVEBUFFER      0x939C      // Overlaps overlays
 
 /* Global variables */
+
+// Overlay data struct
+#define OVERLAYNUMBER       9           // Number of overlays
+#define OVERLAYSIZE         0x11C0      // Overlay size (align with config)
+#define OVERLAYLOAD         0xAE40      // Overlay load address (align with config=0xC000-OVERLAYSIZE)
+struct OverlayStruct
+{
+    unsigned char bank;
+    unsigned int address;
+};
+extern struct OverlayStruct overlaydata[9];
+extern unsigned char overlay_active;
 
 // Menu system variables
 
@@ -44,8 +57,6 @@ extern unsigned char bootdevice;
 extern char DOSstatus[40];
 extern char buffer[81];
 extern char version[22];
-extern unsigned char overlay_active;
-extern unsigned int overlayaddress[9];
 
 extern char updownenter[4];
 extern char leftright[3];
@@ -123,12 +134,13 @@ extern struct PlayerdataStruct player[4];
 
 extern unsigned char whichcard[20];         //wc(x)
 extern unsigned char cardreset[15];
-extern unsigned char fieldinformation;  //ai
+extern unsigned char fieldinformation;      //ai
 extern unsigned char gameendflag;           // es
 extern unsigned char anotherturn;           // ne
 extern unsigned char playerturn;            // bs
 extern unsigned char waitkeyflag;
 extern unsigned char paidforleave;
+extern unsigned char resetflag;
 extern unsigned char dice_double;           // dd
 extern unsigned char dice_total;            // dg
 
@@ -151,6 +163,10 @@ extern unsigned char yoffset;
 #define C_UPLEFT     0x6E
 #define C_LOWRIGHT   0x69
 #define C_LOWLEFT    0x6B
+#define C_LUCORNER   0x81
+#define C_RUCORNER   0x82
+#define C_LDCORNER   0x83
+#define C_RDCORNER   0x84
 
 /* Board graphics */
 #define C_BLOCKUNDER 0x64

@@ -9,5 +9,6 @@ void ring_parkbench();
 void ring_leavehospital();
 void ring_leaveparkbench();
 void ring_leavefloridavacation();
+void receive_salary();
 
 #endif // __RING2_H_

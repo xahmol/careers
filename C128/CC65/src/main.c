@@ -81,6 +81,11 @@ BUT WITHOUT ANY WARRANTY. USE THEM AT YOUR OWN RISK!
 #include "career2.h"
 #include "menu1.h"
 #include "menu2.h"
+#include "menu3.h"
+
+// Overlay data
+struct OverlayStruct overlaydata[9];
+unsigned char overlay_active = 0;
 
 //Window data
 struct WindowStruct Window[9];
@@ -140,8 +145,6 @@ unsigned char bootdevice;
 char DOSstatus[40];
 char buffer[81];
 char version[22];
-unsigned char overlay_active = 0;
-unsigned int overlayaddress[9];
 
 char updownenter[4] = {C_DOWN,C_UP,C_ENTER,0};
 char leftright[3] = {C_LEFT,C_RIGHT,0};
@@ -313,6 +316,7 @@ unsigned char anotherturn;           // ne
 unsigned char playerturn;            // bs
 unsigned char waitkeyflag;
 unsigned char paidforleave;
+unsigned char resetflag =0;
 unsigned char dice_double;           // dd
 unsigned char dice_total;            // dg
 
@@ -368,20 +372,78 @@ unsigned int cmd(const unsigned char device, const char *cmd)
     return dosCommand(15, device, 15, cmd);
 }
 
-unsigned char loadoverlay(unsigned char overlay_select)
+void initoverlay()
+{
+    unsigned char x;
+    unsigned int address=OVERLAYBANK0;
+    unsigned char destbank=3;
+
+    for(x=0;x<OVERLAYNUMBER;x++)
+    {
+        // Compose filename
+        sprintf(buffer,"careers.ovl%u",x+1);
+
+        // Load overlay file, exit if not found
+        if (cbm_load (buffer, bootdevice, NULL) == 0)
+        {
+            printf("\nLoading overlay file failed\n");
+            exit(1);
+        }
+
+        // Copy to overlay storage memory location
+        overlaydata[x].bank=destbank;
+
+        gotoxy(0,x);
+        cprintf("Overlay %u: Bank %u Adress: %4X",x+1,destbank-3,address);
+
+        if(destbank)
+        {
+            BankMemCopy(OVERLAYLOAD,2,address,destbank-1,OVERLAYSIZE);
+            overlaydata[x].address=address;
+            address+=OVERLAYSIZE;
+            if(destbank==3)
+            {
+                if(address<OVERLAYBANK0 || address>0xEFFF)
+                {
+                    address=LOADSAVEBUFFER;
+                    destbank=4;
+                }
+            }
+            else
+            {
+                if(address<LOADSAVEBUFFER || address>0xEFFF)
+                {
+                    destbank=0;
+                }
+            }
+        }
+
+        cprintf(" Succes Bank %u Adress: %4X",overlaydata[x].bank-3,overlaydata[x].address);
+    }
+}
+
+void loadoverlay(unsigned char overlay_select)
 {
     // Load memory overlay with given number
 
     // Returns if overlay allready active
     if(overlay_select != overlay_active)
     {
-        // Compose filename
-        sprintf(buffer,"careers.ovl%u",overlay_select);
+        if(overlaydata[overlay_select-1].bank)
+        {
+            BankMemCopy(overlaydata[overlay_select-1].address,overlaydata[overlay_select-1].bank-1,OVERLAYLOAD,2,OVERLAYSIZE);
+        }
+        else
+        {
+            // Compose filename
+            sprintf(buffer,"careers.ovl%u",overlay_select);
 
-        // Load overlay file, exit if not found
-        if (cbm_load (buffer, bootdevice, NULL) == 0) {
-            printf("\nLoading overlay file failed\n");
-            exit(1);
+            // Load overlay file, exit if not found
+            if (cbm_load (buffer, bootdevice, NULL) == 0)
+            {
+                printf("\nLoading overlay file failed\n");
+                exit(1);
+            }
         }
         overlay_active = overlay_select;
     }   
@@ -628,6 +690,12 @@ unsigned char input_number(unsigned char xpos, unsigned char ypos, unsigned char
     cprintf("%u  ",answer);
     textcolor(COLOR_YELLOW);
     return answer;
+}
+
+void presskeyprompt(unsigned char xpos, unsigned char ypos)
+{
+    cputsxy(xpos,ypos,"Press key.");
+    getkey("",1);
 }
 
 /* Functions for windowing and menu system */
@@ -893,8 +961,7 @@ void fileerrormessage(unsigned char error)
         gotoxy(10,12);
         cprintf("Error nr.: %2X",error);
     }
-    cputsxy(10,12,"Press key.");
-    getkey("",1);
+    presskeyprompt(10,12);
     windowrestore();    
 }
 
@@ -1026,7 +1093,7 @@ void pawn_place(unsigned char playernumber)
     {
         row=careerfield[player[playernumber].career-1][player[playernumber].position-1].ycoord;
         col=careerfield[player[playernumber].career-1][player[playernumber].position-1].xcoord;
-        board_print(row,col,0xF0+playernumber,careerfield[player[playernumber].career-1][player[playernumber].position-1].color);
+        board_print(row,col,0xF0+playernumber,VDC_WHITE);
     }
 
     board_reposition(row,col);
@@ -1039,6 +1106,8 @@ unsigned char pawn_other(unsigned char playernumber)
 
     unsigned char otherpawnflag = 0;
     unsigned char x;
+
+    if(resetflag) { return 0; }
 
     for(x=0;x<4;x++)
     {
@@ -1092,7 +1161,9 @@ void board_reset()
     xoffset = 48;
     yoffset = 31;
 
+    resetflag=1;
     for(x=0;x<4;x++) { pawn_erase(x); }
+    resetflag=0;
 }
 
 /* Game loop routines */
@@ -1252,9 +1323,8 @@ void dice_throw(unsigned char dicenumber)
     }
     dice_total = dicenumber==2?dice1+dice2:dice1;
     dice_double = dice1==dice2?1:0;
-    cputsxy(62,16,"Press key.");
-    getkey("",1);
-    windowrestore();;
+    presskeyprompt(62,16);
+    windowrestore();
 }
 
 unsigned char player_collegeexperience()
@@ -1291,22 +1361,25 @@ unsigned char card_selectopportunity()
         counter=0;
         for(x=0;x<15;x++)
         {
-            for(y=0;y<opportunitycard[x].available;y++)
+            if(opportunitycard[x].available)
             {
-                if(counter==card_select)
+                for(y=0;y<opportunitycard[x].available;y++)
                 {
-                    card_select = y;
-                    y = opportunitycard[x].available;
-                    x=15;
-                }
-                else
-                {
-                    counter++;
+                    if(counter==card_select)
+                    {
+                        card_select = x;
+                        x=16;
+                        break;
+                    }
+                    else
+                    {
+                        counter++;
+                    }
                 }
             }
         }
     } while (card_select == 11 && player_collegeexperience() && card_count > 1);
-    if(card_select=11 && player_collegeexperience() ) { return 255; }
+    if(card_select==11 && player_collegeexperience() ) { return 255; }
     opportunitycard[card_select].available--;
     return card_select;
 }
@@ -1316,8 +1389,8 @@ char* cards_actiontext(unsigned char cardnumber)
     /* Return text for the action of an opportunity card.
        Input: card number */
 
-    if(cardnumber==0) { return "Florida vacation"; }
-    if(cardnumber==9) { return "Free choice"; }
+    if(opportunitycard[cardnumber].careernumber==0) { return "Florida vacation"; }
+    if(opportunitycard[cardnumber].careernumber==9) { return "Free choice"; }
     return career[opportunitycard[cardnumber].careernumber -1].name;
 }
 
@@ -1560,10 +1633,15 @@ void board_gotofieldaction()
 
         case 20:
             loadoverlay(6);
-            career_looseallfame();
+            career_looaseallcash();
             break;
 
         case 21:
+            loadoverlay(6);
+            career_looseallfame();
+            break;
+
+        case 22:
             career_getfamebuthospital(careernr-1,position-1);
             break;
 
@@ -1608,9 +1686,9 @@ void information_fieldinfo()
     }
     else
     {
-        if(player[playerturn].position > career[player[playerturn].career-1].length-1)
+        if(player[playerturn].position > career[player[playerturn].career-1].length)
         {
-            player[playerturn].position = player[playerturn].position - career[player[playerturn].career-1].length + career[player[playerturn].career-1].returnfield;
+            player[playerturn].position = player[playerturn].position - career[player[playerturn].career-1].length + career[player[playerturn].career-1].returnfield-1;
             if(player[playerturn].position >32) { player[playerturn].position -= 32; }
             player[playerturn].career = 0;
         }
@@ -1630,20 +1708,25 @@ void turnhuman()
     /* Turn for the human players */
 
     unsigned char choice, yesno;
+    unsigned char leavemenu=0;
 
     do
     {
         choice = menumain();
         switch (choice)
         {
+        case 11:
+            leavemenu=1;
+            break;
+
         case 12:
             yesno = areyousure();
-            if(yesno==1) { gameendflag=6; game_reset(); }
+            if(yesno==1) { leavemenu=1; gameendflag=6; game_reset(); }
             break;
 
         case 13:
             yesno = areyousure();
-            if(yesno==1) { gameendflag=5; }
+            if(yesno==1) { leavemenu=1; gameendflag=5; }
             break;
 
         case 21:
@@ -1655,6 +1738,7 @@ void turnhuman()
             yesno = areyousure();
             if(yesno==1)
             {
+                leavemenu=1;
                 gameendflag=7;
                 loadoverlay(8);
                 loadgame();
@@ -1677,6 +1761,26 @@ void turnhuman()
         case 41:
             loadoverlay(7);
             cards_show();
+            break;
+        
+        case 42:
+            if(!player[playerturn].skipturn && !(player[playerturn].career==0 && player[playerturn].position==9) && !(player[playerturn].career==0 && player[playerturn].position==17))
+            {
+                leavemenu=1;
+                gameendflag=8;
+                loadoverlay(9);
+                cards_useopportunity();
+            }
+            break;
+        
+        case 43:
+            if(!player[playerturn].skipturn && !(player[playerturn].career==0 && player[playerturn].position==9) && !(player[playerturn].career==0 && player[playerturn].position==17))
+            {
+                leavemenu=1;
+                gameendflag=9;
+                loadoverlay(9);
+                cards_useexperience();
+            }
             break;
 
         case 51:
@@ -1706,15 +1810,110 @@ void turnhuman()
         default:
             break;
         }
-    } while (choice!=11 && choice!=12 && choice!=13 && choice!=22);
+    } while (!leavemenu);
 }
 
 void turncomputer()
 {
     /* Turn for the computer players */
 
-    cputsxy(61,8,"Press key.");
-    getkey("",1);
+    presskeyprompt(61,8);
+}
+
+// Generic game logic functions
+
+void checkwincondition()
+{
+    // Check for players that met their success formula
+
+    unsigned char win = 255;
+    unsigned char x;
+
+    for(x=0;x<3;x++)
+    {
+        if( player[playerturn].happiness > player[playerturn].winhappiness-1 &&
+            player[playerturn].fame > player[playerturn].winfame-1 &&
+            player[playerturn].money/1000 > player[playerturn].winmoney-1)
+        {
+            win=x;
+            x=4;
+        }
+    }
+    if(win!=255)
+    {
+        menumakeborder(30,8,8,45);
+        gotoxy(32,10);
+        textcolor(COLOR_GREEN);
+        cprintf("%s ",player[win].name);
+        textcolor(COLOR_YELLOW);
+        cputs("has won!");
+        cputsxy(32,12,"Another game?");
+        gameendflag = (menupulldown(69,13,6)==1)?6:5;
+        windowrestore();
+    }
+}
+
+void checkforbump()
+{
+    // Check if pawn already present that will be bumped
+
+    unsigned char x;
+    unsigned char bump=0;
+    unsigned char presentplayercar = player[playerturn].career;
+    unsigned char presentplayerpos = player[playerturn].position;
+    unsigned char helpcar, helppos;
+
+    // Return if hospital or park bench
+    if(presentplayercar==0)
+    {
+        if(presentplayerpos==9 || presentplayerpos==17)
+        {
+            return;
+        }
+    }
+
+    // Adjust if player is at career startfield
+    if(presentplayerpos==0)
+    {
+        presentplayerpos=career[presentplayercar-1].startfield;
+        presentplayercar=0;
+    }
+
+    // Check for another pawn at same position
+    for(x=0;x<3;x++)
+    {
+        if(playerturn!=x)
+        {
+            helpcar=player[x].career;
+            helppos=player[x].position;
+            if(helppos==0)
+            {
+                helppos=career[helpcar-1].startfield;
+                helpcar=0;
+            }
+            if(presentplayercar==helpcar && presentplayerpos==helppos)
+            {
+                bump=x+1;
+            }
+        }
+    }
+
+    // Dialogue of bump
+    if(bump)
+    {
+        pawn_erase(bump-1);
+        player[bump-1].career=0;
+        player[bump-1].position=17;
+        pawn_place(bump-1);
+        menumakeborder(40,8,7,35);
+        cputsxy(42,10,"Player ");
+        textcolor(COLOR_CYAN);
+        cprintf("%u (%s)",bump,player[bump-1].name);
+        textcolor(COLOR_YELLOW);
+        cputsxy(42,11,"is bumped to the PARK BENCH.");
+        presskeyprompt(42,13);
+        windowrestore();
+    }
 }
 
 /* Graphics and screen initialisation functions */
@@ -1783,6 +1982,9 @@ void loadintro()
 
     // Initialise SNES pad
     snes_init();
+
+    // Init overlays
+    initoverlay();
 
     /* Load and start first music file */
     //LoadMusic("careers.mus1");
@@ -1865,6 +2067,7 @@ void main()
     //Show game interface
     clrscr(); 
     menuplacebar();
+    game_reset();
 
     //Ask for loading save game
     menumakeborder(40,8,6,35);
@@ -1878,7 +2081,7 @@ void main()
     //Main game loop
     do
     {
-        if(gameendflag!=7) { game_reset(); inputofnames(); }
+        if(gameendflag!=7) { inputofnames(); }
         do
         {
             VDC_FillArea(3,60,C_SPACE,20,10,VDC_LYELLOW);
@@ -1923,6 +2126,16 @@ void main()
             if(player[playerturn].computer==0)
             {
                 turnhuman();
+                if(player[playerturn].career==0 && player[playerturn].position == 9)
+                {
+                    loadoverlay(2);
+                    ring_leavehospital();
+                }
+                if(player[playerturn].career==0 && player[playerturn].position == 17)
+                {
+                    loadoverlay(2);
+                    ring_leaveparkbench();
+                }
             }
             else
             {
@@ -1930,20 +2143,95 @@ void main()
                 turncomputer();
             }
 
-            if(gameendflag==0)
+            if(gameendflag!=5 && gameendflag!=6 && gameendflag!=7)
             {
-                dice_throw(player[playerturn].career==0?2:1);
-            }
-
-            if(anotherturn!=0)
-            {
-                anotherturn=0;
-            }
-            else
-            {
-                playerturn++;
-                if(playerturn>3) { playerturn=0; }
-            }
+                if(player[playerturn].skipturn)
+                {
+                    gameendflag=10;
+                    player[playerturn].skipturn=0;
+                    cputsxy(61,6,"Skip turn.");
+                    presskeyprompt(61,8);
+                }
+    
+                if(gameendflag==0)
+                {
+                    dice_throw(player[playerturn].career==0?2:1);
+                }
+    
+                if(player[playerturn].career==0 && player[playerturn].position == 25 && dice_total<8 && gameendflag!=8 )
+                {
+                    loadoverlay(2);
+                    ring_leavefloridavacation();
+                }
+    
+                if(player[playerturn].career==0 && player[playerturn].position == 9 && dice_total>5 && !paidforleave )
+                {
+                    gameendflag=10;
+                }
+    
+                if(player[playerturn].career==0 && player[playerturn].position == 17 && dice_total!=7 && dice_total!=11 && !dice_double && !paidforleave )
+                {
+                    gameendflag=10;
+                }
+    
+                if(gameendflag!=10)
+                {
+                    pawn_erase(playerturn);
+                    if(gameendflag==0 || gameendflag==9)
+                    {
+                        player[playerturn].position+=dice_total;
+                        if(player[playerturn].career)
+                        {
+                            if(player[playerturn].position>career[player[playerturn].career-1].length)
+                            {
+                                player[playerturn].position = player[playerturn].position - career[player[playerturn].career-1].length + career[player[playerturn].career-1].returnfield-1;
+                                loadoverlay(5);
+                                career_endofcareer();
+                                if(player[playerturn].position >32)
+                                {
+                                    player[playerturn].position -= 32;
+                                    if(player[playerturn].position!=1)
+                                    {
+                                        loadoverlay(2);
+                                        receive_salary();
+                                    }
+                                }
+                                player[playerturn].career = 0;
+                            }
+                        }
+                        else
+                        {
+                            if(player[playerturn].position>32)
+                            {
+                                player[playerturn].position-=32;
+                                if(player[playerturn].position!=1)
+                                {
+                                    loadoverlay(2);
+                                    receive_salary();
+                                }
+                            }
+                        }
+                    }
+                    checkforbump();
+                    pawn_place(playerturn);
+                    board_gotofieldaction();
+                }
+                checkwincondition();
+                if(anotherturn!=0)
+                {
+                    anotherturn=0;
+                }
+                else
+                {
+                    playerturn++;
+                    if(playerturn>3) { playerturn=0; }
+                }
+                if(!player[playerturn].computer && autosavetoggle)
+                {
+                    loadoverlay(8);
+                    savegame(1);
+                }
+            }        
         
         } while (gameendflag!=5 && gameendflag!=6);
 

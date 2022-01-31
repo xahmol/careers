@@ -11,9 +11,9 @@
 # - ZIP packages installed: sudo apt-get install zip
 # - wput command installed: sudo apt-get install wput
 
-SOURCESMAIN = src/main.c src/ring1.c src/ring2.c src/ring3.c src/ring4.c src/career1.c src/career2.c src/menu1.c src/menu2.c src/vdc_core.c src/sidplay.c src/snes.c
+SOURCESMAIN = src/main.c src/ring1.c src/ring2.c src/ring3.c src/ring4.c src/career1.c src/career2.c src/menu1.c src/menu2.c src/menu3.c src/vdc_core.c src/sidplay.c src/snes.c
 SOURCESLIB = src/vdc_core_assembly.s src/sidplay_assembly.s src/careertext.s
-OBJECTS = careers.maco.prg careers.chrs.prg careers.chra.prg careers.scrn.prg careers.ctxt.prg careers.ovl1.prg careers.ovl2.prg careers.ovl3.prg careers.ovl4.prg careers.ovl5.prg careers.ovl6.prg careers.ovl7.prg careers.ovl8.prg
+OBJECTS = careers.maco.prg careers.chrs.prg careers.chra.prg careers.scrn.prg careers.ctxt.prg careers.ovl1.prg careers.ovl2.prg careers.ovl3.prg careers.ovl4.prg careers.ovl5.prg careers.ovl6.prg careers.ovl7.prg careers.ovl8.prg careers.ovl9.prg
 
 ZIP = careers-v010-$(shell date "+%Y%m%d-%H%M").zip
 D64 = careers.d64
@@ -63,6 +63,7 @@ $(D64):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D64) -write careers.ovl6.prg careers.ovl6
 	c1541 -attach $(D64) -write careers.ovl7.prg careers.ovl7
 	c1541 -attach $(D64) -write careers.ovl8.prg careers.ovl8
+	c1541 -attach $(D64) -write careers.ovl9.prg careers.ovl9
 	c1541 -attach $(D64) -write careers.ctxt.prg careers.ctxt
 
 $(D71):	$(MAIN) $(OBJECTS)
@@ -80,6 +81,7 @@ $(D71):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D71) -write careers.ovl6.prg careers.ovl6
 	c1541 -attach $(D71) -write careers.ovl7.prg careers.ovl7
 	c1541 -attach $(D71) -write careers.ovl8.prg careers.ovl8
+	c1541 -attach $(D71) -write careers.ovl9.prg careers.ovl9
 	c1541 -attach $(D71) -write careers.ctxt.prg careers.ctxt
 
 $(D81):	$(MAIN) $(OBJECTS)
@@ -97,6 +99,7 @@ $(D81):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D81) -write careers.ovl6.prg careers.ovl6
 	c1541 -attach $(D81) -write careers.ovl7.prg careers.ovl7
 	c1541 -attach $(D81) -write careers.ovl8.prg careers.ovl8
+	c1541 -attach $(D81) -write careers.ovl9.prg careers.ovl9
 	c1541 -attach $(D81) -write careers.ctxt.prg careers.ctxt
 
 #$(ZIP): $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(README)

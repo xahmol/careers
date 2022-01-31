@@ -218,8 +218,7 @@ void loadgame()
     if(PEEK(SAVESLOTS+slot)==0)
     {
         cputsxy(7,9,"Slot empty. ");
-        cputsxy(7,10,"Press key.");
-        getkey("",1);
+        presskeyprompt(7,10);
         gameendflag=0;
     }
     windowrestore();
@@ -242,7 +241,6 @@ void loadgame()
 
         if (address <= SAVEGAMEMEM) { fileerrormessage(255); return; }
 
-        board_reset();
         address=SAVEGAMEMEM;
         playerturn=PEEK(address++);
         anotherturn=PEEK(address++);
@@ -266,14 +264,14 @@ void loadgame()
             }
             player[x].career=PEEK(address++);
             player[x].position=PEEK(address++);
-            player[x].salary = (((unsigned long)PEEK(address++))<<24) |
-                               (((unsigned long)PEEK(address++))<<16) |
-                               (((unsigned long)PEEK(address++))<< 8) |
-                                ((unsigned long)PEEK(address++));
-            player[x].salary = (((unsigned long)PEEK(address++))<<24) |
-                               (((unsigned long)PEEK(address++))<<16) |
-                               (((unsigned long)PEEK(address++))<< 8) |
-                                ((unsigned long)PEEK(address++));
+            player[x].salary  = (((unsigned long)PEEK(address++))<<24);
+            player[x].salary += (((unsigned long)PEEK(address++))<<16);
+            player[x].salary += (((unsigned long)PEEK(address++))<< 8);
+            player[x].salary +=  ((unsigned long)PEEK(address++));
+            player[x].money   = (((unsigned long)PEEK(address++))<<24);
+            player[x].money  += (((unsigned long)PEEK(address++))<<16);
+            player[x].money  += (((unsigned long)PEEK(address++))<< 8);
+            player[x].money  +=  ((unsigned long)PEEK(address++));
             player[x].happiness=PEEK(address++);
             player[x].fame=PEEK(address++);
             player[x].winmoney=PEEK(address++);
