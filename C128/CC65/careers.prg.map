@@ -1786,12 +1786,12 @@ decsp4 (decsp4.o):
     main.o                    src/main.s:10199
     main.o                    src/main.s:10199
 decsp5 (decsp5.o):
+    ring3.o                   src/ring3.s:1977
     main.o                    src/main.s:10199
     main.o                    src/main.s:10199
 decsp6 (decsp6.o):
     _printf.o                 common/_printf.s:11
     menu3.o                   src/menu3.s:1731
-    ring3.o                   src/ring3.s:1977
 decsp8 (decsp8.o):
     main.o                    src/main.s:10199
 devnum (devnum.o):
@@ -2016,6 +2016,7 @@ incsp7 (incsp7.o):
     vdc_core.o                src/vdc_core.s:2155
     career1.o                 src/career1.s:1977
     ring4.o                   src/ring4.s:1836
+    ring3.o                   src/ring3.s:1977
     main.o                    src/main.s:10199
 incsp8 (incsp8.o):
     vdc_core.o                src/vdc_core.s:2155
@@ -2024,7 +2025,6 @@ incsp8 (incsp8.o):
     vdc_core.o                src/vdc_core.s:2155
     menu3.o                   src/menu3.s:1731
     career1.o                 src/career1.s:1977
-    ring3.o                   src/ring3.s:1977
     main.o                    src/main.s:10199
     main.o                    src/main.s:10199
 initlib (condes.o):

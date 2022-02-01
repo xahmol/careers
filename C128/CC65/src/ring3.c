@@ -278,7 +278,7 @@ void ring_floridavacation()
 
 void computer_playopportunitycards()
 {
-    unsigned char x,helpcar,helppos,helpoutc,scoremax,cardselect;
+    unsigned char x,helpcar,helppos,scoremax,cardselect;
     unsigned char presentcar = player[playerturn].career;
     unsigned char presentpos = player[playerturn].position;
 
