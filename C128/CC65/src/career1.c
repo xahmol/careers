@@ -306,3 +306,78 @@ void career_endofcareer()
     }
     windowrestore();
 }
+
+unsigned char computer_hospitalparkbench()
+{
+    // Computer at hospital and park bench
+    
+    unsigned char numberofdoctors = 0;
+    unsigned long totalpaid = 0;
+    unsigned char x;
+    unsigned char presentcar = player[playerturn].career;
+    unsigned char presentpos = player[playerturn].position;
+
+    paidforleave=0;    
+
+    // Check if computer is in the hospital and, if yes, decide on payment
+    if(presentcar==0 && presentpos==9)
+    {
+        for(x=0;x<4;x++)
+        {
+            if(player[x].experience[1]) { numberofdoctors++; }
+        }
+        if(numberofdoctors)
+        {
+            totalpaid = (player[playerturn].salary/2)*numberofdoctors;
+        }
+        else
+        {
+            totalpaid = player[playerturn].salary/2;
+        }
+        if(!((player[playerturn].money*80)/100 < totalpaid))
+        {
+            menumakeborder(40,8,7,35);
+            paidforleave=1;
+            gotoxy(42,10);
+            cprintf("Computer pays   %lu to leave.",totalpaid);
+            VDC_Plot(10,56,C_DOLLAR,VDC_LGREEN);
+            player[playerturn].money -= totalpaid;
+            for(x=0;x<4;x++)
+            {
+                if(player[x].experience[1])
+                {
+                    player[x].money += player[playerturn].salary/2;
+                }
+            }
+            presskeyprompt(42,12);
+            windowrestore();
+        }
+        else
+        {
+            return 1;
+        }
+    }
+
+    // Check if computer is on the park bench and, if yes, decide on payment
+    if(presentcar==0 && presentpos==17)
+    {
+        totalpaid = player[playerturn].money/2;
+        if(!((player[playerturn].money*90)/100 < totalpaid))
+        {
+            menumakeborder(40,8,7,35);
+            paidforleave=1;
+            gotoxy(42,10);
+            cprintf("Computer pays   %lu to leave.",totalpaid);
+            VDC_Plot(10,56,C_DOLLAR,VDC_LGREEN);
+            player[playerturn].money -= totalpaid;
+            presskeyprompt(42,12);
+            windowrestore();
+        }
+        else
+        {
+            return 1;
+        }
+    }
+
+    return 0;
+}

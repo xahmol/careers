@@ -6,5 +6,6 @@ void ring_politics();
 void ring_shoppingspree();
 void ring_hollywood();
 void ring_floridavacation();
+void computer_playopportunitycards();
 
 #endif // __RING3_H_

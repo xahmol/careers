@@ -275,3 +275,124 @@ void ring_floridavacation()
     presskeyprompt(42,18);
     windowrestore();
 }
+
+void computer_playopportunitycards()
+{
+    unsigned char x,helpcar,helppos,helpoutc,scoremax,cardselect;
+    unsigned char presentcar = player[playerturn].career;
+    unsigned char presentpos = player[playerturn].position;
+
+     // Decide best opportunity card to use if any
+    if(presentcar) { return; }
+
+    for(x=0;x<15;x++)
+    {
+        if(player[playerturn].cards[x])
+        {
+            whichcard[x]=5;
+            helpcar=opportunitycard[x].careernumber;
+            if(player[playerturn].happiness<20)
+            {
+                if(helpcar==1 || helpcar==2 || helpcar==4 || helpcar==7)
+                {
+                    whichcard[x]+=10;
+                }
+            }
+            if(player[playerturn].fame<20)
+            {
+                if(helpcar==5 || helpcar==6 || helpcar==8)
+                {
+                    whichcard[x]+=11;
+                }
+            }
+            if(player[playerturn].money<20000)
+            {
+                if(helpcar==3 || helpcar==7 || helpcar==8)
+                {
+                    whichcard[x]+=5;
+                }
+            }
+            cardselect=0;
+            if(helpcar==1 && player[playerturn].experience[4]) { cardselect=1; }
+            if(helpcar==3 && (player_collegeexperience() || player[playerturn].experience[5])) { cardselect=1; }
+            if(helpcar==4 && player[playerturn].experience[6]) { cardselect=1; }
+            if(helpcar==5 && (player[playerturn].experience[0] || player[playerturn].experience[7])) { cardselect=1; }
+            if(helpcar==6 && player[playerturn].experience[8]) { cardselect=1; }
+            if(helpcar==7 && (player[playerturn].experience[3] || player[playerturn].experience[9])) { cardselect=1; }
+            if(helpcar==8 && (player[playerturn].experience[2] || player[playerturn].experience[10])) { cardselect=1; }
+            if(helpcar==9)
+            {
+                whichcard[x]=(player[playerturn].money>3999)?100:0;
+            }
+            if(x==9 || x==10 || x>11) { cardselect=1; }
+            if(cardselect)
+            {
+                if((helpcar==1 || helpcar==6) && player[playerturn].money<1000) { whichcard[x]=0; }
+                if((helpcar==2 || helpcar==3) && player[playerturn].money<500) { whichcard[x]=0; }
+                if(helpcar==4 && player[playerturn].money<100) { whichcard[x]=0; }
+                if(helpcar==5 && player[playerturn].money<3000) { whichcard[x]=0; }
+                if(helpcar==7 && player[playerturn].money<4000) { whichcard[x]=0; }
+                if(helpcar==8 && player[playerturn].money<5000) { whichcard[x]=0; }
+            }
+            else
+            {
+                whichcard[x]+=100;
+            }
+        }
+    }
+
+    // Use highest score opportunity card if any
+    cardselect=0;
+    scoremax=0;
+    for(x=0;x<15;x++)
+    {
+        if(whichcard[x]>scoremax)
+        {
+            scoremax=whichcard[x];
+            cardselect=x+1;
+        }
+    }
+
+    if(cardselect)
+    {
+        gameendflag=8;
+        helpcar=opportunitycard[cardselect-1].careernumber;
+        helppos=opportunitycard[cardselect-1].conditionfree;
+        if(helppos)
+        {
+            if(helpcar==1)
+            {
+                player[playerturn].experience[4]++;
+            }
+            else
+            {
+                player[playerturn].experience[2+helpcar]++;
+            }
+        }
+        if(cardselect==7)
+        {
+            helpcar=(player[playerturn].money>4999)?8:7;
+        }
+        if(cardselect==6)
+        {
+            helpcar=0;
+            helppos=23;
+        }
+        else
+        {
+            helppos=0;
+        }
+        player[playerturn].cards[cardselect-1]--;
+        opportunitycard[cardselect-1].available++;
+        pawn_erase(playerturn);
+        player[playerturn].position=helppos;
+        player[playerturn].career=helpcar;
+        pawn_place(playerturn);
+        menumakeborder(35,8,7,40);
+        cputsxy(37,10,"Computer uses an opportunity card.");
+        gotoxy(37,12);
+        cprintf("%s (%s)",cards_actiontext(cardselect-1),opportunitycard[cardselect-1].conditionfree?"Free":"Normal");
+        presskeyprompt(37,14);
+        windowrestore();
+    }
+}

@@ -33,5 +33,6 @@ void dice_throw(unsigned char dicenumber);
 unsigned char player_collegeexperience();
 unsigned char card_selectopportunity();
 char* cards_actiontext(unsigned char cardnumber);
+unsigned char checkforbump_check(unsigned char car, unsigned char pos);
 
 #endif // __MAIN_H_

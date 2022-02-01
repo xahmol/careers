@@ -308,7 +308,7 @@ char pawngraphics[3][3] = {
 // Player and game data
 struct PlayerdataStruct player[4];
 
-unsigned char whichcard[20];         //wc(x)
+unsigned char whichcard[19];         //wc(x)
 unsigned char cardreset[15] = {2,2,2,3,2,2,2,3,2,1,1,3,1,1,1};
 unsigned char fieldinformation = 0;  //ai
 unsigned char gameendflag;           // es
@@ -1815,9 +1815,20 @@ void turnhuman()
 
 void turncomputer()
 {
-    /* Turn for the computer players */
+    // Check if computer has to skip a turn
+    if(player[playerturn].skipturn) { return; }
 
-    presskeyprompt(61,8);
+    // Check for hospital and park bench
+    loadoverlay(5);
+    if(computer_hospitalparkbench()) { return; }
+
+    // Check for playing experience cards
+    loadoverlay(9);
+    if(computer_playexperiencecards()) { return; }
+
+    // Check for playing opportunity cards
+    loadoverlay(3);
+    computer_playopportunitycards();
 }
 
 // Generic game logic functions
@@ -1853,30 +1864,30 @@ void checkwincondition()
     }
 }
 
-void checkforbump()
+unsigned char checkforbump_check(unsigned char car, unsigned char pos)
 {
-    // Check if pawn already present that will be bumped
+    // Function of the actual bump check
+    // Input:  Career and position to check for
+    // Output: Player number that can be bumped, 0 if none
 
     unsigned char x;
     unsigned char bump=0;
-    unsigned char presentplayercar = player[playerturn].career;
-    unsigned char presentplayerpos = player[playerturn].position;
     unsigned char helpcar, helppos;
 
     // Return if hospital or park bench
-    if(presentplayercar==0)
+    if(car==0)
     {
-        if(presentplayerpos==9 || presentplayerpos==17)
+        if(pos==9 || pos==17)
         {
-            return;
+            return(0);
         }
     }
 
     // Adjust if player is at career startfield
-    if(presentplayerpos==0)
+    if(pos==0)
     {
-        presentplayerpos=career[presentplayercar-1].startfield;
-        presentplayercar=0;
+        pos=career[car-1].startfield;
+        car=0;
     }
 
     // Check for another pawn at same position
@@ -1891,12 +1902,23 @@ void checkforbump()
                 helppos=career[helpcar-1].startfield;
                 helpcar=0;
             }
-            if(presentplayercar==helpcar && presentplayerpos==helppos)
+            if(car==helpcar && pos==helppos)
             {
                 bump=x+1;
             }
         }
     }
+    return bump;
+}
+
+void checkforbump()
+{
+    // Check if pawn already present that will be bumped
+    // Dialogue only
+
+    unsigned char bump=0;
+
+    bump=checkforbump_check(player[playerturn].career,player[playerturn].position);
 
     // Dialogue of bump
     if(bump)

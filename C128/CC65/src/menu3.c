@@ -285,3 +285,104 @@ void cards_useopportunity()
         }
     }
 }
+
+unsigned char computer_playexperiencecards()
+{
+    /* Decide on playing cards for computer */
+
+    unsigned char x,helpcar,helppos,helpoutc,scoremax,cardselect;
+    unsigned char presentcar = player[playerturn].career;
+    unsigned char presentpos = player[playerturn].position;
+
+    if(gameendflag==10) { return 1; }
+
+    // Reset variable for choosing cards
+    for(x=0;x<20;x++) { whichcard[x]=0; }
+
+    // Decide best experience card to use if any
+    for(x=0;x<4;x++)
+    {
+        if(player[playerturn].cards[x+15])
+        {
+            // Calculate new position if this card would be used
+            helppos=presentpos+x+1;
+            helpcar=presentcar;
+            if(!presentcar)
+            {
+                if(helppos >32) { helppos -= 32; }
+            }
+            else
+            {
+                if(helppos > career[helpcar-1].length)
+                {
+                    helppos = helppos - career[helpcar-1].length + career[helpcar-1].returnfield-1;
+                    if(helppos >32) { helppos -= 32; }
+                    helpcar = 0;
+                }
+            }
+
+            // Check for possible bumps
+            if(checkforbump_check(helpcar,helppos)) { whichcard[x+15]+=50; }
+
+            if(helpcar)
+            {
+                // Check within career paths
+                helpoutc=careerfield[helpcar-1][helppos-1].outcome;
+
+                // If hearts to be received
+                if(helpoutc==1||helpoutc==4)
+                {
+                    if(player[playerturn].happiness<20) { whichcard[x+15]+=10;}
+                }
+                // If money to be received
+                if(helpoutc==3 || helpoutc==5 || helpoutc==14)
+                {
+                    if(player[playerturn].money<20000) { whichcard[x+15]+=10;}
+                }
+                // If fame to be received
+                if(helpoutc==4 || helpoutc==8 || helpoutc==14)
+                {
+                    if(player[playerturn].fame<20) { whichcard[x+15]+=10;}
+                }
+                // If salary to be received
+                if(helpoutc==10 || helpoutc==17)
+                {
+                    if(player[playerturn].money<20000) { whichcard[x+15]+=5;}
+                }
+            }
+            else
+            {
+                // Check for landing on start
+                if(helppos==1) { whichcard[x+15]+=10; }
+            }
+        }
+    }
+
+    // Use highest score experience card if any
+    scoremax=0;
+    cardselect=0;
+    for(x=0;x<4;x++)
+    {
+        if(whichcard[x+15]>scoremax)
+        {
+            scoremax=whichcard[x+15];
+            cardselect=x;
+        }
+    }
+    if(cardselect)
+    {
+        gameendflag=9;
+        dice_total=cardselect+1;
+        player[playerturn].cards[cardselect+15]--;
+        menumakeborder(35,8,7,40);
+        cputsxy(37,10,"Computer uses an experience card to move");
+        gotoxy(37,11);
+        cprintf("%u fields.",cardselect+1);
+        presskeyprompt(37,13);
+        windowrestore();
+        return 1;
+    }
+
+    return 0;
+   
+}

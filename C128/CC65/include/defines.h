@@ -132,7 +132,7 @@ struct PlayerdataStruct
 };
 extern struct PlayerdataStruct player[4];
 
-extern unsigned char whichcard[20];         //wc(x)
+extern unsigned char whichcard[19];         //wc(x)
 extern unsigned char cardreset[15];
 extern unsigned char fieldinformation;      //ai
 extern unsigned char gameendflag;           // es

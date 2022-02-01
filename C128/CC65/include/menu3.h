@@ -3,5 +3,6 @@
 
 void cards_useexperience();
 void cards_useopportunity();
+unsigned char computer_playexperiencecards();
 
 #endif // __MENU3_H_
