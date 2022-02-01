@@ -21,6 +21,9 @@
 #include "sidplay.h"
 #include "defines.h"
 
+#pragma code-name ("MACO");
+#pragma rodata-name ("MACO");
+
 void LoadMusic(char* filename)
 {
 	// Function to load a SID from disk and store to memory

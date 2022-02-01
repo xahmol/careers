@@ -121,14 +121,14 @@ char pulldownmenutitles[11][5][17] = {
      "No "},
     {"Continue",
      "Stop    "},
-    {"\x1C  2.000",
-     "\x1C  8.000",
-     "\x1C 16.000",
-     "Nothing "},
-    {"\x1C  4.000",
-     "\x1C  8.000",
-     "\x1C 12.000",
-     "Nothing "},
+    {"  2.000",
+     "  8.000",
+     " 16.000",
+     "Nothing"},
+    {"  4.000",
+     "  8.000",
+     " 12.000",
+     "Nothing"},
     {"Law        ",
      "Medicine   ",
      "Science    ",
@@ -1831,9 +1831,9 @@ void checkwincondition()
 
     for(x=0;x<3;x++)
     {
-        if( player[playerturn].happiness > player[playerturn].winhappiness-1 &&
-            player[playerturn].fame > player[playerturn].winfame-1 &&
-            player[playerturn].money/1000 > player[playerturn].winmoney-1)
+        if( player[x].happiness > player[x].winhappiness-1 &&
+            player[x].fame > player[x].winfame-1 &&
+            player[x].money/1000 > player[x].winmoney-1)
         {
             win=x;
             x=4;

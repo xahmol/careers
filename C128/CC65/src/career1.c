@@ -179,7 +179,7 @@ void career_gotoparkbench()
         waitkeyflag = 1;
         pawn_erase(playerturn);
         player[playerturn].career=0;
-        player[playerturn].career=17;
+        player[playerturn].position=17;
         pawn_place(playerturn);
     }
 }
@@ -193,7 +193,7 @@ void career_gotohospital()
         waitkeyflag = 1;
         pawn_erase(playerturn);
         player[playerturn].career=0;
-        player[playerturn].career=9;
+        player[playerturn].position=9;
         pawn_place(playerturn);
     }
 }
@@ -216,7 +216,7 @@ void career_loosemoneyorparkbench(unsigned char careernr, unsigned char position
         else
         {
             cputsxy(32,17,"Do you want to pay?");
-            choice = menupulldown(69,18,6);
+            choice = menupulldown(69,16,6);
         }
         if(choice==1)
         {
@@ -228,7 +228,7 @@ void career_loosemoneyorparkbench(unsigned char careernr, unsigned char position
             waitkeyflag = 1;
             pawn_erase(playerturn);
             player[playerturn].career=0;
-            player[playerturn].career=17;
+            player[playerturn].position=17;
             pawn_place(playerturn);
         }
     }
@@ -247,7 +247,7 @@ void career_getfamebuthospital(unsigned char careernr, unsigned char position)
         waitkeyflag = 1;
         pawn_erase(playerturn);
         player[playerturn].career=0;
-        player[playerturn].career=9;
+        player[playerturn].position=9;
         pawn_place(playerturn);
     }
 }

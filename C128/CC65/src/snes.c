@@ -12,6 +12,9 @@
 #include <peekpoke.h>
 #include "snes.h"
 
+#pragma code-name ("MACO");
+#pragma rodata-name ("MACO");
+
 //Variables
 struct SNES_Struct SNES;
 

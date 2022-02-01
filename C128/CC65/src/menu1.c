@@ -177,7 +177,7 @@ void information_gamescore()
 
     for(x=0;x<11;x++)
     {
-        height += player[playerturn].experience[x];
+        height += player[playerturn].experience[x]?1:0;
     }
     ycoord = 11 - (height/2);
 
@@ -234,7 +234,7 @@ void information_gamescore()
     if(count==ycoord) { cputsxy(42,++ycoord,"None"); }
 
     textcolor(COLOR_YELLOW);
-    cputsxy(42,++ycoord,"Occupation record (count):");
+    cputsxy(42,++ycoord,"Occupation record:");
 
     textcolor(COLOR_CYAN);
 
@@ -245,7 +245,7 @@ void information_gamescore()
         if(player[playerturn].experience[4+x])
         {
             gotoxy(42,++ycoord);
-            cprintf("%s (%u)",career[x==0?x:x+1].name,player[playerturn].experience[4+x]);
+            cprintf("%s",career[x==0?x:x+1].name);
         }
     }
     if(count==ycoord) { cputsxy(42,++ycoord,"None"); }
