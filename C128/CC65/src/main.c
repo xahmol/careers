@@ -1193,7 +1193,6 @@ void game_reset()
         for(y=0;y<11;y++) { player[x].experience[y]=0; }
     }
     fieldinformation=0;
-    gameendflag=0;
     anotherturn=0;
     playerturn=0;
     board_reset();
@@ -1758,6 +1757,27 @@ void turnhuman()
                 }
                 break;
 
+        case 31:
+            loadoverlay(7);
+            musicnext();
+            break;
+
+        case 32:
+            StopMusic();
+            musicnumber=0;
+            break;
+        case 33:
+            if(musicnumber)
+            { 
+                StopMusic();
+            }
+            else
+            {
+                musicnumber=1;
+            }
+            PlayMusic();
+            break;      
+
         case 41:
             loadoverlay(7);
             cards_show();
@@ -2009,7 +2029,7 @@ void loadintro()
     initoverlay();
 
     /* Load and start first music file */
-    //LoadMusic("careers.mus1");
+    LoadMusic("careers.mus1");
 
     /* Wait for ENTER of FIRE while player can toggle music */ 
     printcentered("Press ENTER or FIRE to start game.",0,22,80);

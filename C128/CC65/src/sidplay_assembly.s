@@ -70,7 +70,7 @@ _PlayMusic:
 
 initSID:
 		; init code	(default address is $0903)
-		jsr $3000							; Jump to SID init routine
+		jsr $2000							; Jump to SID init routine
 		
         ; set IRQ pointer in $314/$315
         sei									; Stop interupts
@@ -136,7 +136,7 @@ interruptSID:
 	
 playFrame:	
 		; interrupt code (default address is $0806)
-        jsr $3003							; Jump to play frame routine of SID
+        jsr $2003							; Jump to play frame routine of SID
 
 		; Retore ZP values
 		lda SIDZPtmp1						; Load $fc ZP value

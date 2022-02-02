@@ -375,7 +375,7 @@ unsigned char computer_playexperiencecards()
         dice_total=cardselect+1;
         player[playerturn].cards[cardselect+15]--;
         menumakeborder(35,8,7,40);
-        cputsxy(37,10,"Computer uses an experience card to move");
+        cputsxy(37,10,"Computer uses experience card to move");
         gotoxy(37,11);
         cprintf("%u fields.",cardselect+1);
         presskeyprompt(37,13);

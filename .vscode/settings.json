@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "ctype.h": "c",
-        "menu1.h": "c"
+        "menu1.h": "c",
+        "defines.h": "c"
     }
 }

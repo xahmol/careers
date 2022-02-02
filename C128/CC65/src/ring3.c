@@ -389,7 +389,7 @@ void computer_playopportunitycards()
         player[playerturn].career=helpcar;
         pawn_place(playerturn);
         menumakeborder(35,8,7,40);
-        cputsxy(37,10,"Computer uses an opportunity card.");
+        cputsxy(37,10,"Computer uses opportunity card.");
         gotoxy(37,12);
         cprintf("%s (%s)",cards_actiontext(cardselect-1),opportunitycard[cardselect-1].conditionfree?"Free":"Normal");
         presskeyprompt(37,14);

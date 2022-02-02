@@ -320,3 +320,17 @@ void information_credits()
     getkey("",1);
     windowrestore();
 }
+
+void musicnext()
+{
+    /* Funtion to load and start next music track */
+
+    char fname[25]="careers.mus";
+    unsigned char len = strlen(fname);
+
+    StopMusic();
+    if(++musicnumber>3) { musicnumber = 1;}
+    fname[len]=48+musicnumber;
+    fname[len+1]=0;
+    LoadMusic(fname);
+}

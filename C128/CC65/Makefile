@@ -13,7 +13,7 @@
 
 SOURCESMAIN = src/main.c src/ring1.c src/ring2.c src/ring3.c src/ring4.c src/career1.c src/career2.c src/menu1.c src/menu2.c src/menu3.c src/vdc_core.c src/sidplay.c src/snes.c
 SOURCESLIB = src/vdc_core_assembly.s src/sidplay_assembly.s src/careertext.s
-OBJECTS = careers.maco.prg careers.chrs.prg careers.chra.prg careers.scrn.prg careers.ctxt.prg careers.ovl1.prg careers.ovl2.prg careers.ovl3.prg careers.ovl4.prg careers.ovl5.prg careers.ovl6.prg careers.ovl7.prg careers.ovl8.prg careers.ovl9.prg
+OBJECTS = careers.maco.prg careers.chrs.prg careers.chra.prg careers.scrn.prg careers.ctxt.prg careers.mus1.prg careers.mus2.prg careers.mus3.prg careers.ovl1.prg careers.ovl2.prg careers.ovl3.prg careers.ovl4.prg careers.ovl5.prg careers.ovl6.prg careers.ovl7.prg careers.ovl8.prg careers.ovl9.prg
 
 ZIP = careers-v010-$(shell date "+%Y%m%d-%H%M").zip
 D64 = careers.d64
@@ -65,6 +65,9 @@ $(D64):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D64) -write careers.ovl8.prg careers.ovl8
 	c1541 -attach $(D64) -write careers.ovl9.prg careers.ovl9
 	c1541 -attach $(D64) -write careers.ctxt.prg careers.ctxt
+	c1541 -attach $(D64) -write careers.mus1.prg careers.mus1
+	c1541 -attach $(D64) -write careers.mus2.prg careers.mus2
+	c1541 -attach $(D64) -write careers.mus3.prg careers.mus3
 
 $(D71):	$(MAIN) $(OBJECTS)
 	c1541 -format "careers,xm" d71 $(D71)
@@ -83,6 +86,9 @@ $(D71):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D71) -write careers.ovl8.prg careers.ovl8
 	c1541 -attach $(D71) -write careers.ovl9.prg careers.ovl9
 	c1541 -attach $(D71) -write careers.ctxt.prg careers.ctxt
+	c1541 -attach $(D71) -write careers.mus1.prg careers.mus1
+	c1541 -attach $(D71) -write careers.mus2.prg careers.mus2
+	c1541 -attach $(D71) -write careers.mus3.prg careers.mus3
 
 $(D81):	$(MAIN) $(OBJECTS)
 	c1541 -format "careers,xm" d81 $(D81)
@@ -101,6 +107,9 @@ $(D81):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D81) -write careers.ovl8.prg careers.ovl8
 	c1541 -attach $(D81) -write careers.ovl9.prg careers.ovl9
 	c1541 -attach $(D81) -write careers.ctxt.prg careers.ctxt
+	c1541 -attach $(D81) -write careers.mus1.prg careers.mus1
+	c1541 -attach $(D81) -write careers.mus2.prg careers.mus2
+	c1541 -attach $(D81) -write careers.mus3.prg careers.mus3
 
 #$(ZIP): $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(README)
 #	zip $@ $^
