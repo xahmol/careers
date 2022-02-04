@@ -1,7 +1,7 @@
 # Careers
 Careers board game for 8 bit computers.
 
-![Careers title screen](https://github.com/xahmol/careers/raw/main/C128/CC65/screenshots/careers_titlescreen.png)
+![Careers title screen](https://github.com/xahmol/careers/blob/main/screenshots/careers_titlescreen.png?raw=true)
 
 ## Contents
 
