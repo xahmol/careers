@@ -325,7 +325,7 @@ void computer_playopportunitycards()
                 whichcard[x]=(player[playerturn].money>3999)?100:0;
             }
             if(x==9 || x==10 || x>11) { cardselect=1; }
-            if(cardselect)
+            if(!cardselect)
             {
                 if((helpcar==1 || helpcar==6) && player[playerturn].money<1000) { whichcard[x]=0; }
                 if((helpcar==2 || helpcar==3) && player[playerturn].money<500) { whichcard[x]=0; }
@@ -376,7 +376,7 @@ void computer_playopportunitycards()
         if(cardselect==6)
         {
             helpcar=0;
-            helppos=23;
+            helppos=25;
         }
         else
         {

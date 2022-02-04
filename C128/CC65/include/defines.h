@@ -167,6 +167,7 @@ extern unsigned char yoffset;
 #define C_RUCORNER   0x82
 #define C_LDCORNER   0x83
 #define C_RDCORNER   0x84
+#define C_ARROW      0x5B
 
 /* Board graphics */
 #define C_BLOCKUNDER 0x64

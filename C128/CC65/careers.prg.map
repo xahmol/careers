@@ -7,20 +7,20 @@ sidplay_assembly.o:
 careertext.o:
     CTXT              Offs=000000  Size=0005DE  Align=00001  Fill=0000
 main.o:
-    CODE              Offs=000000  Size=0045E5  Align=00001  Fill=0000
-    RODATA            Offs=000000  Size=0003AB  Align=00001  Fill=0000
+    CODE              Offs=000000  Size=004711  Align=00001  Fill=0000
+    RODATA            Offs=000000  Size=0003D4  Align=00001  Fill=0000
     BSS               Offs=000000  Size=0001F6  Align=00001  Fill=0000
     DATA              Offs=000000  Size=000952  Align=00001  Fill=0000
 ring1.o:
     OVERLAY1          Offs=000000  Size=001128  Align=00001  Fill=0000
 ring2.o:
-    OVERLAY2          Offs=000000  Size=001060  Align=00001  Fill=0000
+    OVERLAY2          Offs=000000  Size=00105D  Align=00001  Fill=0000
 ring3.o:
     OVERLAY3          Offs=000000  Size=00110B  Align=00001  Fill=0000
 ring4.o:
-    OVERLAY4          Offs=000000  Size=0010F0  Align=00001  Fill=0000
+    OVERLAY4          Offs=000000  Size=0010F5  Align=00001  Fill=0000
 career1.o:
-    OVERLAY5          Offs=000000  Size=00111D  Align=00001  Fill=0000
+    OVERLAY5          Offs=000000  Size=00113D  Align=00001  Fill=0000
 career2.o:
     OVERLAY6          Offs=000000  Size=000A48  Align=00001  Fill=0000
 menu1.o:
@@ -28,10 +28,10 @@ menu1.o:
 menu2.o:
     OVERLAY8          Offs=000000  Size=001044  Align=00001  Fill=0000
 menu3.o:
-    OVERLAY9          Offs=000000  Size=000E11  Align=00001  Fill=0000
+    OVERLAY9          Offs=000000  Size=000E51  Align=00001  Fill=0000
 vdc_core.o:
-    CODE              Offs=0045E5  Size=000D8D  Align=00001  Fill=0000
-    RODATA            Offs=0003AB  Size=000050  Align=00001  Fill=0000
+    CODE              Offs=004711  Size=000D8D  Align=00001  Fill=0000
+    RODATA            Offs=0003D4  Size=000050  Align=00001  Fill=0000
     DATA              Offs=000952  Size=000014  Align=00001  Fill=0000
 sidplay.o:
     MACO              Offs=000552  Size=000033  Align=00001  Fill=0000
@@ -41,131 +41,129 @@ snes.o:
 /mnt/d/retro/cc65/lib/c128.lib(_cursor.o):
     BSS               Offs=0001F8  Size=000001  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(_directerrno.o):
-    CODE              Offs=005372  Size=00000A  Align=00001  Fill=0000
+    CODE              Offs=00549E  Size=00000A  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(_file.o):
     DATA              Offs=000966  Size=00001E  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(_hextab.o):
-    RODATA            Offs=0003FB  Size=000010  Align=00001  Fill=0000
+    RODATA            Offs=000424  Size=000010  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(_longminstr.o):
-    RODATA            Offs=00040B  Size=00000C  Align=00001  Fill=0000
+    RODATA            Offs=000434  Size=00000C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(_mappederrno.o):
-    CODE              Offs=00537C  Size=000010  Align=00001  Fill=0000
+    CODE              Offs=0054A8  Size=000010  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(_oserror.o):
     BSS               Offs=0001F9  Size=000001  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(_printf.o):
-    CODE              Offs=00538C  Size=0003A5  Align=00001  Fill=0000
+    CODE              Offs=0054B8  Size=0003A5  Align=00001  Fill=0000
     BSS               Offs=0001FA  Size=00002B  Align=00001  Fill=0000
     DATA              Offs=000984  Size=000003  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(_seterrno.o):
-    CODE              Offs=005731  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=00585D  Size=000009  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(acc_c128_speed.o):
-    CODE              Offs=00573A  Size=000010  Align=00001  Fill=0000
+    CODE              Offs=005866  Size=000010  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(add.o):
-    CODE              Offs=00574A  Size=00001C  Align=00001  Fill=0000
+    CODE              Offs=005876  Size=00001C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(addeqsp.o):
-    CODE              Offs=005766  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=005892  Size=000011  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(addysp.o):
-    CODE              Offs=005777  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=0058A3  Size=00000E  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(aslax1.o):
-    CODE              Offs=005785  Size=000008  Align=00001  Fill=0000
+    CODE              Offs=0058B1  Size=000008  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(aslax2.o):
-    CODE              Offs=00578D  Size=00000B  Align=00001  Fill=0000
+    CODE              Offs=0058B9  Size=00000B  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(aslax3.o):
-    CODE              Offs=005798  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=0058C4  Size=00000E  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(aslax4.o):
-    CODE              Offs=0057A6  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=0058D2  Size=000011  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(asleax1.o):
-    CODE              Offs=0057B7  Size=00000C  Align=00001  Fill=0000
+    CODE              Offs=0058E3  Size=00000C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(axlong.o):
-    CODE              Offs=0057C3  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=0058EF  Size=00000D  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(bneg.o):
-    CODE              Offs=0057D0  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=0058FC  Size=00000E  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(c_close.o):
-    CODE              Offs=0057DE  Size=000004  Align=00001  Fill=0000
+    CODE              Offs=00590A  Size=000004  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(c_load.o):
-    CODE              Offs=0057E2  Size=00001D  Align=00001  Fill=0000
+    CODE              Offs=00590E  Size=00001D  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(c_open.o):
-    CODE              Offs=0057FF  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=00592B  Size=000009  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(c_save.o):
-    CODE              Offs=005808  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=005934  Size=000016  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(c_setlfs.o):
-    CODE              Offs=00581E  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=00594A  Size=00000E  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(c_setnam.o):
-    CODE              Offs=00582C  Size=000013  Align=00001  Fill=0000
+    CODE              Offs=005958  Size=000013  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(callmain.o):
-    CODE              Offs=00583F  Size=000017  Align=00001  Fill=0000
+    CODE              Offs=00596B  Size=000017  Align=00001  Fill=0000
     DATA              Offs=000987  Size=000004  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(cbm_close.o):
 /mnt/d/retro/cc65/lib/c128.lib(cbm_load.o):
-    CODE              Offs=005856  Size=000044  Align=00001  Fill=0000
+    CODE              Offs=005982  Size=000044  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(cbm_open.o):
-    CODE              Offs=00589A  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=0059C6  Size=000016  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(cbm_read.o):
-    CODE              Offs=0058B0  Size=00005B  Align=00001  Fill=0000
+    CODE              Offs=0059DC  Size=00005B  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(cgetc.o):
-    CODE              Offs=00590B  Size=000030  Align=00001  Fill=0000
+    CODE              Offs=005A37  Size=000030  Align=00001  Fill=0000
     INIT              Offs=000000  Size=000002  Align=00001  Fill=0000
     ONCE              Offs=000000  Size=000013  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(clock.o):
-    CODE              Offs=00593B  Size=00000A  Align=00001  Fill=0000
+    CODE              Offs=005A67  Size=00000A  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(clrscr.o):
 /mnt/d/retro/cc65/lib/c128.lib(color.o):
-    CODE              Offs=005945  Size=000060  Align=00001  Fill=0000
+    CODE              Offs=005A71  Size=000060  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(condes.o):
-    CODE              Offs=0059A5  Size=00000C  Align=00001  Fill=0000
+    CODE              Offs=005AD1  Size=00000C  Align=00001  Fill=0000
     DATA              Offs=00098B  Size=000025  Align=00001  Fill=0000
     ONCE              Offs=000013  Size=00000C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(conio.o):
 /mnt/d/retro/cc65/lib/c128.lib(cprintf.o):
-    CODE              Offs=0059B1  Size=00002A  Align=00001  Fill=0000
+    CODE              Offs=005ADD  Size=00002A  Align=00001  Fill=0000
     BSS               Offs=000225  Size=000001  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(cputc.o):
-    CODE              Offs=0059DB  Size=000049  Align=00001  Fill=0000
+    CODE              Offs=005B07  Size=000049  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(cputs.o):
-    CODE              Offs=005A24  Size=000023  Align=00001  Fill=0000
+    CODE              Offs=005B50  Size=000023  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(crt0.o):
     BSS               Offs=000226  Size=000002  Align=00001  Fill=0000
     STARTUP           Offs=000000  Size=000051  Align=00001  Fill=0000
     INIT              Offs=000002  Size=00001A  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(ctype.o):
-    RODATA            Offs=000417  Size=00008B  Align=00001  Fill=0000
+    RODATA            Offs=000440  Size=00008B  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(ctypemask.o):
-    CODE              Offs=005A47  Size=00001E  Align=00001  Fill=0000
+    CODE              Offs=005B73  Size=00001E  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(curdevice.o):
-    CODE              Offs=005A65  Size=000006  Align=00001  Fill=0000
+    CODE              Offs=005B91  Size=000006  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(decax1.o):
-    CODE              Offs=005A6B  Size=000007  Align=00001  Fill=0000
-/mnt/d/retro/cc65/lib/c128.lib(decax3.o):
-    CODE              Offs=005A72  Size=000007  Align=00001  Fill=0000
+    CODE              Offs=005B97  Size=000007  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(decaxy.o):
-    CODE              Offs=005A79  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=005B9E  Size=000009  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(decsp1.o):
-    CODE              Offs=005A82  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=005BA7  Size=000009  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(decsp2.o):
-    CODE              Offs=005A8B  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=005BB0  Size=00000D  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(decsp3.o):
-    CODE              Offs=005A98  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=005BBD  Size=00000D  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(decsp4.o):
-    CODE              Offs=005AA5  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=005BCA  Size=00000D  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(decsp5.o):
-    CODE              Offs=005AB2  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=005BD7  Size=00000D  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(decsp6.o):
-    CODE              Offs=005ABF  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=005BE4  Size=00000D  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(decsp8.o):
-    CODE              Offs=005ACC  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=005BF1  Size=00000D  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(devnum.o):
 /mnt/d/retro/cc65/lib/c128.lib(diskcmd.o):
-    CODE              Offs=005AD9  Size=0000C4  Align=00001  Fill=0000
+    CODE              Offs=005BFE  Size=0000C4  Align=00001  Fill=0000
     BSS               Offs=000228  Size=000017  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(errno.o):
     BSS               Offs=00023F  Size=000002  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(exehdr.o):
     EXEHDR            Offs=000000  Size=00000C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(filedes.o):
-    CODE              Offs=005B9D  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=005CC2  Size=00000E  Align=00001  Fill=0000
     DATA              Offs=0009B0  Size=000010  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(filename.o):
-    CODE              Offs=005BAB  Size=0000A0  Align=00001  Fill=0000
+    CODE              Offs=005CD0  Size=0000A0  Align=00001  Fill=0000
     BSS               Offs=000241  Size=000003  Align=00001  Fill=0000
     DATA              Offs=0009C0  Size=000024  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(filetype.o):
@@ -174,116 +172,116 @@ snes.o:
     INIT              Offs=00001C  Size=000001  Align=00001  Fill=0000
     ONCE              Offs=00001F  Size=00000C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(fwrite.o):
-    CODE              Offs=005C4B  Size=00007B  Align=00001  Fill=0000
+    CODE              Offs=005D70  Size=00007B  Align=00001  Fill=0000
     BSS               Offs=000244  Size=000002  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(gotoxy.o):
-    CODE              Offs=005CC6  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=005DEB  Size=00000D  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(icmp.o):
-    CODE              Offs=005CD3  Size=00002E  Align=00001  Fill=0000
+    CODE              Offs=005DF8  Size=00002E  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incax1.o):
-    CODE              Offs=005D01  Size=000007  Align=00001  Fill=0000
+    CODE              Offs=005E26  Size=000007  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incax2.o):
-    CODE              Offs=005D08  Size=000007  Align=00001  Fill=0000
+    CODE              Offs=005E2D  Size=000007  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incax3.o):
-    CODE              Offs=005D0F  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=005E34  Size=000005  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incax5.o):
-    CODE              Offs=005D14  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=005E39  Size=000005  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incax6.o):
-    CODE              Offs=005D19  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=005E3E  Size=000005  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incax7.o):
-    CODE              Offs=005D1E  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=005E43  Size=000005  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incax8.o):
-    CODE              Offs=005D23  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=005E48  Size=000005  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incaxy.o):
-    CODE              Offs=005D28  Size=00000B  Align=00001  Fill=0000
+    CODE              Offs=005E4D  Size=00000B  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incsp1.o):
-    CODE              Offs=005D33  Size=000007  Align=00001  Fill=0000
+    CODE              Offs=005E58  Size=000007  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incsp2.o):
-    CODE              Offs=005D3A  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=005E5F  Size=000016  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incsp3.o):
-    CODE              Offs=005D50  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=005E75  Size=000005  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incsp4.o):
-    CODE              Offs=005D55  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=005E7A  Size=000005  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incsp5.o):
-    CODE              Offs=005D5A  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=005E7F  Size=000005  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incsp6.o):
-    CODE              Offs=005D5F  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=005E84  Size=000005  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incsp7.o):
-    CODE              Offs=005D64  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=005E89  Size=000005  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(incsp8.o):
-    CODE              Offs=005D69  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=005E8E  Size=000005  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(isprint.o):
-    CODE              Offs=005D6E  Size=00000A  Align=00001  Fill=0000
+    CODE              Offs=005E93  Size=00000A  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(joy-kernel.o):
-    CODE              Offs=005D78  Size=00004D  Align=00001  Fill=0000
-    RODATA            Offs=0004A2  Size=000004  Align=00001  Fill=0000
+    CODE              Offs=005E9D  Size=00004D  Align=00001  Fill=0000
+    RODATA            Offs=0004CB  Size=000004  Align=00001  Fill=0000
     BSS               Offs=000246  Size=000002  Align=00001  Fill=0000
     DATA              Offs=0009E5  Size=00000C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(joy_read.o):
 /mnt/d/retro/cc65/lib/c128.lib(joy_stat_stddrv.o):
 /mnt/d/retro/cc65/lib/c128.lib(kbhit.o):
-    CODE              Offs=005DC5  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=005EEA  Size=000009  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(kernal.o):
 /mnt/d/retro/cc65/lib/c128.lib(ladd.o):
-    CODE              Offs=005DCE  Size=000025  Align=00001  Fill=0000
+    CODE              Offs=005EF3  Size=000025  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(laddeqsp.o):
-    CODE              Offs=005DF3  Size=000023  Align=00001  Fill=0000
+    CODE              Offs=005F18  Size=000023  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(land.o):
-    CODE              Offs=005E16  Size=000024  Align=00001  Fill=0000
+    CODE              Offs=005F3B  Size=000024  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(lbneg.o):
-    CODE              Offs=005E3A  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=005F5F  Size=000011  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(lcmp.o):
-    CODE              Offs=005E4B  Size=00003B  Align=00001  Fill=0000
+    CODE              Offs=005F70  Size=00003B  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(ldaxi.o):
-    CODE              Offs=005E86  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=005FAB  Size=00000D  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(ldaxsp.o):
-    CODE              Offs=005E93  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=005FB8  Size=000009  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(ldeaxi.o):
-    CODE              Offs=005E9C  Size=000017  Align=00001  Fill=0000
+    CODE              Offs=005FC1  Size=000017  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(ldeaxysp.o):
-    CODE              Offs=005EB3  Size=000013  Align=00001  Fill=0000
+    CODE              Offs=005FD8  Size=000013  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(ldec.o):
-    CODE              Offs=005EC6  Size=000015  Align=00001  Fill=0000
+    CODE              Offs=005FEB  Size=000015  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(leaaxsp.o):
-    CODE              Offs=005EDB  Size=00000C  Align=00001  Fill=0000
+    CODE              Offs=006000  Size=00000C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(libref.o):
 /mnt/d/retro/cc65/lib/c128.lib(lmul.o):
-    CODE              Offs=005EE7  Size=00005C  Align=00001  Fill=0000
+    CODE              Offs=00600C  Size=00005C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(lneg.o):
-    CODE              Offs=005F43  Size=00001E  Align=00001  Fill=0000
+    CODE              Offs=006068  Size=00001E  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(loadaddr.o):
     LOADADDR          Offs=000000  Size=000002  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(lpush.o):
-    CODE              Offs=005F61  Size=000021  Align=00001  Fill=0000
+    CODE              Offs=006086  Size=000021  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(lsub.o):
-    CODE              Offs=005F82  Size=000027  Align=00001  Fill=0000
+    CODE              Offs=0060A7  Size=000027  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(ltoa.o):
-    CODE              Offs=005FA9  Size=000095  Align=00001  Fill=0000
+    CODE              Offs=0060CE  Size=000095  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(ludiv.o):
-    CODE              Offs=00603E  Size=00007A  Align=00001  Fill=0000
+    CODE              Offs=006163  Size=00007A  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(lugt.o):
-    CODE              Offs=0060B8  Size=000006  Align=00001  Fill=0000
+    CODE              Offs=0061DD  Size=000006  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(lult.o):
-    CODE              Offs=0060BE  Size=000006  Align=00001  Fill=0000
+    CODE              Offs=0061E3  Size=000006  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(makebool.o):
-    CODE              Offs=0060C4  Size=00002C  Align=00001  Fill=0000
+    CODE              Offs=0061E9  Size=00002C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(memcpy.o):
-    CODE              Offs=0060F0  Size=00003C  Align=00001  Fill=0000
+    CODE              Offs=006215  Size=00003C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(mod.o):
-    CODE              Offs=00612C  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=006251  Size=000011  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(mul.o):
-    CODE              Offs=00613D  Size=000045  Align=00001  Fill=0000
+    CODE              Offs=006262  Size=000045  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(mul8.o):
-    CODE              Offs=006182  Size=00003A  Align=00001  Fill=0000
+    CODE              Offs=0062A7  Size=00003A  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(mulax10.o):
-    CODE              Offs=0061BC  Size=000019  Align=00001  Fill=0000
+    CODE              Offs=0062E1  Size=000019  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(mulax3.o):
-    CODE              Offs=0061D5  Size=000011  Align=00001  Fill=0000
+    CODE              Offs=0062FA  Size=000011  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(negabs.o):
-    CODE              Offs=0061E6  Size=000012  Align=00001  Fill=0000
+    CODE              Offs=00630B  Size=000012  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(oserror.o):
-    CODE              Offs=0061F8  Size=000016  Align=00001  Fill=0000
-    RODATA            Offs=0004A6  Size=00005A  Align=00001  Fill=0000
+    CODE              Offs=00631D  Size=000016  Align=00001  Fill=0000
+    RODATA            Offs=0004CF  Size=00005A  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(overlayaddr.o):
     OVL1ADDR          Offs=000000  Size=000002  Align=00001  Fill=0000
     OVL2ADDR          Offs=000000  Size=000002  Align=00001  Fill=0000
@@ -295,97 +293,97 @@ snes.o:
     OVL8ADDR          Offs=000000  Size=000002  Align=00001  Fill=0000
     OVL9ADDR          Offs=000000  Size=000002  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(popa.o):
-    CODE              Offs=00620E  Size=00000C  Align=00001  Fill=0000
+    CODE              Offs=006333  Size=00000C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(popptr1.o):
-    CODE              Offs=00621A  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=00633F  Size=00000E  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(printf.o):
-    CODE              Offs=006228  Size=000033  Align=00001  Fill=0000
+    CODE              Offs=00634D  Size=000033  Align=00001  Fill=0000
     BSS               Offs=000248  Size=000001  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(push1.o):
-    CODE              Offs=00625B  Size=000005  Align=00001  Fill=0000
+    CODE              Offs=006380  Size=000005  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(pusha.o):
-    CODE              Offs=006260  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=006385  Size=000016  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(pushax.o):
-    CODE              Offs=006276  Size=00001A  Align=00001  Fill=0000
+    CODE              Offs=00639B  Size=00001A  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(pushw.o):
-    CODE              Offs=006290  Size=00000F  Align=00001  Fill=0000
+    CODE              Offs=0063B5  Size=00000F  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(pushwsp.o):
-    CODE              Offs=00629F  Size=00001C  Align=00001  Fill=0000
+    CODE              Offs=0063C4  Size=00001C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(rand.o):
-    CODE              Offs=0062BB  Size=000034  Align=00001  Fill=0000
+    CODE              Offs=0063E0  Size=000034  Align=00001  Fill=0000
     DATA              Offs=0009F1  Size=000004  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(remove.o):
-    CODE              Offs=0062EF  Size=000006  Align=00001  Fill=0000
+    CODE              Offs=006414  Size=000006  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(return0.o):
-    CODE              Offs=0062F5  Size=000004  Align=00001  Fill=0000
+    CODE              Offs=00641A  Size=000004  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(rwcommon.o):
-    CODE              Offs=0062F9  Size=00001A  Align=00001  Fill=0000
+    CODE              Offs=00641E  Size=00001A  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(scratch.o):
-    CODE              Offs=006313  Size=000019  Align=00001  Fill=0000
+    CODE              Offs=006438  Size=000019  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(shelp.o):
-    CODE              Offs=00632C  Size=000020  Align=00001  Fill=0000
+    CODE              Offs=006451  Size=000020  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(shrax1.o):
-    CODE              Offs=00634C  Size=000008  Align=00001  Fill=0000
+    CODE              Offs=006471  Size=000008  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(shrax3.o):
-    CODE              Offs=006354  Size=00000E  Align=00001  Fill=0000
+    CODE              Offs=006479  Size=00000E  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(shreax1.o):
-    CODE              Offs=006362  Size=00000C  Align=00001  Fill=0000
+    CODE              Offs=006487  Size=00000C  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(shreax2.o):
-    CODE              Offs=00636E  Size=000013  Align=00001  Fill=0000
+    CODE              Offs=006493  Size=000013  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(sprintf.o):
-    CODE              Offs=006381  Size=00002B  Align=00001  Fill=0000
+    CODE              Offs=0064A6  Size=00002B  Align=00001  Fill=0000
     BSS               Offs=000249  Size=000001  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(staspidx.o):
-    CODE              Offs=0063AC  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=0064D1  Size=000016  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(status.o):
 /mnt/d/retro/cc65/lib/c128.lib(staxsp.o):
-    CODE              Offs=0063C2  Size=00000B  Align=00001  Fill=0000
+    CODE              Offs=0064E7  Size=00000B  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(steaxsp.o):
-    CODE              Offs=0063CD  Size=000015  Align=00001  Fill=0000
+    CODE              Offs=0064F2  Size=000015  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(steaxspi.o):
-    CODE              Offs=0063E2  Size=000022  Align=00001  Fill=0000
+    CODE              Offs=006507  Size=000022  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(strcat.o):
-    CODE              Offs=006404  Size=000031  Align=00001  Fill=0000
+    CODE              Offs=006529  Size=000031  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(strchr.o):
-    CODE              Offs=006435  Size=000027  Align=00001  Fill=0000
+    CODE              Offs=00655A  Size=000027  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(strlen.o):
-    CODE              Offs=00645C  Size=000016  Align=00001  Fill=0000
+    CODE              Offs=006581  Size=000016  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(strlower.o):
-    CODE              Offs=006472  Size=000027  Align=00001  Fill=0000
+    CODE              Offs=006597  Size=000027  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(sub.o):
-    CODE              Offs=006499  Size=000015  Align=00001  Fill=0000
+    CODE              Offs=0065BE  Size=000015  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(subeqsp.o):
-    CODE              Offs=0064AE  Size=000015  Align=00001  Fill=0000
+    CODE              Offs=0065D3  Size=000015  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(subysp.o):
-    CODE              Offs=0064C3  Size=00000D  Align=00001  Fill=0000
+    CODE              Offs=0065E8  Size=00000D  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(sysremove.o):
-    CODE              Offs=0064D0  Size=000009  Align=00001  Fill=0000
+    CODE              Offs=0065F5  Size=000009  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(toslong.o):
-    CODE              Offs=0064D9  Size=000038  Align=00001  Fill=0000
+    CODE              Offs=0065FE  Size=000038  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(udiv.o):
-    CODE              Offs=006511  Size=00004F  Align=00001  Fill=0000
+    CODE              Offs=006636  Size=00004F  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(vcprintf.o):
-    CODE              Offs=006560  Size=000078  Align=00001  Fill=0000
+    CODE              Offs=006685  Size=000078  Align=00001  Fill=0000
     DATA              Offs=0009F5  Size=000008  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(vfprintf.o):
-    CODE              Offs=0065D8  Size=000061  Align=00001  Fill=0000
+    CODE              Offs=0066FD  Size=000061  Align=00001  Fill=0000
     DATA              Offs=0009FD  Size=000008  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(videomode.o):
-    CODE              Offs=006639  Size=000013  Align=00001  Fill=0000
+    CODE              Offs=00675E  Size=000013  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(vsnprintf.o):
-    CODE              Offs=00664C  Size=0000DA  Align=00001  Fill=0000
+    CODE              Offs=006771  Size=0000DA  Align=00001  Fill=0000
     DATA              Offs=000A05  Size=000008  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(vsprintf.o):
-    CODE              Offs=006726  Size=000012  Align=00001  Fill=0000
+    CODE              Offs=00684B  Size=000012  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(write.o):
-    CODE              Offs=006738  Size=000054  Align=00001  Fill=0000
+    CODE              Offs=00685D  Size=000054  Align=00001  Fill=0000
     ONCE              Offs=00002B  Size=000011  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(zerobss.o):
-    CODE              Offs=00678C  Size=000023  Align=00001  Fill=0000
+    CODE              Offs=0068B1  Size=000023  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(zeropage.o):
     ZEROPAGE          Offs=000000  Size=00001A  Align=00001  Fill=0000
 /mnt/d/retro/cc65/lib/c128.lib(c128-stdjoy-joy.o):
-    CODE              Offs=0067AF  Size=00002F  Align=00001  Fill=0000
+    CODE              Offs=0068D4  Size=00002F  Align=00001  Fill=0000
     DATA              Offs=000A0D  Size=00000E  Align=00001  Fill=0000
 
 
@@ -399,12 +397,12 @@ LOADADDR              001BFF  001C00  000002  00001
 EXEHDR                001C01  001C0C  00000C  00001
 STARTUP               001C0D  001C5D  000051  00001
 ONCE                  001C5E  001C9F  000042  00001
-CODE                  001CA0  00847D  0067DE  00001
-RODATA                00847E  00897F  000502  00001
-DATA                  008980  00939A  000A1B  00001
+CODE                  001CA0  0085A2  006903  00001
+RODATA                0085A3  008ACD  00052B  00001
+DATA                  008ACE  0094E8  000A1B  00001
 CTXT                  008DBE  00939B  0005DE  00001
-INIT                  00939B  0093B7  00001D  00001
-BSS                   0093B8  009601  00024A  00001
+INIT                  0094E9  009505  00001D  00001
+BSS                   009506  00974F  00024A  00001
 OVL1ADDR              00AE3E  00AE3F  000002  00001
 OVL2ADDR              00AE3E  00AE3F  000002  00001
 OVL3ADDR              00AE3E  00AE3F  000002  00001
@@ -415,14 +413,14 @@ OVL7ADDR              00AE3E  00AE3F  000002  00001
 OVL8ADDR              00AE3E  00AE3F  000002  00001
 OVL9ADDR              00AE3E  00AE3F  000002  00001
 OVERLAY1              00AE40  00BF67  001128  00001
-OVERLAY2              00AE40  00BE9F  001060  00001
+OVERLAY2              00AE40  00BE9C  00105D  00001
 OVERLAY3              00AE40  00BF4A  00110B  00001
-OVERLAY4              00AE40  00BF2F  0010F0  00001
-OVERLAY5              00AE40  00BF5C  00111D  00001
+OVERLAY4              00AE40  00BF34  0010F5  00001
+OVERLAY5              00AE40  00BF7C  00113D  00001
 OVERLAY6              00AE40  00B887  000A48  00001
 OVERLAY7              00AE40  00BEB8  001079  00001
 OVERLAY8              00AE40  00BE83  001044  00001
-OVERLAY9              00AE40  00BC50  000E11  00001
+OVERLAY9              00AE40  00BC90  000E51  00001
 
 
 Exports list by name:
@@ -435,27 +433,27 @@ LOAD                      00FFD5 RLA    OPEN                      00FFC0 RLA
 RDTIM                     00FFDE RLA    READST                    00FFB7 RLA    
 SAVE                      00FFD8 RLA    SETLFS                    00FFBA RLA    
 SETNAM                    00FFBD RLA    ST                        000090 RLZ    
-SWAPPER                   00FF5F RLA    _BankMemCopy              006F86 RLA    
+SWAPPER                   00FF5F RLA    _BankMemCopy              0070B2 RLA    
 _BankMemCopy_core         0016EC RLA    _BankMemSet_core          00174D RLA    
-_LoadMusic                001852 RLA    _PEEKB                    006F5F RLA    
-_PEEKB_core               0016D4 RLA    _POKEB                    006F38 RLA    
+_LoadMusic                001852 RLA    _PEEKB                    00708B RLA    
+_PEEKB_core               0016D4 RLA    _POKEB                    007064 RLA    
 _POKEB_core               0016BC RLA    _PlayMusic                001785 RLA    
-_SNES                     0095AE RLA    _SetLoadSaveBank          006F28 RLA    
+_SNES                     0096FC RLA    _SetLoadSaveBank          007054 RLA    
 _SetLoadSaveBank_core     0016B3 RLA    _StopMusic                0017D6 RLA    
-_VDC_CopyMemToVDC         0063A2 RLA    _VDC_CopyMemToVDC_core    0014E0 RLA    
-_VDC_CopyVDCToMem         0063EC RLA    _VDC_CopyVDCToMem_core    001523 RLA    
-_VDC_CopyViewPortToVDC    0069DA RLA    _VDC_CopyViewPortToVDC_core 0015EB RLA    
-_VDC_DetectVDCMemSize_core 001396 RLA    _VDC_Exit                 00656A RLA    
-_VDC_FillArea             00646D RLA    _VDC_FillArea_core        0015D1 RLA    
-_VDC_HChar                006327 RLA    _VDC_HChar_core           001444 RLA    
-_VDC_Init                 0064B3 RLA    _VDC_LoadCharset          0067C1 RLA    
-_VDC_LoadScreen           00685A RLA    _VDC_MemCopy_core         0013FD RLA    
-_VDC_Peek_core            00137E RLA    _VDC_PetsciiToScreenCode  006584 RLA    
-_VDC_Plot                 006954 RLA    _VDC_PlotString           00698C RLA    
-_VDC_Poke_core            001366 RLA    _VDC_PrintAt              00673D RLA    
+_VDC_CopyMemToVDC         0064CE RLA    _VDC_CopyMemToVDC_core    0014E0 RLA    
+_VDC_CopyVDCToMem         006518 RLA    _VDC_CopyVDCToMem_core    001523 RLA    
+_VDC_CopyViewPortToVDC    006B06 RLA    _VDC_CopyViewPortToVDC_core 0015EB RLA    
+_VDC_DetectVDCMemSize_core 001396 RLA    _VDC_Exit                 006696 RLA    
+_VDC_FillArea             006599 RLA    _VDC_FillArea_core        0015D1 RLA    
+_VDC_HChar                006453 RLA    _VDC_HChar_core           001444 RLA    
+_VDC_Init                 0065DF RLA    _VDC_LoadCharset          0068ED RLA    
+_VDC_LoadScreen           006986 RLA    _VDC_MemCopy_core         0013FD RLA    
+_VDC_Peek_core            00137E RLA    _VDC_PetsciiToScreenCode  0066B0 RLA    
+_VDC_Plot                 006A80 RLA    _VDC_PlotString           006AB8 RLA    
+_VDC_Poke_core            001366 RLA    _VDC_PrintAt              006869 RLA    
 _VDC_ReadRegister_core    001352 RLA    _VDC_RedefineCharset_core 001573 RLA    
-_VDC_ScrollCopy           006AD6 RLA    _VDC_ScrollCopy_core      001654 RLA    
-_VDC_VChar                006366 RLA    _VDC_VChar_core           001496 RLA    
+_VDC_ScrollCopy           006C02 RLA    _VDC_ScrollCopy_core      001654 RLA    
+_VDC_VChar                006492 RLA    _VDC_VChar_core           001496 RLA    
 _VDC_WriteRegister_core   00135C RLA    _VDC_addrh                001302 RLA    
 _VDC_addrl                001303 RLA    _VDC_desth                001304 RLA    
 _VDC_destl                001305 RLA    _VDC_regadd               001300 RLA    
@@ -463,30 +461,30 @@ _VDC_regval               001301 RLA    _VDC_strideh              001306 RLA
 _VDC_stridel              001307 RLA    _VDC_tmp1                 001309 RLA    
 _VDC_tmp2                 00130A RLA    _VDC_tmp3                 00130B RLA    
 _VDC_tmp4                 00130C RLA    _VDC_value                001308 RLA    
-__BSS_RUN__               0093B8 RLA    __BSS_SIZE__              00024A REA    
+__BSS_RUN__               009506 RLA    __BSS_SIZE__              00024A REA    
 __CONSTRUCTOR_COUNT__     000003 REA    __CONSTRUCTOR_TABLE__     001C9A RLA    
-__DESTRUCTOR_COUNT__      000001 REA    __DESTRUCTOR_TABLE__      00897E RLA    
+__DESTRUCTOR_COUNT__      000001 REA    __DESTRUCTOR_TABLE__      008ACC RLA    
 __EXEHDR__                000001 REA    __LOADADDR__              000001 REA    
 __MAIN_SIZE__             008A33 REA    __MAIN_START__            001C0D RLA    
 __OVERLAYADDR__           000001 REA    __OVERLAYSIZE__           0011C0 REA    
 __STACKSIZE__             000800 REA    __STARTUP__               000001 REA    
-__ctype                   008895 RLA    __ctypeidx                0088A0 RLA    
-__directerrno             007012 RLA    __errno                   0095F7 RLA    
-__filetype                009364 RLA    __hextab                  008879 RLA    
-__longminstr              008889 RLA    __mappederrno             00701C RLA    
-__oserror                 0095B1 RLA    __osmaperrno              007E98 RLA    
-__printf                  00711F RLA    __seterrno                0073D1 RLA    
-__sysremove               008170 RLA    _alldirections            008D80 RLA    
-_anotherturn              0095A7 RLA    _bgcolor                  00760E RLA    
-_board_reposition         0035B1 RLA    _board_scroll             00BC6F RLA    
-_bootdevice               0093F7 RLA    _bordercolor              007634 RLA    
-_buffer                   009420 RLA    _c128_stdjoy_joy          00938D RLA    
-_card_selectopportunity   004852 RLA    _cards_actiontext         004977 RLA    
+__ctype                   0089E3 RLA    __ctypeidx                0089EE RLA    
+__directerrno             00713E RLA    __errno                   009745 RLA    
+__filetype                0094B2 RLA    __hextab                  0089C7 RLA    
+__longminstr              0089D7 RLA    __mappederrno             007148 RLA    
+__oserror                 0096FF RLA    __osmaperrno              007FBD RLA    
+__printf                  00724B RLA    __seterrno                0074FD RLA    
+__sysremove               008295 RLA    _alldirections            008ECE RLA    
+_anotherturn              0096F5 RLA    _bgcolor                  00773A RLA    
+_board_reposition         003594 RLA    _board_scroll             00BC6F RLA    
+_bootdevice               009545 RLA    _bordercolor              007760 RLA    
+_buffer                   00956E RLA    _c128_stdjoy_joy          0094DB RLA    
+_card_selectopportunity   004874 RLA    _cards_actiontext         004999 RLA    
 _cards_show               00B1C0 RLA    _cards_useexperience      00AF17 RLA    
-_cards_useopportunity     00AFFF RLA    _career                   008E09 RLA    
-_career_endofcareer       00B905 RLA    _career_generic           00B0CF RLA    
+_cards_useopportunity     00AFFF RLA    _career                   008F57 RLA    
+_career_endofcareer       00B925 RLA    _career_generic           00B0CF RLA    
 _career_getexperiencecard 00B249 RLA    _career_getfame           00B7CC RLA    
-_career_getfamebuthospital 00B7EB RLA    _career_getfamenohappiness 00B40D RLA    
+_career_getfamebuthospital 00B80B RLA    _career_getfamenohappiness 00B40D RLA    
 _career_gethappiness      00B18D RLA    _career_gethappinessandfame 00B449 RLA    
 _career_getmoney          00B671 RLA    _career_getmoneyandfame   00B238 RLA    
 _career_getmoneytimesdie  00B355 RLA    _career_getopportunitycard 00AFC1 RLA    
@@ -496,142 +494,142 @@ _career_looaseallcash     00B637 RLA    _career_looseallfame      00B605 RLA
 _career_loosehalffame     00B38E RLA    _career_loosehalfmoney    00B715 RLA    
 _career_loosehalfsalary   00B1B3 RLA    _career_loosemoneyorparkbench 00B67B RLA    
 _career_skipturn          00B79A RLA    _career_throwagain        00B5E9 RLA    
-_career_waitforkey        00B180 RLA    _careerfield              008EC1 RLA    
-_cbm_close                00747E REA    _cbm_k_close              00747E RLA    
-_cbm_k_load               007482 RLA    _cbm_k_open               00749F RLA    
-_cbm_k_save               0074A8 RLA    _cbm_k_setlfs             0074BE RLA    
-_cbm_k_setnam             0074CC RLA    _cbm_load                 0074F6 RLA    
-_cbm_open                 00753A RLA    _cbm_read                 007550 RLA    
-_cgetc                    0075AB RLA    _checkforbump_check       005652 RLA    
-_clock                    0075DB RLA    _clrscr                   00C142 REA    
-_computer_hospitalparkbench 00BC16 RLA    _computer_playexperiencecards 00B80D RLA    
-_computer_playopportunitycards 00B784 RLA    _cprintf                  007651 RLA    
-_cputc                    007680 RLA    _cputs                    0076CE RLA    
-_cputsxy                  0076C4 RLA    _dice_throw               0045DD RLA    
-_dice_total               0095AC RLA    _exit                     001C42 RLA    
-_fieldinformation         0092CE RLA    _fileerrormessage         0033E5 RLA    
-_fwrite                   0078EB RLA    _gameendflag              0095A6 RLA    
-_getcurrentdevice         007705 RLA    _getkey                   002076 RLA    
-_gotoxy                   007969 RLA    _information_colorlegend  00B98E RLA    
+_career_waitforkey        00B180 RLA    _careerfield              00900F RLA    
+_cbm_close                0075AA REA    _cbm_k_close              0075AA RLA    
+_cbm_k_load               0075AE RLA    _cbm_k_open               0075CB RLA    
+_cbm_k_save               0075D4 RLA    _cbm_k_setlfs             0075EA RLA    
+_cbm_k_setnam             0075F8 RLA    _cbm_load                 007622 RLA    
+_cbm_open                 007666 RLA    _cbm_read                 00767C RLA    
+_cgetc                    0076D7 RLA    _checkforbump_check       005674 RLA    
+_clock                    007707 RLA    _clrscr                   00C142 REA    
+_computer_hospitalparkbench 00BC36 RLA    _computer_playexperiencecards 00B84D RLA    
+_computer_playopportunitycards 00B784 RLA    _cprintf                  00777D RLA    
+_cputc                    0077AC RLA    _cputs                    0077FA RLA    
+_cputsxy                  0077F0 RLA    _dice_throw               0045FF RLA    
+_dice_total               0096FA RLA    _exit                     001C42 RLA    
+_fieldinformation         00941C RLA    _fileerrormessage         0033C8 RLA    
+_fwrite                   007A10 RLA    _gameendflag              0096F4 RLA    
+_getcurrentdevice         007831 RLA    _getkey                   002059 RLA    
+_gotoxy                   007A8E RLA    _information_colorlegend  00B98E RLA    
 _information_credits      00BC00 RLA    _information_gamescore    00B4EC RLA    
-_input                    0021C1 RLA    _input_number             002682 RLA    
-_isprint                  007A0E RLA    _joy_install              007A18 RLA    
-_joy_read                 00936E REA    _joy_static_stddrv        00938D RLA    
-_joy_uninstall            007A58 RLA    _joyinterface             008D87 RLA    
-_kbhit                    007A65 RLA    _loadgame                 00B60F RLA    
-_ltoa                     007C61 RLA    _main                     005B0C RLA    
-_memcpy                   007D90 RLA    _menumakeborder           002949 RLA    
-_menupulldown             002B43 RLA    _musicnext                00BE31 RLA    
-_musicnumber              008D86 RLA    _opportunitycard          009241 RLA    
-_paidforleave             0095AA RLA    _pawn_erase               003A48 RLA    
-_pawn_place               00368A RLA    _player                   009487 RLA    
-_player_collegeexperience 0047B6 RLA    _playerturn               0095A8 RLA    
-_presskeyprompt           002740 RLA    _printcentered            002030 RLA    
-_printf                   007EC8 RLA    _pulldownmenutitles       0089D2 RLA    
-_rand                     007F67 RLA    _receive_salary           00BDE8 RLA    
-_remove                   007F8F RLA    _ring                     008D89 RLA    
+_input                    0021A4 RLA    _input_number             002665 RLA    
+_isprint                  007B33 RLA    _joy_install              007B3D RLA    
+_joy_read                 0094BC REA    _joy_static_stddrv        0094DB RLA    
+_joy_uninstall            007B7D RLA    _joyinterface             008ED5 RLA    
+_kbhit                    007B8A RLA    _loadgame                 00B60F RLA    
+_ltoa                     007D86 RLA    _main                     005C15 RLA    
+_memcpy                   007EB5 RLA    _menumakeborder           00292C RLA    
+_menupulldown             002B26 RLA    _musicnext                00BE31 RLA    
+_musicnumber              008ED4 RLA    _opportunitycard          00938F RLA    
+_paidforleave             0096F8 RLA    _pawn_erase               003A2B RLA    
+_pawn_place               00366D RLA    _player                   0095D5 RLA    
+_player_collegeexperience 0047D8 RLA    _playerturn               0096F6 RLA    
+_presskeyprompt           002723 RLA    _printcentered            001DCA RLA    
+_printf                   007FED RLA    _pulldownmenutitles       008B20 RLA    
+_rand                     00808C RLA    _receive_salary           00BDE5 RLA    
+_remove                   0080B4 RLA    _ring                     008ED7 RLA    
 _ring_artgallery          00B46D RLA    _ring_automobileshow      00B7F7 RLA    
 _ring_business            00B2C8 RLA    _ring_college             00BBFE RLA    
 _ring_farming             00B60E RLA    _ring_floridavacation     00B6A8 RLA    
 _ring_hollywood           00B50A RLA    _ring_hospital            00BE96 RLA    
-_ring_leavefloridavacation 00BCD5 RLA    _ring_leavehospital       00B949 RLA    
-_ring_leaveparkbench      00BB8E RLA    _ring_moon                00B970 RLA    
-_ring_opportunity         00B2DE RLA    _ring_parkbench           00B888 RLA    
+_ring_leavefloridavacation 00BCD2 RLA    _ring_leavehospital       00B946 RLA    
+_ring_leaveparkbench      00BB8B RLA    _ring_moon                00B975 RLA    
+_ring_opportunity         00B2DE RLA    _ring_parkbench           00B885 RLA    
 _ring_payday              00B1EA RLA    _ring_payfoodbills        00B1E6 RLA    
 _ring_payrent             00B0B3 RLA    _ring_paytaxes            00B3E9 RLA    
-_ring_politics            00B1CE RLA    _ring_sea                 00B6EF RLA    
-_ring_shoppingspree       00B388 RLA    _ring_statueinthepark     00BB36 RLA    
-_ring_stockmarket         00B0F4 RLA    _ring_uranium             00B3B0 RLA    
-_ring_yachtharbor         00B576 RLA    _saveconfigfile           00343E RLA    
-_savegame                 00AEDD RLA    _set_c128_speed           0073DA RLA    
+_ring_politics            00B1CE RLA    _ring_sea                 00B6EC RLA    
+_ring_shoppingspree       00B388 RLA    _ring_statueinthepark     00BB3B RLA    
+_ring_stockmarket         00B0F9 RLA    _ring_uranium             00B3B5 RLA    
+_ring_yachtharbor         00B57B RLA    _saveconfigfile           003421 RLA    
+_savegame                 00AEDD RLA    _set_c128_speed           007506 RLA    
 _snes_init                001885 RLA    _snes_read                00188B RLA    
-_sprintf                  008021 RLA    _srand                    007F5B RLA    
-_stdout                   009300 RLA    _strcat                   0080A4 RLA    
-_strchr                   0080D5 RLA    _strlen                   0080FC RLA    
-_strlower                 008112 RLA    _textcolor                0075E5 RLA    
-_ultoa                    007CA2 RLA    _updownenter              008D79 RLA    
-_vcprintf                 008248 RLA    _vfprintf                 0082B0 RLA    
-_videomode                0082D9 RLA    _vsprintf                 0083C6 RLA    
-_waitkeyflag              0095A9 RLA    _whichcard                009593 RLA    
-_windowrestore            00285A RLA    _write                    0083D8 RLA    
-_xoffset                  0092D0 RLA    _yoffset                  0092D1 RLA    
-addeq0sp                  007406 RLA    addeqysp                  007408 RLA    
-addysp                    007418 RLA    addysp1                   007417 RLA    
-aslax2                    00742D RLA    aslax3                    007438 RLA    
-axlong                    007463 RLA    axulong                   007469 RLA    
-bnega                     007474 RLA    bnegeax                   007ADA RLA    
-booleq                    007D6A RLA    boolugt                   007D89 RLA    
-boolult                   007D83 RLA    callmain                  0074DF RLA    
-closecmdchannel           0077AF RLA    ctypemask                 0076E7 RLA    
-ctypemaskdirect           0076EB RLA    cursor                    0095B0 RLA    
-curunit                   0093B7 RLA    decax1                    00770B RLA    
-decax3                    007712 RLA    decaxy                    007719 RLA    
-deceaxy                   007B66 RLA    decsp1                    007722 RLA    
-decsp2                    00772B RLA    decsp3                    007738 RLA    
-decsp4                    007745 RLA    decsp5                    007752 RLA    
-decsp6                    00775F RLA    decsp8                    00776C RLA    
-devnum                    0000BA RLZ    donecgetc                 0075CC  LAI   
-donelib                   007645 RLA    fdtab                     009330 RLA    
-fncmd                     009340 RLA    fnlen                     0095FA RLA    
-fnparse                   007866 RLA    fnunit                    0095F9 RLA    
-gotoxy                    007966 RLA    incax1                    0079A1 RLA    
-incax2                    0079A8 RLA    incax3                    0079AF RLA    
-incax4                    0079C8 RLA    incax5                    0079B4 RLA    
-incax6                    0079B9 RLA    incax7                    0079BE RLA    
-incax8                    0079C3 RLA    incaxy                    0079CA RLA    
-incsp1                    0079D3 RLA    incsp2                    0079E2 RLA    
-incsp3                    0079F0 RLA    incsp4                    0079F5 RLA    
-incsp5                    0079FA RLA    incsp6                    0079FF RLA    
-incsp7                    007A04 RLA    incsp8                    007A09 RLA    
-initcgetc                 001C5E  LAI   initcurunit               001C7D  LAI   
-initlib                   001C71 RLA    initstdout                001C89  LAI   
-joy_libref                001C42 RLA    joy_read                  00936E RLA    
-laddeqysp                 007A95 RLA    ldax0sp                   007B33 RLA    
-ldaxi                     007B26 RLA    ldaxysp                   007B35 RLA    
-ldeax0sp                  007B53 RLA    ldeaxidx                  007B3E RLA    
-ldeaxysp                  007B55 RLA    leaa0sp                   007B7B RLA    
-leaaxsp                   007B7D RLA    mul8x16                   007E24 RLA    
-mul8x16a                  007E2E RLA    mulax10                   007E5C RLA    
-mulax3                    007E75 RLA    negax                     007E8A RLA    
-negeax                    007BE3 RLA    opencmdchannel            007782 RLA    
-plot                      0076BC RLA    popa                      007EAE RLA    
-popax                     0079DA RLA    popptr1                   007EBA RLA    
-popsargsudiv16            007FCC RLA    ptr1                      00000A RLZ    
-ptr2                      00000C RLZ    ptr3                      00000E RLZ    
-ptr4                      000010 RLZ    push0                     007F16 RLA    
-push1                     007EFB RLA    pusha                     007F04 RLA    
-pusha0                    007F18 RLA    pushax                    007F1A RLA    
-pusheax                   007C0A RLA    pushl0                    007C01 RLA    
-pushw0sp                  007F3F RLA    pushwidx                  007F32 RLA    
-pushwysp                  007F41 RLA    regbank                   000016 RLZ    
-return0                   007F95 RLA    rwcommon                  007F99 RLA    
-scratch                   007FB3 RLA    shlax1                    007425 RLA    
-shlax2                    00742D RLA    shlax3                    007438 RLA    
-shlax4                    007446 RLA    shleax1                   007457 RLA    
-shrax1                    007FEC RLA    shrax3                    007FF4 RLA    
-shreax1                   008002 RLA    shreax2                   00800E RLA    
-sp                        000002 RLZ    sreg                      000004 RLZ    
-staspidx                  00804C RLA    stax0sp                   008062 RLA    
-staxysp                   008064 RLA    steax0sp                  00806D RLA    
-steaxspidx                008082 RLA    steaxysp                  00806F RLA    
-subeq0sp                  00814E RLA    subeqysp                  008150 RLA    
-subysp                    008163 RLA    tmp1                      000012 RLZ    
-tmp2                      000013 RLZ    tmp3                      000014 RLZ    
-tmp4                      000015 RLZ    tosadd0ax                 007A6E RLA    
-tosadda0                  0073EA RLA    tosaddax                  0073EC RLA    
-tosaddeax                 007A74 RLA    tosandeax                 007ABC RLA    
-tosicmp                   007975 RLA    tosicmp0                  007973 RLA    
-toslcmp                   007AEB RLA    toslong                   008197 RLA    
-tosmoda0                  007DCC RLA    tosmula0                  007E22 RLA    
-tosmulax                  007DDD RLA    tossub0ax                 007C22 RLA    
-tossuba0                  008139 RLA    tossubax                  00813B RLA    
-tossubeax                 007C28 RLA    tosudiv0ax                007CDE RLA    
-tosudivax                 0081B3 RLA    tosugteax                 007D58 RLA    
-tosulteax                 007D5E RLA    tosumul0ax                007B87 RLA    
-tosumula0                 007E22 RLA    tosumulax                 007DDD RLA    
-tosumuleax                007B8D RLA    udiv16                    0081C2 RLA    
-vsnprintf                 0082EF RLA    writefndiskcmd            007802 RLA    
-zerobss                   00842C RLA    
+_sprintf                  008146 RLA    _srand                    008080 RLA    
+_stdout                   00944E RLA    _strcat                   0081C9 RLA    
+_strchr                   0081FA RLA    _strlen                   008221 RLA    
+_strlower                 008237 RLA    _textcolor                007711 RLA    
+_ultoa                    007DC7 RLA    _updownenter              008EC7 RLA    
+_vcprintf                 00836D RLA    _vfprintf                 0083D5 RLA    
+_videomode                0083FE RLA    _vsprintf                 0084EB RLA    
+_waitkeyflag              0096F7 RLA    _whichcard                0096E1 RLA    
+_windowrestore            00283D RLA    _write                    0084FD RLA    
+_xoffset                  00941E RLA    _yoffset                  00941F RLA    
+addeq0sp                  007532 RLA    addeqysp                  007534 RLA    
+addysp                    007544 RLA    addysp1                   007543 RLA    
+aslax2                    007559 RLA    aslax3                    007564 RLA    
+axlong                    00758F RLA    axulong                   007595 RLA    
+bnega                     0075A0 RLA    bnegeax                   007BFF RLA    
+booleq                    007E8F RLA    boolugt                   007EAE RLA    
+boolult                   007EA8 RLA    callmain                  00760B RLA    
+closecmdchannel           0078D4 RLA    ctypemask                 007813 RLA    
+ctypemaskdirect           007817 RLA    cursor                    0096FE RLA    
+curunit                   009505 RLA    decax1                    007837 RLA    
+decaxy                    00783E RLA    deceaxy                   007C8B RLA    
+decsp1                    007847 RLA    decsp2                    007850 RLA    
+decsp3                    00785D RLA    decsp4                    00786A RLA    
+decsp5                    007877 RLA    decsp6                    007884 RLA    
+decsp8                    007891 RLA    devnum                    0000BA RLZ    
+donecgetc                 0076F8  LAI   donelib                   007771 RLA    
+fdtab                     00947E RLA    fncmd                     00948E RLA    
+fnlen                     009748 RLA    fnparse                   00798B RLA    
+fnunit                    009747 RLA    gotoxy                    007A8B RLA    
+incax1                    007AC6 RLA    incax2                    007ACD RLA    
+incax3                    007AD4 RLA    incax4                    007AED RLA    
+incax5                    007AD9 RLA    incax6                    007ADE RLA    
+incax7                    007AE3 RLA    incax8                    007AE8 RLA    
+incaxy                    007AEF RLA    incsp1                    007AF8 RLA    
+incsp2                    007B07 RLA    incsp3                    007B15 RLA    
+incsp4                    007B1A RLA    incsp5                    007B1F RLA    
+incsp6                    007B24 RLA    incsp7                    007B29 RLA    
+incsp8                    007B2E RLA    initcgetc                 001C5E  LAI   
+initcurunit               001C7D  LAI   initlib                   001C71 RLA    
+initstdout                001C89  LAI   joy_libref                001C42 RLA    
+joy_read                  0094BC RLA    laddeqysp                 007BBA RLA    
+ldax0sp                   007C58 RLA    ldaxi                     007C4B RLA    
+ldaxysp                   007C5A RLA    ldeax0sp                  007C78 RLA    
+ldeaxidx                  007C63 RLA    ldeaxysp                  007C7A RLA    
+leaa0sp                   007CA0 RLA    leaaxsp                   007CA2 RLA    
+mul8x16                   007F49 RLA    mul8x16a                  007F53 RLA    
+mulax10                   007F81 RLA    mulax3                    007F9A RLA    
+negax                     007FAF RLA    negeax                    007D08 RLA    
+opencmdchannel            0078A7 RLA    plot                      0077E8 RLA    
+popa                      007FD3 RLA    popax                     007AFF RLA    
+popptr1                   007FDF RLA    popsargsudiv16            0080F1 RLA    
+ptr1                      00000A RLZ    ptr2                      00000C RLZ    
+ptr3                      00000E RLZ    ptr4                      000010 RLZ    
+push0                     00803B RLA    push1                     008020 RLA    
+pusha                     008029 RLA    pusha0                    00803D RLA    
+pushax                    00803F RLA    pusheax                   007D2F RLA    
+pushl0                    007D26 RLA    pushw0sp                  008064 RLA    
+pushwidx                  008057 RLA    pushwysp                  008066 RLA    
+regbank                   000016 RLZ    return0                   0080BA RLA    
+rwcommon                  0080BE RLA    scratch                   0080D8 RLA    
+shlax1                    007551 RLA    shlax2                    007559 RLA    
+shlax3                    007564 RLA    shlax4                    007572 RLA    
+shleax1                   007583 RLA    shrax1                    008111 RLA    
+shrax3                    008119 RLA    shreax1                   008127 RLA    
+shreax2                   008133 RLA    sp                        000002 RLZ    
+sreg                      000004 RLZ    staspidx                  008171 RLA    
+stax0sp                   008187 RLA    staxysp                   008189 RLA    
+steax0sp                  008192 RLA    steaxspidx                0081A7 RLA    
+steaxysp                  008194 RLA    subeq0sp                  008273 RLA    
+subeqysp                  008275 RLA    subysp                    008288 RLA    
+tmp1                      000012 RLZ    tmp2                      000013 RLZ    
+tmp3                      000014 RLZ    tmp4                      000015 RLZ    
+tosadd0ax                 007B93 RLA    tosadda0                  007516 RLA    
+tosaddax                  007518 RLA    tosaddeax                 007B99 RLA    
+tosandeax                 007BE1 RLA    tosicmp                   007A9A RLA    
+tosicmp0                  007A98 RLA    toslcmp                   007C10 RLA    
+toslong                   0082BC RLA    tosmoda0                  007EF1 RLA    
+tosmula0                  007F47 RLA    tosmulax                  007F02 RLA    
+tossub0ax                 007D47 RLA    tossuba0                  00825E RLA    
+tossubax                  008260 RLA    tossubeax                 007D4D RLA    
+tosudiv0ax                007E03 RLA    tosudivax                 0082D8 RLA    
+tosugteax                 007E7D RLA    tosulteax                 007E83 RLA    
+tosumul0ax                007CAC RLA    tosumula0                 007F47 RLA    
+tosumulax                 007F02 RLA    tosumuleax                007CB2 RLA    
+udiv16                    0082E7 RLA    vsnprintf                 008414 RLA    
+writefndiskcmd            007927 RLA    zerobss                   008551 RLA    
+
 
 
 Exports list by value:
@@ -670,177 +668,177 @@ _snes_read                00188B RLA    __MAIN_START__            001C0D RLA
 _exit                     001C42 RLA    joy_libref                001C42 RLA    
 initcgetc                 001C5E  LAI   initlib                   001C71 RLA    
 initcurunit               001C7D  LAI   initstdout                001C89  LAI   
-__CONSTRUCTOR_TABLE__     001C9A RLA    _printcentered            002030 RLA    
-_getkey                   002076 RLA    _input                    0021C1 RLA    
-_input_number             002682 RLA    _presskeyprompt           002740 RLA    
-_windowrestore            00285A RLA    _menumakeborder           002949 RLA    
-_menupulldown             002B43 RLA    _fileerrormessage         0033E5 RLA    
-_saveconfigfile           00343E RLA    _board_reposition         0035B1 RLA    
-_pawn_place               00368A RLA    _pawn_erase               003A48 RLA    
-_dice_throw               0045DD RLA    _player_collegeexperience 0047B6 RLA    
-_card_selectopportunity   004852 RLA    _cards_actiontext         004977 RLA    
-_checkforbump_check       005652 RLA    _main                     005B0C RLA    
-_VDC_HChar                006327 RLA    _VDC_VChar                006366 RLA    
-_VDC_CopyMemToVDC         0063A2 RLA    _VDC_CopyVDCToMem         0063EC RLA    
-_VDC_FillArea             00646D RLA    _VDC_Init                 0064B3 RLA    
-_VDC_Exit                 00656A RLA    _VDC_PetsciiToScreenCode  006584 RLA    
-_VDC_PrintAt              00673D RLA    _VDC_LoadCharset          0067C1 RLA    
-_VDC_LoadScreen           00685A RLA    _VDC_Plot                 006954 RLA    
-_VDC_PlotString           00698C RLA    _VDC_CopyViewPortToVDC    0069DA RLA    
-_VDC_ScrollCopy           006AD6 RLA    _SetLoadSaveBank          006F28 RLA    
-_POKEB                    006F38 RLA    _PEEKB                    006F5F RLA    
-_BankMemCopy              006F86 RLA    __directerrno             007012 RLA    
-__mappederrno             00701C RLA    __printf                  00711F RLA    
-__seterrno                0073D1 RLA    _set_c128_speed           0073DA RLA    
-tosadda0                  0073EA RLA    tosaddax                  0073EC RLA    
-addeq0sp                  007406 RLA    addeqysp                  007408 RLA    
-addysp1                   007417 RLA    addysp                    007418 RLA    
-shlax1                    007425 RLA    aslax2                    00742D RLA    
-shlax2                    00742D RLA    aslax3                    007438 RLA    
-shlax3                    007438 RLA    shlax4                    007446 RLA    
-shleax1                   007457 RLA    axlong                    007463 RLA    
-axulong                   007469 RLA    bnega                     007474 RLA    
-_cbm_close                00747E REA    _cbm_k_close              00747E RLA    
-_cbm_k_load               007482 RLA    _cbm_k_open               00749F RLA    
-_cbm_k_save               0074A8 RLA    _cbm_k_setlfs             0074BE RLA    
-_cbm_k_setnam             0074CC RLA    callmain                  0074DF RLA    
-_cbm_load                 0074F6 RLA    _cbm_open                 00753A RLA    
-_cbm_read                 007550 RLA    _cgetc                    0075AB RLA    
-donecgetc                 0075CC  LAI   _clock                    0075DB RLA    
-_textcolor                0075E5 RLA    _bgcolor                  00760E RLA    
-_bordercolor              007634 RLA    donelib                   007645 RLA    
-_cprintf                  007651 RLA    _cputc                    007680 RLA    
-plot                      0076BC RLA    _cputsxy                  0076C4 RLA    
-_cputs                    0076CE RLA    ctypemask                 0076E7 RLA    
-ctypemaskdirect           0076EB RLA    _getcurrentdevice         007705 RLA    
-decax1                    00770B RLA    decax3                    007712 RLA    
-decaxy                    007719 RLA    decsp1                    007722 RLA    
-decsp2                    00772B RLA    decsp3                    007738 RLA    
-decsp4                    007745 RLA    decsp5                    007752 RLA    
-decsp6                    00775F RLA    decsp8                    00776C RLA    
-opencmdchannel            007782 RLA    closecmdchannel           0077AF RLA    
-writefndiskcmd            007802 RLA    fnparse                   007866 RLA    
-_fwrite                   0078EB RLA    gotoxy                    007966 RLA    
-_gotoxy                   007969 RLA    tosicmp0                  007973 RLA    
-tosicmp                   007975 RLA    incax1                    0079A1 RLA    
-incax2                    0079A8 RLA    incax3                    0079AF RLA    
-incax5                    0079B4 RLA    incax6                    0079B9 RLA    
-incax7                    0079BE RLA    incax8                    0079C3 RLA    
-incax4                    0079C8 RLA    incaxy                    0079CA RLA    
-incsp1                    0079D3 RLA    popax                     0079DA RLA    
-incsp2                    0079E2 RLA    incsp3                    0079F0 RLA    
-incsp4                    0079F5 RLA    incsp5                    0079FA RLA    
-incsp6                    0079FF RLA    incsp7                    007A04 RLA    
-incsp8                    007A09 RLA    _isprint                  007A0E RLA    
-_joy_install              007A18 RLA    _joy_uninstall            007A58 RLA    
-_kbhit                    007A65 RLA    tosadd0ax                 007A6E RLA    
-tosaddeax                 007A74 RLA    laddeqysp                 007A95 RLA    
-tosandeax                 007ABC RLA    bnegeax                   007ADA RLA    
-toslcmp                   007AEB RLA    ldaxi                     007B26 RLA    
-ldax0sp                   007B33 RLA    ldaxysp                   007B35 RLA    
-ldeaxidx                  007B3E RLA    ldeax0sp                  007B53 RLA    
-ldeaxysp                  007B55 RLA    deceaxy                   007B66 RLA    
-leaa0sp                   007B7B RLA    leaaxsp                   007B7D RLA    
-tosumul0ax                007B87 RLA    tosumuleax                007B8D RLA    
-negeax                    007BE3 RLA    pushl0                    007C01 RLA    
-pusheax                   007C0A RLA    tossub0ax                 007C22 RLA    
-tossubeax                 007C28 RLA    _ltoa                     007C61 RLA    
-_ultoa                    007CA2 RLA    tosudiv0ax                007CDE RLA    
-tosugteax                 007D58 RLA    tosulteax                 007D5E RLA    
-booleq                    007D6A RLA    boolult                   007D83 RLA    
-boolugt                   007D89 RLA    _memcpy                   007D90 RLA    
-tosmoda0                  007DCC RLA    tosmulax                  007DDD RLA    
-tosumulax                 007DDD RLA    tosmula0                  007E22 RLA    
-tosumula0                 007E22 RLA    mul8x16                   007E24 RLA    
-mul8x16a                  007E2E RLA    mulax10                   007E5C RLA    
-mulax3                    007E75 RLA    negax                     007E8A RLA    
-__osmaperrno              007E98 RLA    popa                      007EAE RLA    
-popptr1                   007EBA RLA    _printf                   007EC8 RLA    
-push1                     007EFB RLA    pusha                     007F04 RLA    
-push0                     007F16 RLA    pusha0                    007F18 RLA    
-pushax                    007F1A RLA    pushwidx                  007F32 RLA    
-pushw0sp                  007F3F RLA    pushwysp                  007F41 RLA    
-_srand                    007F5B RLA    _rand                     007F67 RLA    
-_remove                   007F8F RLA    return0                   007F95 RLA    
-rwcommon                  007F99 RLA    scratch                   007FB3 RLA    
-popsargsudiv16            007FCC RLA    shrax1                    007FEC RLA    
-shrax3                    007FF4 RLA    shreax1                   008002 RLA    
-shreax2                   00800E RLA    _sprintf                  008021 RLA    
-staspidx                  00804C RLA    stax0sp                   008062 RLA    
-staxysp                   008064 RLA    steax0sp                  00806D RLA    
-steaxysp                  00806F RLA    steaxspidx                008082 RLA    
-_strcat                   0080A4 RLA    _strchr                   0080D5 RLA    
-_strlen                   0080FC RLA    _strlower                 008112 RLA    
-tossuba0                  008139 RLA    tossubax                  00813B RLA    
-subeq0sp                  00814E RLA    subeqysp                  008150 RLA    
-subysp                    008163 RLA    __sysremove               008170 RLA    
-toslong                   008197 RLA    tosudivax                 0081B3 RLA    
-udiv16                    0081C2 RLA    _vcprintf                 008248 RLA    
-_vfprintf                 0082B0 RLA    _videomode                0082D9 RLA    
-vsnprintf                 0082EF RLA    _vsprintf                 0083C6 RLA    
-_write                    0083D8 RLA    zerobss                   00842C RLA    
-__hextab                  008879 RLA    __longminstr              008889 RLA    
-__ctype                   008895 RLA    __ctypeidx                0088A0 RLA    
-__DESTRUCTOR_TABLE__      00897E RLA    _pulldownmenutitles       0089D2 RLA    
-__MAIN_SIZE__             008A33 REA    _updownenter              008D79 RLA    
-_alldirections            008D80 RLA    _musicnumber              008D86 RLA    
-_joyinterface             008D87 RLA    _ring                     008D89 RLA    
-_career                   008E09 RLA    _careerfield              008EC1 RLA    
-_opportunitycard          009241 RLA    _fieldinformation         0092CE RLA    
-_xoffset                  0092D0 RLA    _yoffset                  0092D1 RLA    
-_stdout                   009300 RLA    fdtab                     009330 RLA    
-fncmd                     009340 RLA    __filetype                009364 RLA    
-_joy_read                 00936E REA    joy_read                  00936E RLA    
-_c128_stdjoy_joy          00938D RLA    _joy_static_stddrv        00938D RLA    
-curunit                   0093B7 RLA    __BSS_RUN__               0093B8 RLA    
-_bootdevice               0093F7 RLA    _buffer                   009420 RLA    
-_player                   009487 RLA    _whichcard                009593 RLA    
-_gameendflag              0095A6 RLA    _anotherturn              0095A7 RLA    
-_playerturn               0095A8 RLA    _waitkeyflag              0095A9 RLA    
-_paidforleave             0095AA RLA    _dice_total               0095AC RLA    
-_SNES                     0095AE RLA    cursor                    0095B0 RLA    
-__oserror                 0095B1 RLA    __errno                   0095F7 RLA    
-fnunit                    0095F9 RLA    fnlen                     0095FA RLA    
-_savegame                 00AEDD RLA    _cards_useexperience      00AF17 RLA    
-_career_getopportunitycard 00AFC1 RLA    _cards_useopportunity     00AFFF RLA    
-_ring_payrent             00B0B3 RLA    _career_generic           00B0CF RLA    
-_ring_stockmarket         00B0F4 RLA    _career_getsalary         00B10F RLA    
-_career_waitforkey        00B180 RLA    _career_gethappiness      00B18D RLA    
-_career_loosehalfsalary   00B1B3 RLA    _cards_show               00B1C0 RLA    
-_ring_politics            00B1CE RLA    _ring_payfoodbills        00B1E6 RLA    
-_ring_payday              00B1EA RLA    _career_getmoneyandfame   00B238 RLA    
-_career_getexperiencecard 00B249 RLA    _ring_business            00B2C8 RLA    
-_ring_opportunity         00B2DE RLA    _career_getmoneytimesdie  00B355 RLA    
-_ring_shoppingspree       00B388 RLA    _career_loosehalffame     00B38E RLA    
-_ring_uranium             00B3B0 RLA    _ring_paytaxes            00B3E9 RLA    
-_career_getfamenohappiness 00B40D RLA    _career_gethappinessandfame 00B449 RLA    
-_ring_artgallery          00B46D RLA    _information_gamescore    00B4EC RLA    
-_career_getsalarytimesdie 00B4F5 RLA    _ring_hollywood           00B50A RLA    
-_ring_yachtharbor         00B576 RLA    _career_gotoparkbench     00B5B9 RLA    
-_career_throwagain        00B5E9 RLA    _career_looseallfame      00B605 RLA    
-_ring_farming             00B60E RLA    _loadgame                 00B60F RLA    
-_career_gotohospital      00B61A RLA    _career_looaseallcash     00B637 RLA    
-_career_getmoney          00B671 RLA    _career_loosemoneyorparkbench 00B67B RLA    
-_ring_floridavacation     00B6A8 RLA    _ring_sea                 00B6EF RLA    
-_career_loosehalfmoney    00B715 RLA    _computer_playopportunitycards 00B784 RLA    
-_career_skipturn          00B79A RLA    _career_getfame           00B7CC RLA    
-_career_getfamebuthospital 00B7EB RLA    _ring_automobileshow      00B7F7 RLA    
-_computer_playexperiencecards 00B80D RLA    _ring_parkbench           00B888 RLA    
-_career_endofcareer       00B905 RLA    _ring_leavehospital       00B949 RLA    
-_ring_moon                00B970 RLA    _information_colorlegend  00B98E RLA    
-_ring_statueinthepark     00BB36 RLA    _ring_leaveparkbench      00BB8E RLA    
-_ring_college             00BBFE RLA    _information_credits      00BC00 RLA    
-_computer_hospitalparkbench 00BC16 RLA    _board_scroll             00BC6F RLA    
-_ring_leavefloridavacation 00BCD5 RLA    _receive_salary           00BDE8 RLA    
-_musicnext                00BE31 RLA    _ring_hospital            00BE96 RLA    
-_clrscr                   00C142 REA    SWAPPER                   00FF5F RLA    
-READST                    00FFB7 RLA    SETLFS                    00FFBA RLA    
-SETNAM                    00FFBD RLA    OPEN                      00FFC0 RLA    
-CLOSE                     00FFC3 RLA    CHKIN                     00FFC6 RLA    
-CKOUT                     00FFC9 RLA    CLRCH                     00FFCC RLA    
-BASIN                     00FFCF RLA    BSOUT                     00FFD2 RLA    
-LOAD                      00FFD5 RLA    SAVE                      00FFD8 RLA    
-RDTIM                     00FFDE RLA    
+__CONSTRUCTOR_TABLE__     001C9A RLA    _printcentered            001DCA RLA    
+_getkey                   002059 RLA    _input                    0021A4 RLA    
+_input_number             002665 RLA    _presskeyprompt           002723 RLA    
+_windowrestore            00283D RLA    _menumakeborder           00292C RLA    
+_menupulldown             002B26 RLA    _fileerrormessage         0033C8 RLA    
+_saveconfigfile           003421 RLA    _board_reposition         003594 RLA    
+_pawn_place               00366D RLA    _pawn_erase               003A2B RLA    
+_dice_throw               0045FF RLA    _player_collegeexperience 0047D8 RLA    
+_card_selectopportunity   004874 RLA    _cards_actiontext         004999 RLA    
+_checkforbump_check       005674 RLA    _main                     005C15 RLA    
+_VDC_HChar                006453 RLA    _VDC_VChar                006492 RLA    
+_VDC_CopyMemToVDC         0064CE RLA    _VDC_CopyVDCToMem         006518 RLA    
+_VDC_FillArea             006599 RLA    _VDC_Init                 0065DF RLA    
+_VDC_Exit                 006696 RLA    _VDC_PetsciiToScreenCode  0066B0 RLA    
+_VDC_PrintAt              006869 RLA    _VDC_LoadCharset          0068ED RLA    
+_VDC_LoadScreen           006986 RLA    _VDC_Plot                 006A80 RLA    
+_VDC_PlotString           006AB8 RLA    _VDC_CopyViewPortToVDC    006B06 RLA    
+_VDC_ScrollCopy           006C02 RLA    _SetLoadSaveBank          007054 RLA    
+_POKEB                    007064 RLA    _PEEKB                    00708B RLA    
+_BankMemCopy              0070B2 RLA    __directerrno             00713E RLA    
+__mappederrno             007148 RLA    __printf                  00724B RLA    
+__seterrno                0074FD RLA    _set_c128_speed           007506 RLA    
+tosadda0                  007516 RLA    tosaddax                  007518 RLA    
+addeq0sp                  007532 RLA    addeqysp                  007534 RLA    
+addysp1                   007543 RLA    addysp                    007544 RLA    
+shlax1                    007551 RLA    aslax2                    007559 RLA    
+shlax2                    007559 RLA    aslax3                    007564 RLA    
+shlax3                    007564 RLA    shlax4                    007572 RLA    
+shleax1                   007583 RLA    axlong                    00758F RLA    
+axulong                   007595 RLA    bnega                     0075A0 RLA    
+_cbm_close                0075AA REA    _cbm_k_close              0075AA RLA    
+_cbm_k_load               0075AE RLA    _cbm_k_open               0075CB RLA    
+_cbm_k_save               0075D4 RLA    _cbm_k_setlfs             0075EA RLA    
+_cbm_k_setnam             0075F8 RLA    callmain                  00760B RLA    
+_cbm_load                 007622 RLA    _cbm_open                 007666 RLA    
+_cbm_read                 00767C RLA    _cgetc                    0076D7 RLA    
+donecgetc                 0076F8  LAI   _clock                    007707 RLA    
+_textcolor                007711 RLA    _bgcolor                  00773A RLA    
+_bordercolor              007760 RLA    donelib                   007771 RLA    
+_cprintf                  00777D RLA    _cputc                    0077AC RLA    
+plot                      0077E8 RLA    _cputsxy                  0077F0 RLA    
+_cputs                    0077FA RLA    ctypemask                 007813 RLA    
+ctypemaskdirect           007817 RLA    _getcurrentdevice         007831 RLA    
+decax1                    007837 RLA    decaxy                    00783E RLA    
+decsp1                    007847 RLA    decsp2                    007850 RLA    
+decsp3                    00785D RLA    decsp4                    00786A RLA    
+decsp5                    007877 RLA    decsp6                    007884 RLA    
+decsp8                    007891 RLA    opencmdchannel            0078A7 RLA    
+closecmdchannel           0078D4 RLA    writefndiskcmd            007927 RLA    
+fnparse                   00798B RLA    _fwrite                   007A10 RLA    
+gotoxy                    007A8B RLA    _gotoxy                   007A8E RLA    
+tosicmp0                  007A98 RLA    tosicmp                   007A9A RLA    
+incax1                    007AC6 RLA    incax2                    007ACD RLA    
+incax3                    007AD4 RLA    incax5                    007AD9 RLA    
+incax6                    007ADE RLA    incax7                    007AE3 RLA    
+incax8                    007AE8 RLA    incax4                    007AED RLA    
+incaxy                    007AEF RLA    incsp1                    007AF8 RLA    
+popax                     007AFF RLA    incsp2                    007B07 RLA    
+incsp3                    007B15 RLA    incsp4                    007B1A RLA    
+incsp5                    007B1F RLA    incsp6                    007B24 RLA    
+incsp7                    007B29 RLA    incsp8                    007B2E RLA    
+_isprint                  007B33 RLA    _joy_install              007B3D RLA    
+_joy_uninstall            007B7D RLA    _kbhit                    007B8A RLA    
+tosadd0ax                 007B93 RLA    tosaddeax                 007B99 RLA    
+laddeqysp                 007BBA RLA    tosandeax                 007BE1 RLA    
+bnegeax                   007BFF RLA    toslcmp                   007C10 RLA    
+ldaxi                     007C4B RLA    ldax0sp                   007C58 RLA    
+ldaxysp                   007C5A RLA    ldeaxidx                  007C63 RLA    
+ldeax0sp                  007C78 RLA    ldeaxysp                  007C7A RLA    
+deceaxy                   007C8B RLA    leaa0sp                   007CA0 RLA    
+leaaxsp                   007CA2 RLA    tosumul0ax                007CAC RLA    
+tosumuleax                007CB2 RLA    negeax                    007D08 RLA    
+pushl0                    007D26 RLA    pusheax                   007D2F RLA    
+tossub0ax                 007D47 RLA    tossubeax                 007D4D RLA    
+_ltoa                     007D86 RLA    _ultoa                    007DC7 RLA    
+tosudiv0ax                007E03 RLA    tosugteax                 007E7D RLA    
+tosulteax                 007E83 RLA    booleq                    007E8F RLA    
+boolult                   007EA8 RLA    boolugt                   007EAE RLA    
+_memcpy                   007EB5 RLA    tosmoda0                  007EF1 RLA    
+tosmulax                  007F02 RLA    tosumulax                 007F02 RLA    
+tosmula0                  007F47 RLA    tosumula0                 007F47 RLA    
+mul8x16                   007F49 RLA    mul8x16a                  007F53 RLA    
+mulax10                   007F81 RLA    mulax3                    007F9A RLA    
+negax                     007FAF RLA    __osmaperrno              007FBD RLA    
+popa                      007FD3 RLA    popptr1                   007FDF RLA    
+_printf                   007FED RLA    push1                     008020 RLA    
+pusha                     008029 RLA    push0                     00803B RLA    
+pusha0                    00803D RLA    pushax                    00803F RLA    
+pushwidx                  008057 RLA    pushw0sp                  008064 RLA    
+pushwysp                  008066 RLA    _srand                    008080 RLA    
+_rand                     00808C RLA    _remove                   0080B4 RLA    
+return0                   0080BA RLA    rwcommon                  0080BE RLA    
+scratch                   0080D8 RLA    popsargsudiv16            0080F1 RLA    
+shrax1                    008111 RLA    shrax3                    008119 RLA    
+shreax1                   008127 RLA    shreax2                   008133 RLA    
+_sprintf                  008146 RLA    staspidx                  008171 RLA    
+stax0sp                   008187 RLA    staxysp                   008189 RLA    
+steax0sp                  008192 RLA    steaxysp                  008194 RLA    
+steaxspidx                0081A7 RLA    _strcat                   0081C9 RLA    
+_strchr                   0081FA RLA    _strlen                   008221 RLA    
+_strlower                 008237 RLA    tossuba0                  00825E RLA    
+tossubax                  008260 RLA    subeq0sp                  008273 RLA    
+subeqysp                  008275 RLA    subysp                    008288 RLA    
+__sysremove               008295 RLA    toslong                   0082BC RLA    
+tosudivax                 0082D8 RLA    udiv16                    0082E7 RLA    
+_vcprintf                 00836D RLA    _vfprintf                 0083D5 RLA    
+_videomode                0083FE RLA    vsnprintf                 008414 RLA    
+_vsprintf                 0084EB RLA    _write                    0084FD RLA    
+zerobss                   008551 RLA    __hextab                  0089C7 RLA    
+__longminstr              0089D7 RLA    __ctype                   0089E3 RLA    
+__ctypeidx                0089EE RLA    __MAIN_SIZE__             008A33 REA    
+__DESTRUCTOR_TABLE__      008ACC RLA    _pulldownmenutitles       008B20 RLA    
+_updownenter              008EC7 RLA    _alldirections            008ECE RLA    
+_musicnumber              008ED4 RLA    _joyinterface             008ED5 RLA    
+_ring                     008ED7 RLA    _career                   008F57 RLA    
+_careerfield              00900F RLA    _opportunitycard          00938F RLA    
+_fieldinformation         00941C RLA    _xoffset                  00941E RLA    
+_yoffset                  00941F RLA    _stdout                   00944E RLA    
+fdtab                     00947E RLA    fncmd                     00948E RLA    
+__filetype                0094B2 RLA    _joy_read                 0094BC REA    
+joy_read                  0094BC RLA    _c128_stdjoy_joy          0094DB RLA    
+_joy_static_stddrv        0094DB RLA    curunit                   009505 RLA    
+__BSS_RUN__               009506 RLA    _bootdevice               009545 RLA    
+_buffer                   00956E RLA    _player                   0095D5 RLA    
+_whichcard                0096E1 RLA    _gameendflag              0096F4 RLA    
+_anotherturn              0096F5 RLA    _playerturn               0096F6 RLA    
+_waitkeyflag              0096F7 RLA    _paidforleave             0096F8 RLA    
+_dice_total               0096FA RLA    _SNES                     0096FC RLA    
+cursor                    0096FE RLA    __oserror                 0096FF RLA    
+__errno                   009745 RLA    fnunit                    009747 RLA    
+fnlen                     009748 RLA    _savegame                 00AEDD RLA    
+_cards_useexperience      00AF17 RLA    _career_getopportunitycard 00AFC1 RLA    
+_cards_useopportunity     00AFFF RLA    _ring_payrent             00B0B3 RLA    
+_career_generic           00B0CF RLA    _ring_stockmarket         00B0F9 RLA    
+_career_getsalary         00B10F RLA    _career_waitforkey        00B180 RLA    
+_career_gethappiness      00B18D RLA    _career_loosehalfsalary   00B1B3 RLA    
+_cards_show               00B1C0 RLA    _ring_politics            00B1CE RLA    
+_ring_payfoodbills        00B1E6 RLA    _ring_payday              00B1EA RLA    
+_career_getmoneyandfame   00B238 RLA    _career_getexperiencecard 00B249 RLA    
+_ring_business            00B2C8 RLA    _ring_opportunity         00B2DE RLA    
+_career_getmoneytimesdie  00B355 RLA    _ring_shoppingspree       00B388 RLA    
+_career_loosehalffame     00B38E RLA    _ring_uranium             00B3B5 RLA    
+_ring_paytaxes            00B3E9 RLA    _career_getfamenohappiness 00B40D RLA    
+_career_gethappinessandfame 00B449 RLA    _ring_artgallery          00B46D RLA    
+_information_gamescore    00B4EC RLA    _career_getsalarytimesdie 00B4F5 RLA    
+_ring_hollywood           00B50A RLA    _ring_yachtharbor         00B57B RLA    
+_career_gotoparkbench     00B5B9 RLA    _career_throwagain        00B5E9 RLA    
+_career_looseallfame      00B605 RLA    _ring_farming             00B60E RLA    
+_loadgame                 00B60F RLA    _career_gotohospital      00B61A RLA    
+_career_looaseallcash     00B637 RLA    _career_getmoney          00B671 RLA    
+_career_loosemoneyorparkbench 00B67B RLA    _ring_floridavacation     00B6A8 RLA    
+_ring_sea                 00B6EC RLA    _career_loosehalfmoney    00B715 RLA    
+_computer_playopportunitycards 00B784 RLA    _career_skipturn          00B79A RLA    
+_career_getfame           00B7CC RLA    _ring_automobileshow      00B7F7 RLA    
+_career_getfamebuthospital 00B80B RLA    _computer_playexperiencecards 00B84D RLA    
+_ring_parkbench           00B885 RLA    _career_endofcareer       00B925 RLA    
+_ring_leavehospital       00B946 RLA    _ring_moon                00B975 RLA    
+_information_colorlegend  00B98E RLA    _ring_statueinthepark     00BB3B RLA    
+_ring_leaveparkbench      00BB8B RLA    _ring_college             00BBFE RLA    
+_information_credits      00BC00 RLA    _computer_hospitalparkbench 00BC36 RLA    
+_board_scroll             00BC6F RLA    _ring_leavefloridavacation 00BCD2 RLA    
+_receive_salary           00BDE5 RLA    _musicnext                00BE31 RLA    
+_ring_hospital            00BE96 RLA    _clrscr                   00C142 REA    
+SWAPPER                   00FF5F RLA    READST                    00FFB7 RLA    
+SETLFS                    00FFBA RLA    SETNAM                    00FFBD RLA    
+OPEN                      00FFC0 RLA    CLOSE                     00FFC3 RLA    
+CHKIN                     00FFC6 RLA    CKOUT                     00FFC9 RLA    
+CLRCH                     00FFCC RLA    BASIN                     00FFCF RLA    
+BSOUT                     00FFD2 RLA    LOAD                      00FFD5 RLA    
+SAVE                      00FFD8 RLA    RDTIM                     00FFDE RLA    
+
 
 
 Imports list:
@@ -1603,10 +1601,10 @@ addeqysp (addeqsp.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    career1.o                 src/career1.s:1977
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    career1.o                 src/career1.s:1992
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 addysp (addysp.o):
     fwrite.o                  common/fwrite.s:11
     sprintf.o                 common/sprintf.s:8
@@ -1622,19 +1620,19 @@ addysp (addysp.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
     menu1.o                   src/menu1.s:1752
     menu1.o                   src/menu1.s:1752
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 addysp1 (addysp.o):
     sub.o                     runtime/sub.s:8
     ludiv.o                   runtime/ludiv.s:9
@@ -1644,12 +1642,12 @@ addysp1 (addysp.o):
     ladd.o                    runtime/ladd.s:8
 aslax2 (aslax2.o):
     menu2.o                   src/menu2.s:1971
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 aslax3 (aslax3.o):
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
@@ -1657,44 +1655,44 @@ aslax3 (aslax3.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 axlong (axlong.o):
     _printf.o                 common/_printf.s:11
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring2.o                   src/ring2.s:1747
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 axulong (axlong.o):
     _printf.o                 common/_printf.s:11
     menu2.o                   src/menu2.s:1971
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
 bnega (bneg.o):
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 bnegeax (lbneg.o):
     ring3.o                   src/ring3.s:1976
 booleq (makebool.o):
     cbm_load.o                ../libwrk/c128/cbm_load.s:61
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 boolugt (makebool.o):
     lugt.o                    runtime/lugt.s:8
 boolult (makebool.o):
@@ -1713,57 +1711,55 @@ curunit (filevars.o):
     filename.o                cbm/filename.s:11
     curdevice.o               cbm/curdevice.s:8
 decax1 (decax1.o):
-    menu3.o                   src/menu3.s:1731
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
-    career1.o                 src/career1.s:1977
+    career1.o                 src/career1.s:1992
     ring3.o                   src/ring3.s:1976
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-decax3 (decax3.o):
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 decaxy (decaxy.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 deceaxy (ldec.o):
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
 decsp1 (decsp1.o):
     snes.o                    src/snes.s:168
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring2.o                   src/ring2.s:1747
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 decsp2 (decsp2.o):
     toslong.o                 runtime/toslong.s:8
     vdc_core.o                src/vdc_core.s:2155
@@ -1772,39 +1768,39 @@ decsp2 (decsp2.o):
     menu2.o                   src/menu2.s:1971
     menu1.o                   src/menu1.s:1752
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 decsp3 (decsp3.o):
     vdc_core.o                src/vdc_core.s:2155
     menu1.o                   src/menu1.s:1752
     menu1.o                   src/menu1.s:1752
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 decsp4 (decsp4.o):
     sprintf.o                 common/sprintf.s:8
     lpush.o                   runtime/lpush.s:12
     vdc_core.o                src/vdc_core.s:2155
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 decsp5 (decsp5.o):
     ring3.o                   src/ring3.s:1976
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 decsp6 (decsp6.o):
     _printf.o                 common/_printf.s:11
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
 decsp8 (decsp8.o):
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 devnum (devnum.o):
     filevars.o                cbm/filevars.s:9
 donelib (condes.o):
@@ -1826,54 +1822,54 @@ gotoxy (gotoxy.o):
     cputc.o                   c128/cputc.s:11
 incax1 (incax1.o):
     vdc_core.o                src/vdc_core.s:2155
-    menu3.o                   src/menu3.s:1731
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
     menu1.o                   src/menu1.s:1752
     menu1.o                   src/menu1.s:1752
     menu1.o                   src/menu1.s:1752
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring2.o                   src/ring2.s:1747
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 incax2 (incax2.o):
     vdc_core.o                src/vdc_core.s:2155
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     menu1.o                   src/menu1.s:1752
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 incax3 (incax3.o):
-    ring4.o                   src/ring4.s:1836
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 incax4 (incaxy.o):
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     menu1.o                   src/menu1.s:1752
-    career1.o                 src/career1.s:1977
+    career1.o                 src/career1.s:1992
     ring3.o                   src/ring3.s:1976
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 incax5 (incax5.o):
     menu2.o                   src/menu2.s:1971
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
 incax6 (incax6.o):
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
 incax7 (incax7.o):
     menu2.o                   src/menu2.s:1971
     ring3.o                   src/ring3.s:1976
@@ -1882,7 +1878,7 @@ incax8 (incax8.o):
     menu2.o                   src/menu2.s:1971
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 incaxy (incaxy.o):
     incax8.o                  runtime/incax8.s:8
     incax7.o                  runtime/incax7.s:8
@@ -1892,53 +1888,53 @@ incaxy (incaxy.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    menu3.o                   src/menu3.s:1731
-    menu3.o                   src/menu3.s:1731
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
+    menu3.o                   src/menu3.s:1761
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
     menu1.o                   src/menu1.s:1752
     menu1.o                   src/menu1.s:1752
     menu1.o                   src/menu1.s:1752
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 incsp1 (incsp1.o):
     snes.o                    src/snes.s:168
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     career2.o                 src/career2.s:1296
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 incsp2 (incsp2.o):
     vsnprintf.o               common/vsnprintf.s:9
     staspidx.o                runtime/staspidx.s:8
@@ -1951,32 +1947,32 @@ incsp2 (incsp2.o):
     menu1.o                   src/menu1.s:1752
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 incsp3 (incsp3.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 incsp4 (incsp4.o):
     lcmp.o                    runtime/lcmp.s:9
     vdc_core.o                src/vdc_core.s:2155
@@ -1984,23 +1980,23 @@ incsp4 (incsp4.o):
     menu1.o                   src/menu1.s:1752
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
+    career1.o                 src/career1.s:1992
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 incsp5 (incsp5.o):
     cbm_load.o                ../libwrk/c128/cbm_load.s:61
     vdc_core.o                src/vdc_core.s:2155
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    career1.o                 src/career1.s:1992
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 incsp6 (incsp6.o):
     vsnprintf.o               common/vsnprintf.s:9
     fwrite.o                  common/fwrite.s:11
@@ -2014,12 +2010,12 @@ incsp6 (incsp6.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    ring2.o                   src/ring2.s:1747
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    career1.o                 src/career1.s:1992
+    ring2.o                   src/ring2.s:1746
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 incsp7 (incsp7.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
@@ -2027,19 +2023,19 @@ incsp7 (incsp7.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 incsp8 (incsp8.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    menu3.o                   src/menu3.s:1731
-    career1.o                 src/career1.s:1977
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    menu3.o                   src/menu3.s:1761
+    career1.o                 src/career1.s:1992
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 initlib (condes.o):
     crt0.o                    c128/crt0.s:7
 joy_libref (libref.o):
@@ -2047,16 +2043,16 @@ joy_libref (libref.o):
 joy_read (joy-kernel.o):
     joy_read.o                /mnt/d/retro/cc65/asminc/joy-kernel.inc:71
 laddeqysp (laddeqsp.o):
-    ring4.o                   src/ring4.s:1836
+    ring4.o                   src/ring4.s:1837
 ldax0sp (ldaxsp.o):
     sidplay.o                 src/sidplay.s:56
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 ldaxi (ldaxi.o):
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 ldaxysp (ldaxsp.o):
     vsnprintf.o               common/vsnprintf.s:9
     fwrite.o                  common/fwrite.s:11
@@ -2068,19 +2064,19 @@ ldaxysp (ldaxsp.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     menu2.o                   src/menu2.s:1971
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 ldeax0sp (ldeaxysp.o):
     ring3.o                   src/ring3.s:1976
     ring1.o                   src/ring1.s:1830
 ldeaxidx (ldeaxi.o):
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
     menu1.o                   src/menu1.s:1752
@@ -2090,33 +2086,33 @@ ldeaxidx (ldeaxi.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 ldeaxysp (ldeaxysp.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
@@ -2124,31 +2120,31 @@ ldeaxysp (ldeaxysp.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 leaa0sp (leaaxsp.o):
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
     menu1.o                   src/menu1.s:1752
     menu1.o                   src/menu1.s:1752
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 leaaxsp (leaaxsp.o):
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
     menu1.o                   src/menu1.s:1752
@@ -2157,22 +2153,22 @@ mul8x16 (mul8.o):
 mul8x16a (mul8.o):
     mul.o                     runtime/mul.s:8
 mulax10 (mulax10.o):
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 mulax3 (mulax3.o):
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
     menu1.o                   src/menu1.s:1752
     career2.o                 src/career2.s:1296
     ring3.o                   src/ring3.s:1976
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 negax (negabs.o):
     shelp.o                   runtime/shelp.s:11
     mod.o                     runtime/mod.s:11
@@ -2293,7 +2289,8 @@ push0 (pushax.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     menu1.o                   src/menu1.s:1752
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 push1 (push1.o):
     _printf.o                 common/_printf.s:11
     vfprintf.o                common/vfprintf.s:9
@@ -2325,9 +2322,9 @@ pusha (pusha.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    menu3.o                   src/menu3.s:1731
-    menu3.o                   src/menu3.s:1731
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
+    menu3.o                   src/menu3.s:1761
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
@@ -2350,38 +2347,38 @@ pusha (pusha.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
@@ -2389,53 +2386,53 @@ pusha (pusha.o):
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 pusha0 (pushax.o):
     push1.o                   runtime/push1.s:8
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    menu3.o                   src/menu3.s:1731
-    menu3.o                   src/menu3.s:1731
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
+    menu3.o                   src/menu3.s:1761
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
@@ -2455,70 +2452,70 @@ pusha0 (pushax.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 pushax (pushax.o):
     fwrite.o                  common/fwrite.s:11
     callmain.o                runtime/callmain.s:11
@@ -2544,8 +2541,8 @@ pushax (pushax.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    menu3.o                   src/menu3.s:1731
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
@@ -2564,68 +2561,68 @@ pushax (pushax.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 pusheax (lpush.o):
     _printf.o                 common/_printf.s:11
     menu2.o                   src/menu2.s:1971
@@ -2637,52 +2634,51 @@ pusheax (lpush.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 pushl0 (lpush.o):
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
 pushw0sp (pushwsp.o):
     vsprintf.o                common/vsprintf.s:8
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     menu2.o                   src/menu2.s:1971
-    career1.o                 src/career1.s:1977
-    main.o                    src/main.s:10227
+    career1.o                 src/career1.s:1992
+    main.o                    src/main.s:10362
 pushwidx (pushw.o):
-    career1.o                 src/career1.s:1977
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    career1.o                 src/career1.s:1992
+    main.o                    src/main.s:10362
 pushwysp (pushwsp.o):
     fwrite.o                  common/fwrite.s:11
     vfprintf.o                common/vfprintf.s:9
@@ -2691,11 +2687,11 @@ pushwysp (pushwsp.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 regbank (zeropage.o):
     _printf.o                 /mnt/d/retro/cc65/asminc/zeropage.inc:14
 return0 (return0.o):
@@ -2716,19 +2712,19 @@ shlax4 (aslax4.o):
 shleax1 (asleax1.o):
     ring1.o                   src/ring1.s:1830
 shrax1 (shrax1.o):
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 shrax3 (shrax3.o):
     vdc_core.o                src/vdc_core.s:2155
 shreax1 (shreax1.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
+    career1.o                 src/career1.s:1992
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
 shreax2 (shreax2.o):
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
 sp (zeropage.o):
     memcpy.o                  common/memcpy.s:15
     vsnprintf.o               common/vsnprintf.s:11
@@ -2824,21 +2820,21 @@ sreg (zeropage.o):
     ring1.o                   src/ring1.s:10
     main.o                    src/main.s:10
 staspidx (staspidx.o):
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
     ring3.o                   src/ring3.s:1976
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 stax0sp (staxsp.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
@@ -2849,17 +2845,17 @@ stax0sp (staxsp.o):
     vdc_core.o                src/vdc_core.s:2155
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 staxysp (staxsp.o):
     vsprintf.o                common/vsprintf.s:8
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 steax0sp (steaxsp.o):
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring1.o                   src/ring1.s:1830
@@ -2872,37 +2868,37 @@ steaxspidx (steaxspi.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 steaxysp (steaxsp.o):
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring2.o                   src/ring2.s:1747
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring2.o                   src/ring2.s:1746
 subeq0sp (subeqsp.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
@@ -2911,15 +2907,15 @@ subeq0sp (subeqsp.o):
 subeqysp (subeqsp.o):
     vdc_core.o                src/vdc_core.s:2155
 subysp (subysp.o):
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
     menu1.o                   src/menu1.s:1752
     menu1.o                   src/menu1.s:1752
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 tmp1 (zeropage.o):
     diskcmd.o                 cbm/diskcmd.s:15
     ltoa.o                    common/ltoa.s:11
@@ -2970,64 +2966,64 @@ tmp4 (zeropage.o):
     ludiv.o                   runtime/ludiv.s:10
     lmul.o                    runtime/lmul.s:10
 tosadd0ax (ladd.o):
-    career1.o                 src/career1.s:1977
+    career1.o                 src/career1.s:1992
 tosadda0 (add.o):
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 tosaddax (add.o):
-    career1.o                 src/career1.s:1977
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    career1.o                 src/career1.s:1992
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 tosaddeax (ladd.o):
     menu2.o                   src/menu2.s:1971
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
 tosandeax (land.o):
     menu2.o                   src/menu2.s:1971
 tosicmp (icmp.o):
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 tosicmp0 (icmp.o):
-    menu3.o                   src/menu3.s:1731
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    menu3.o                   src/menu3.s:1761
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 toslcmp (lcmp.o):
     lult.o                    runtime/lult.s:8
     lugt.o                    runtime/lugt.s:8
 toslong (toslong.o):
-    ring4.o                   src/ring4.s:1836
+    ring4.o                   src/ring4.s:1837
     ring1.o                   src/ring1.s:1830
 tosmoda0 (mod.o):
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 tosmula0 (mul8.o):
-    menu3.o                   src/menu3.s:1731
-    menu3.o                   src/menu3.s:1731
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
+    menu3.o                   src/menu3.s:1761
+    menu3.o                   src/menu3.s:1761
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
     menu2.o                   src/menu2.s:1971
@@ -3046,156 +3042,156 @@ tosmula0 (mul8.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 tosmulax (mul.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring2.o                   src/ring2.s:1747
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
 tossub0ax (lsub.o):
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
 tossuba0 (sub.o):
-    menu3.o                   src/menu3.s:1731
-    menu3.o                   src/menu3.s:1731
+    menu3.o                   src/menu3.s:1761
+    menu3.o                   src/menu3.s:1761
     menu1.o                   src/menu1.s:1752
     menu1.o                   src/menu1.s:1752
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 tossubax (sub.o):
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 tossubeax (lsub.o):
     career2.o                 src/career2.s:1296
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 tosudiv0ax (ludiv.o):
-    career1.o                 src/career1.s:1977
-    ring4.o                   src/ring4.s:1836
+    career1.o                 src/career1.s:1992
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 tosudivax (udiv.o):
     fwrite.o                  common/fwrite.s:12
 tosugteax (lugt.o):
-    ring4.o                   src/ring4.s:1836
+    ring4.o                   src/ring4.s:1837
     ring3.o                   src/ring3.s:1976
     ring1.o                   src/ring1.s:1830
     ring1.o                   src/ring1.s:1830
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
 tosulteax (lult.o):
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
-    ring2.o                   src/ring2.s:1747
-    ring2.o                   src/ring2.s:1747
-    main.o                    src/main.s:10227
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
+    ring2.o                   src/ring2.s:1746
+    ring2.o                   src/ring2.s:1746
+    main.o                    src/main.s:10362
 tosumul0ax (lmul.o):
-    career1.o                 src/career1.s:1977
+    career1.o                 src/career1.s:1992
     ring1.o                   src/ring1.s:1830
 tosumula0 (mul8.o):
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
     vdc_core.o                src/vdc_core.s:2155
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
-    main.o                    src/main.s:10227
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
+    main.o                    src/main.s:10362
 tosumulax (mul.o):
     fwrite.o                  common/fwrite.s:12
     vdc_core.o                src/vdc_core.s:2155
 tosumuleax (lmul.o):
     career2.o                 src/career2.s:1296
-    career1.o                 src/career1.s:1977
-    career1.o                 src/career1.s:1977
+    career1.o                 src/career1.s:1992
+    career1.o                 src/career1.s:1992
     ring3.o                   src/ring3.s:1976
-    ring2.o                   src/ring2.s:1747
+    ring2.o                   src/ring2.s:1746
 udiv16 (udiv.o):
     shelp.o                   runtime/shelp.s:11
 vsnprintf (vsnprintf.o):

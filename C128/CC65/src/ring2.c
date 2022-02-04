@@ -206,9 +206,9 @@ void ring_artgallery()
         {
             dice_throw(bought);
             player[playerturn].fame += dice_total;
+            gotoxy(42,18);
+            cprintf("* %u received.",dice_total);
         }
-        gotoxy(42,18);
-        cprintf("* %u received.",dice_total);
     }
     presskeyprompt(42,20);
     windowrestore();

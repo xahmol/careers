@@ -372,83 +372,6 @@ unsigned int cmd(const unsigned char device, const char *cmd)
     return dosCommand(15, device, 15, cmd);
 }
 
-void initoverlay()
-{
-    unsigned char x;
-    unsigned int address=OVERLAYBANK0;
-    unsigned char destbank=3;
-
-    for(x=0;x<OVERLAYNUMBER;x++)
-    {
-        // Compose filename
-        sprintf(buffer,"careers.ovl%u",x+1);
-
-        // Load overlay file, exit if not found
-        if (cbm_load (buffer, bootdevice, NULL) == 0)
-        {
-            printf("\nLoading overlay file failed\n");
-            exit(1);
-        }
-
-        // Copy to overlay storage memory location
-        overlaydata[x].bank=destbank;
-
-        gotoxy(0,x);
-        cprintf("Overlay %u: Bank %u Adress: %4X",x+1,destbank-3,address);
-
-        if(destbank)
-        {
-            BankMemCopy(OVERLAYLOAD,2,address,destbank-1,OVERLAYSIZE);
-            overlaydata[x].address=address;
-            address+=OVERLAYSIZE;
-            if(destbank==3)
-            {
-                if(address<OVERLAYBANK0 || address>0xEFFF)
-                {
-                    address=LOADSAVEBUFFER;
-                    destbank=4;
-                }
-            }
-            else
-            {
-                if(address<LOADSAVEBUFFER || address>0xEFFF)
-                {
-                    destbank=0;
-                }
-            }
-        }
-
-        cprintf(" Succes Bank %u Adress: %4X",overlaydata[x].bank-3,overlaydata[x].address);
-    }
-}
-
-void loadoverlay(unsigned char overlay_select)
-{
-    // Load memory overlay with given number
-
-    // Returns if overlay allready active
-    if(overlay_select != overlay_active)
-    {
-        if(overlaydata[overlay_select-1].bank)
-        {
-            BankMemCopy(overlaydata[overlay_select-1].address,overlaydata[overlay_select-1].bank-1,OVERLAYLOAD,2,OVERLAYSIZE);
-        }
-        else
-        {
-            // Compose filename
-            sprintf(buffer,"careers.ovl%u",overlay_select);
-
-            // Load overlay file, exit if not found
-            if (cbm_load (buffer, bootdevice, NULL) == 0)
-            {
-                printf("\nLoading overlay file failed\n");
-                exit(1);
-            }
-        }
-        overlay_active = overlay_select;
-    }   
-}
-
 void wait(clock_t wait_cycles)
  {
     /* Function to wait for the specified number of cycles
@@ -478,11 +401,92 @@ void printcentered(char* text, unsigned char xpos, unsigned char ypos, unsigned 
 
     gotoxy(xpos,ypos);
 
+    VDC_FillArea(ypos,xpos,C_SPACE,width,1,VDC_LYELLOW);
     if(strlen(text)<width)
     {
         cspaces((width-strlen(text))/2-1);
     }
     cputs(text);
+}
+
+/* Overlay functions */
+
+void initoverlay()
+{
+    // Load all overlays into memory if possible
+
+    unsigned char x;
+    unsigned int address=OVERLAYBANK0;
+    unsigned char destbank=3;
+
+    for(x=0;x<OVERLAYNUMBER;x++)
+    {
+        // Update load status message
+        sprintf(buffer,"Memory overlay %u",x+1);
+        printcentered(buffer,0,17,80);
+        
+        // Compose filename
+        sprintf(buffer,"careers.ovl%u",x+1);
+
+        // Load overlay file, exit if not found
+        if (cbm_load (buffer, bootdevice, NULL) == 0)
+        {
+            printf("\nLoading overlay file failed\n");
+            exit(1);
+        }
+
+        // Copy to overlay storage memory location
+        overlaydata[x].bank=destbank;
+
+        if(destbank)
+        {
+            BankMemCopy(OVERLAYLOAD,2,address,destbank-1,OVERLAYSIZE);
+            overlaydata[x].address=address;
+            address+=OVERLAYSIZE;
+            if(destbank==3)
+            {
+                if(address<OVERLAYBANK0 || address>0xEFFF)
+                {
+                    address=LOADSAVEBUFFER;
+                    destbank=4;
+                }
+            }
+            else
+            {
+                if(address<LOADSAVEBUFFER || address>0xEFFF)
+                {
+                    destbank=0;
+                }
+            }
+        }
+    }
+}
+
+void loadoverlay(unsigned char overlay_select)
+{
+    // Load memory overlay with given number
+
+    // Returns if overlay allready active
+    if(overlay_select != overlay_active)
+    {
+        if(overlaydata[overlay_select-1].bank)
+        {
+            BankMemCopy(overlaydata[overlay_select-1].address,overlaydata[overlay_select-1].bank-1,OVERLAYLOAD,2,OVERLAYSIZE);
+        }
+        else
+        {
+            // Compose filename
+            sprintf(buffer,"careers.ovl%u",overlay_select);
+
+            // Load overlay file, exit if not found
+            if (cbm_load (buffer, bootdevice, NULL) == 0)
+            {
+                printf("\nLoading overlay file failed\n");
+                exit(1);
+            }
+        }
+        overlay_active = overlay_select;
+    }   
 }
 
 /* Generic input routines */
@@ -799,9 +803,9 @@ unsigned char menupulldown(unsigned char xpos, unsigned char ypos, unsigned char
     for(x=0;x<pulldownmenuoptions[menunumber-1];x++)
     {
         VDC_Plot(ypos+x+1,xpos,C_RIGHTLINE,VDC_LRED);
-        VDC_Plot(ypos+x+1,xpos+1,C_SPACE,VDC_LCYAN+VDC_A_REVERSE);
-        VDC_PrintAt(ypos+x+1,xpos+2,pulldownmenutitles[menunumber-1][x],VDC_LCYAN+VDC_A_REVERSE);
-        VDC_Plot(ypos+x+1,xpos+strlen(pulldownmenutitles[menunumber-1][x])+2,C_SPACE,VDC_LCYAN+VDC_A_REVERSE);
+        VDC_Plot(ypos+x+1,xpos+1,C_SPACE,VDC_DCYAN+VDC_A_REVERSE);
+        VDC_PrintAt(ypos+x+1,xpos+2,pulldownmenutitles[menunumber-1][x],VDC_DCYAN+VDC_A_REVERSE);
+        VDC_Plot(ypos+x+1,xpos+strlen(pulldownmenutitles[menunumber-1][x])+2,C_SPACE,VDC_DCYAN+VDC_A_REVERSE);
         VDC_Plot(ypos+x+1,xpos+strlen(pulldownmenutitles[menunumber-1][x])+3,C_LEFTLINE,VDC_LRED);
     }
     VDC_Plot(ypos+pulldownmenuoptions[menunumber-1]+1,xpos,C_UPRIGHT,VDC_LRED);
@@ -816,7 +820,7 @@ unsigned char menupulldown(unsigned char xpos, unsigned char ypos, unsigned char
     
     do
     {
-        VDC_Plot(ypos+menuchoice,xpos+1,C_SPACE,VDC_LYELLOW+VDC_A_REVERSE);
+        VDC_Plot(ypos+menuchoice,xpos+1,C_ARROW,VDC_LYELLOW+VDC_A_REVERSE+VDC_A_ALTCHAR);
         VDC_PrintAt(ypos+menuchoice,xpos+2,pulldownmenutitles[menunumber-1][menuchoice-1],VDC_LYELLOW+VDC_A_REVERSE);
         VDC_Plot(ypos+menuchoice,xpos+strlen(pulldownmenutitles[menunumber-1][menuchoice-1])+2,C_SPACE,VDC_LYELLOW+VDC_A_REVERSE);
 
@@ -839,9 +843,9 @@ unsigned char menupulldown(unsigned char xpos, unsigned char ypos, unsigned char
 
         case C_DOWN:
         case C_UP:
-            VDC_Plot(ypos+menuchoice,xpos+1,C_SPACE,VDC_LCYAN+VDC_A_REVERSE);
-            VDC_PrintAt(ypos+menuchoice,xpos+2,pulldownmenutitles[menunumber-1][menuchoice-1],VDC_LCYAN+VDC_A_REVERSE);
-            VDC_Plot(ypos+menuchoice,xpos+strlen(pulldownmenutitles[menunumber-1][menuchoice-1])+2,C_SPACE,VDC_LCYAN+VDC_A_REVERSE);
+            VDC_Plot(ypos+menuchoice,xpos+1,C_SPACE,VDC_DCYAN+VDC_A_REVERSE);
+            VDC_PrintAt(ypos+menuchoice,xpos+2,pulldownmenutitles[menunumber-1][menuchoice-1],VDC_DCYAN+VDC_A_REVERSE);
+            VDC_Plot(ypos+menuchoice,xpos+strlen(pulldownmenutitles[menunumber-1][menuchoice-1])+2,C_SPACE,VDC_DCYAN+VDC_A_REVERSE);
             if(key==C_UP)
             {
                 menuchoice--;
@@ -1191,6 +1195,7 @@ void game_reset()
         player[x].winhappiness = 20;
         player[x].skipturn = 0;
         for(y=0;y<11;y++) { player[x].experience[y]=0; }
+        for(y=0;y<19;y++) { player[x].cards[y]=0; }
     }
     fieldinformation=0;
     anotherturn=0;
@@ -1964,7 +1969,8 @@ void graphicsinit()
 {
     // Initialize VDC screen and load charsets
     VDC_Init();
-    printcentered("Loading...",0,10,80);
+    printcentered("Loading...",0,16,80);
+    printcentered("Character sets",0,17,80);
     VDC_LoadCharset("careers.chrs",bootdevice,LOADSAVEBUFFER,1,1);
     VDC_LoadCharset("careers.chra",bootdevice,LOADSAVEBUFFER,1,2);
 }
@@ -1983,15 +1989,21 @@ void loadintro()
     unsigned char key;
 
     /* Title screen */
-    //VDC_LoadScreen("ludo.tscr",LOADSAVEBUFFER,1,1);
+    printcentered("Title screen",0,17,80);
+    VDC_LoadScreen("careers.tscr",bootdevice,LOADSAVEBUFFER,1);
+    VDC_CopyMemToVDC(VDCBASETEXT,LOADSAVEBUFFER,1,4096);
 
     /* Load and read game config file */
+    printcentered("Loading...",0,16,80);
+    printcentered("Config",0,17,80);
     loadconfigfile();
 
     // Load game board screen map to memory
+    printcentered("Game board",0,17,80);
     VDC_LoadScreen("careers.scrn",bootdevice,SCREENMAPADDRESS,1);
 
     // Load career texts and sets string pointers
+    printcentered("Career field text",0,17,80);
 	cbm_k_setlfs(0,bootdevice, 0);
 	cbm_k_setnam("careers.ctxt");
 	SetLoadSaveBank(1);
@@ -2029,9 +2041,11 @@ void loadintro()
     initoverlay();
 
     /* Load and start first music file */
+    printcentered("Music",0,17,80);
     LoadMusic("careers.mus1");
 
-    /* Wait for ENTER of FIRE while player can toggle music */ 
+    /* Wait for ENTER of FIRE while player can toggle music */
+    VDC_FillArea(16,0,C_SPACE,80,2,VDC_LYELLOW);
     printcentered("Press ENTER or FIRE to start game.",0,22,80);
     printcentered("C=toggle controls, M=toggle music.",0,23,80);
 
@@ -2109,21 +2123,20 @@ void main()
     //Show game interface
     clrscr(); 
     menuplacebar();
-    game_reset();
 
     //Ask for loading save game
     menumakeborder(40,8,6,35);
     cputsxy(42,10,"Load old game?");
     choice = menupulldown(69,11,6);
     windowrestore();
-    if(choice==1) { loadoverlay(8); gameendflag=7; loadgame(); }
+    if(choice==1) { loadoverlay(8); gameendflag=7; game_reset; loadgame(); }
 
     srand(clock());
 
     //Main game loop
     do
     {
-        if(gameendflag!=7) { inputofnames(); }
+        if(gameendflag!=7) { game_reset(); inputofnames(); }
         do
         {
             VDC_FillArea(3,60,C_SPACE,20,10,VDC_LYELLOW);
@@ -2165,35 +2178,43 @@ void main()
             //}
             //exit(1);
 
-            if(player[playerturn].computer==0)
+            if(player[playerturn].skipturn)
             {
-                turnhuman();
-                if(player[playerturn].career==0 && player[playerturn].position == 9)
-                {
-                    loadoverlay(2);
-                    ring_leavehospital();
-                }
-                if(player[playerturn].career==0 && player[playerturn].position == 17)
-                {
-                    loadoverlay(2);
-                    ring_leaveparkbench();
-                }
+                gameendflag=10;
+                player[playerturn].skipturn=0;
+                cputsxy(61,6,"Skip turn.");
+                presskeyprompt(61,8);
             }
             else
             {
-                cputsxy(61,6,"Computer plays.");
-                turncomputer();
+                if(player[playerturn].computer==0)
+                {
+                    turnhuman();
+
+                    if(gameendflag!=5 && gameendflag!=6 && gameendflag!=7)
+                    {
+                        if(player[playerturn].career==0 && player[playerturn].position == 9)
+                        {
+                            loadoverlay(2);
+                            ring_leavehospital();
+                        }
+                        if(player[playerturn].career==0 && player[playerturn].position == 17)
+                        {
+                            loadoverlay(2);
+                            ring_leaveparkbench();
+                        }
+                    }
+                }
+                else
+                {
+                    cputsxy(61,6,"Computer plays.");
+                    turncomputer();
+                }
             }
 
             if(gameendflag!=5 && gameendflag!=6 && gameendflag!=7)
             {
-                if(player[playerturn].skipturn)
-                {
-                    gameendflag=10;
-                    player[playerturn].skipturn=0;
-                    cputsxy(61,6,"Skip turn.");
-                    presskeyprompt(61,8);
-                }
+                
     
                 if(gameendflag==0)
                 {
@@ -2279,7 +2300,7 @@ void main()
 
     } while (gameendflag!=5);
 
-    //if(musicnumber) { StopMusic(); }
+    if(musicnumber) { StopMusic(); }
 
     VDC_Exit();
     joy_uninstall();

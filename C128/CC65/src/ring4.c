@@ -112,7 +112,7 @@ void ring_stockmarket()
             bought = maxbought;
             gotoxy(42,17);
             textcolor(COLOR_CYAN);
-            cprintf("%lu",bought);
+            cprintf("%u",bought);
             textcolor(COLOR_YELLOW);
         }
         else
@@ -124,7 +124,7 @@ void ring_stockmarket()
             dice_throw(1);
             salestotal += dice_total * 1000;
         }
-        cputsxy(42,18,(salestotal>(bought*3000))?"Profit: $":"Loss: $");
+        cputsxy(42,18,(salestotal>(bought*3000))?"Profit: $ ":"Loss: $ ");
         textcolor(COLOR_CYAN);
         cprintf("%lu",(salestotal>bought*3000)?salestotal-(bought*3000):(bought*3000)-salestotal);
         textcolor(COLOR_YELLOW);

@@ -215,8 +215,15 @@ void career_loosemoneyorparkbench(unsigned char careernr, unsigned char position
         }
         else
         {
-            cputsxy(32,17,"Do you want to pay?");
-            choice = menupulldown(69,16,6);
+            if(player[playerturn].computer)
+            {
+                choice=1;
+            }
+            else
+            {
+                cputsxy(32,17,"Do you want to pay?");
+                choice = menupulldown(69,16,6);
+            }
         }
         if(choice==1)
         {

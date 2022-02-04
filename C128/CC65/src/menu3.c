@@ -148,7 +148,7 @@ void cards_useopportunity()
             sprintf(buffer," %-20s          ","None");
         }
         VDC_Plot(ypos+x+1,xpos,C_RIGHTLINE,VDC_LRED);
-        VDC_PrintAt(ypos+x+1,xpos+1,buffer,VDC_LCYAN+VDC_A_REVERSE);
+        VDC_PrintAt(ypos+x+1,xpos+1,buffer,VDC_DCYAN+VDC_A_REVERSE);
         VDC_Plot(ypos+x+1,xpos+32,C_LEFTLINE,VDC_LRED);        
     }
     VDC_Plot(ypos+cards_number+2,xpos,C_UPRIGHT,VDC_LRED);
@@ -166,13 +166,14 @@ void cards_useopportunity()
             sprintf(buffer," %-20s          ","None");
         }
         VDC_PrintAt(ypos+card_select,xpos+1,buffer,VDC_LYELLOW+VDC_A_REVERSE);
+        VDC_Plot(ypos+card_select,xpos+1,C_ARROW,VDC_LYELLOW+VDC_A_REVERSE+VDC_A_ALTCHAR);
 
         key = getkey(updownenter,joyinterface);
         switch (key)
         {
         case C_DOWN:
         case C_UP:
-            VDC_PrintAt(ypos+card_select,xpos+1,buffer,VDC_LCYAN+VDC_A_REVERSE);
+            VDC_PrintAt(ypos+card_select,xpos+1,buffer,VDC_DCYAN+VDC_A_REVERSE);
             if(key==C_UP)
             {
                 card_select--;
@@ -220,7 +221,7 @@ void cards_useopportunity()
             {
                     sprintf(buffer," %-20s ",career[x].name);
                     VDC_Plot(ypos+x+1,xpos,C_RIGHTLINE,VDC_LRED);
-                    VDC_PrintAt(ypos+x+1,xpos+1,buffer,VDC_LCYAN+VDC_A_REVERSE);
+                    VDC_PrintAt(ypos+x+1,xpos+1,buffer,VDC_DCYAN+VDC_A_REVERSE);
                     VDC_Plot(ypos+x+1,xpos+23,C_LEFTLINE,VDC_LRED);        
             }
             VDC_Plot(ypos+9,xpos,C_UPRIGHT,VDC_LRED);
@@ -231,13 +232,14 @@ void cards_useopportunity()
             {
                 sprintf(buffer," %-20s ",career[career_select-1].name);
                 VDC_PrintAt(ypos+career_select,xpos+1,buffer,VDC_LYELLOW+VDC_A_REVERSE);
+                VDC_Plot(ypos+career_select,xpos+1,C_ARROW,VDC_LYELLOW+VDC_A_REVERSE+VDC_A_ALTCHAR);
 
                 key = getkey(updownenter,joyinterface);
                 switch (key)
                 {
                 case C_DOWN:
                 case C_UP:
-                    VDC_PrintAt(ypos+career_select,xpos+1,buffer,VDC_LCYAN+VDC_A_REVERSE);
+                    VDC_PrintAt(ypos+career_select,xpos+1,buffer,VDC_DCYAN+VDC_A_REVERSE);
                     if(key==C_UP)
                     {
                         career_select--;
