@@ -1,7 +1,7 @@
 # Careers
 Careers board game for 8 bit computers.
 
-![Careers title screen](https://github.com/xahmol/careers/blob/main/screenshots/careers_titlescreen.png?raw=true)
+![Careers title screen](https://raw.githubusercontent.com/xahmol/careers/main/screenshots/careers-banner.png)
 
 ## Contents
 
@@ -17,9 +17,12 @@ Careers board game for 8 bit computers.
 ## Introduction
 ([Back to contents](#contents))
 
-This game is a computer recreation of the classic boardgame of Careers. See for details about the originl boardgame at is description at [BoardGameGeeks](https://boardgamegeek.com/boardgame/1475/careers).
+This game is a computer recreation of the classic boardgame of Careers. See for details about the original boardgame at is description at [BoardGameGeeks](https://boardgamegeek.com/boardgame/1475/careers).
 
-When I was a kid we used to play this game frequently with our family. I made my original computer adaptation for the C128 in BASIC7.0 in 1992. This original version in Dutch is available here as well ([D64 image])
+When I was a kid we used to play this game frequently with our family. I made my original computer adaptation for the C128 in BASIC7.0 in 1992. This original version in Dutch is available here as well ([D64 image](https://github.com/xahmol/careers/raw/main/C128/BASIC/D64/Carriere%20C128.d64)) ([BASIC7.0 source](https://github.com/xahmol/careers/tree/main/C128/BASIC/Source)).
+
+The BASIC original has been made from the Dutch game board with rules we used to play with in our family. Exactly 30 years later, I have converted this to a new version in C with more advanced game board using a scrollable board. To translate this properly I have used the [US 1958 version of the gameboard](https://github.com/xahmol/careers/blob/main/careers_1958board.jpg?raw=true) and the [US 1979 rule book](https://github.com/xahmol/careers/raw/main/careers_us_1979_rules.pdf).
+As the rules and board did change over time, rules and gameboard in the computer adaptation might differ a bit from official version. However, the above linked rule book can be used as good starting point as to the rules implemented.
 
 ## Credits
 ([Back to contents](#contents))

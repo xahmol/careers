@@ -36,7 +36,7 @@ LDFLAGSMAIN = -t $(CC65_TARGET) -C careers-cc65config.cfg -m $(MAIN).map
 
 .SUFFIXES:
 .PHONY: all clean deploy vice
-all: $(MAIN) $(D64) $(D71) $(D81)
+all: $(MAIN) $(D64) $(D71) $(D81) $(ZIP)
 
 ifneq ($(MAKECMDGOALS),clean)
 -include $(SOURCESMAIN:.c=.d)
@@ -114,16 +114,16 @@ $(D81):	$(MAIN) $(OBJECTS)
 	c1541 -attach $(D81) -write careers.mus2.prg careers.mus2
 	c1541 -attach $(D81) -write careers.mus3.prg careers.mus3
 
-#$(ZIP): $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(README)
-#	zip $@ $^
+$(ZIP): $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(README)
+	zip $@ $^
 
 clean:
 	$(RM) $(SOURCESMAIN:.c=.o) $(SOURCESMAIN:.c=.d) $(MAIN) $(MAIN).map
 	
 # To deploy software to UII+ enter make deploy. Obviously C128 needs to powered on with UII+ and USB drive connected.
 deploy: $(MAIN)
-	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST)
-	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST2)
+#	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST)
+#	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST2)
 
 # To run software in VICE
 vice: $(D64)
