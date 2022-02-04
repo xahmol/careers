@@ -36,9 +36,6 @@ Code and resources from others used:
     Also for providing the excellent Device Manager ROM to make testing on real hardware very easy
 
 -   Original windowing system code on Commodore 128 by unknown author.
-
--   Music credits:
-
     
 -   Tooling to transfer original Commodore software code: "
     VICE by VICE authors
@@ -47,6 +44,19 @@ Code and resources from others used:
     UltimateII+ cartridge by Gideon Zweijtzer
     
 -   Tested using real hardware (C128D and C128DCR) plus VICE.
+
+Music credits:
+-   Made in Elx - Adam Hay (Sack) 2010 Cosine
+    https://csdb.dk/release/?id=94679
+    https://deepsid.chordian.net/?file=%2FMUSICIANS%2FS%2FSack%2FMade_in_Elx.sid
+
+-   Jupiler Dance - Hans Jürgen Ehrentraut (HJE) 2017 Genesis Project
+    https://csdb.dk/release/?id=153508
+    https://deepsid.chordian.net/?file=%2FMUSICIANS%2FH%2FHJE%2FJupiler_Dance.sid
+
+-   What's Your Game? - Richard Bayliss (RCB) 2004 Civitas
+    https://csdb.dk/release/?id=13027
+    https://deepsid.chordian.net/?file=/MUSICIANS/B/Bayliss_Richard/Whats_Your_Game.sid
 
 The code can be used freely as long as you retain
 a notice describing original source and author.
