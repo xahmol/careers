@@ -1,5 +1,5 @@
 ; Create bootsector for building the disk images
-; Credit to Scott Robinson for this method    
+; Credit to Scott Robison for this method    
     
     .segment "BOOTSECT"
     .define executable "careers"

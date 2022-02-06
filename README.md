@@ -65,6 +65,17 @@ Code and resources from others used:
 -   Anthony Beaucamp - 8Bit Unity: Starting point for SID play routines
     https://github.com/8bit-Dude/8bit-Unity/blob/main/unity/targets/c64/SID.s
 
+-   Routines for supporting the Petscii Robots userport SNES adapter
+    https://texelec.com/product/snes-adapter-commodore/ :
+    
+    Based on code from:
+    -   The 8-Bit Guy / David Murray
+        https://www.the8bitguy.com/wp-content/uploads/2021/03/snestest.zip
+    -   Chris Garrett:
+        https://retrogamecoders.com/trse-snes-controller/
+
+-   Scott Robison for boot sector creating method
+
 -   Bart van Leeuwen: For inspiration and advice while coding.
     Also for providing the excellent Device Manager ROM to make testing on real hardware very easy
 
