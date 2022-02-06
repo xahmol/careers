@@ -20,6 +20,11 @@ Careers board game for 8 bit computers.
 ## Version history and download
 ([Back to contents](#contents))
 
+[Download latest build](https://github.com/xahmol/careers/raw/main/C128/CC65/careers-v090-20220206-1546.zip)
+
+Version v090-20220206-1546:
+- First released version
+
 ## Introduction
 ([Back to contents](#contents))
 
