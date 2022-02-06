@@ -12,8 +12,8 @@
 # - wput command installed: sudo apt-get install wput
 
 SOURCESMAIN = src/main.c src/ring1.c src/ring2.c src/ring3.c src/ring4.c src/career1.c src/career2.c src/menu1.c src/menu2.c src/menu3.c src/vdc_core.c src/sidplay.c src/snes.c
-SOURCESLIB = src/vdc_core_assembly.s src/sidplay_assembly.s src/careertext.s
-OBJECTS = careers.maco.prg careers.chrs.prg careers.chra.prg careers.tscr.prg careers.scrn.prg careers.ctxt.prg careers.mus1.prg careers.mus2.prg careers.mus3.prg careers.ovl1.prg careers.ovl2.prg careers.ovl3.prg careers.ovl4.prg careers.ovl5.prg careers.ovl6.prg careers.ovl7.prg careers.ovl8.prg careers.ovl9.prg
+SOURCESLIB = src/vdc_core_assembly.s src/sidplay_assembly.s src/careertext.s src/bootsect.s
+OBJECTS = bootsect.bin careers.maco.prg careers.chrs.prg careers.chra.prg careers.tscr.prg careers.scrn.prg careers.ctxt.prg careers.mus1.prg careers.mus2.prg careers.mus3.prg careers.ovl1.prg careers.ovl2.prg careers.ovl3.prg careers.ovl4.prg careers.ovl5.prg careers.ovl6.prg careers.ovl7.prg careers.ovl8.prg careers.ovl9.prg
 
 ZIP = careers-v010-$(shell date "+%Y%m%d-%H%M").zip
 D64 = careers.d64
@@ -50,6 +50,9 @@ $(MAIN): $(SOURCESLIB) $(SOURCESMAIN:.c=.o)
 
 $(D64):	$(MAIN) $(OBJECTS)
 	c1541 -format "careers,xm" d64 $(D64)
+	c1541 $(D64) -bwrite bootsect.bin 1 0
+	c1541 $(D64) -bpoke 18 0 4 $14 %11111110
+	c1541 $(D64) -bam 1 1
 	c1541 -attach $(D64) -write careers.prg careers
 	c1541 -attach $(D64) -write careers.maco.prg careers.maco
 	c1541 -attach $(D64) -write careers.chrs.prg careers.chrs
@@ -72,6 +75,9 @@ $(D64):	$(MAIN) $(OBJECTS)
 
 $(D71):	$(MAIN) $(OBJECTS)
 	c1541 -format "careers,xm" d71 $(D71)
+	c1541 $(D71) -bwrite bootsect.bin 1 0
+	c1541 $(D71) -bpoke 18 0 4 $14 %11111110
+	c1541 $(D71) -bam 1 1
 	c1541 -attach $(D71) -write careers.prg careers
 	c1541 -attach $(D71) -write careers.maco.prg careers.maco
 	c1541 -attach $(D71) -write careers.chrs.prg careers.chrs
@@ -94,6 +100,9 @@ $(D71):	$(MAIN) $(OBJECTS)
 
 $(D81):	$(MAIN) $(OBJECTS)
 	c1541 -format "careers,xm" d81 $(D81)
+	c1541 $(D81) -bwrite bootsect.bin 1 0
+	c1541 $(D81) -bpoke 40 1 16 $27 %11111110
+	c1541 $(D81) -bam 1 1
 	c1541 -attach $(D81) -write careers.prg careers
 	c1541 -attach $(D81) -write careers.maco.prg careers.maco
 	c1541 -attach $(D81) -write careers.chrs.prg careers.chrs
@@ -122,8 +131,8 @@ clean:
 	
 # To deploy software to UII+ enter make deploy. Obviously C128 needs to powered on with UII+ and USB drive connected.
 deploy: $(MAIN)
-#	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST)
-#	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST2)
+	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST)
+	wput -u $(MAIN) $(OBJECTS) $(D64) $(D71) $(D81) $(ULTHOST2)
 
 # To run software in VICE
 vice: $(D64)

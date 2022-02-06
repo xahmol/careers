@@ -24,15 +24,17 @@ When I was a kid we used to play this game frequently with our family. I made my
 The BASIC original has been made from the Dutch game board with rules we used to play with in our family. Exactly 30 years later, I have converted this to a new version in C with more advanced game board using a scrollable board. To translate this properly I have used the [US 1958 version of the gameboard](https://github.com/xahmol/careers/blob/main/careers_1958board.jpg?raw=true) and the [US 1979 rule book](https://github.com/xahmol/careers/raw/main/careers_us_1979_rules.pdf).
 As the rules and board did change over time, rules and gameboard in the computer adaptation might differ a bit from official version. However, the above linked rule book can be used as good starting point as to the rules implemented.
 
+## Starting the game
+
+
 ## Credits
 ([Back to contents](#contents))
 
 Written in 1992, 2022 by Xander Mol
 
-[https://github.com/xahmol/careers](#https://github.com/xahmol/careers)
+[https://github.com/xahmol/careers](https://github.com/xahmol/careers)
 
-[https://www.idreamtin8bits.com/](#https://www.idreamtin8bits.com/)
-
+[https://www.idreamtin8bits.com/](https://www.idreamtin8bits.com/)
 
 
 ### Credits for the C128 version:

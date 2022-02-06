@@ -6,6 +6,8 @@ sidplay_assembly.o:
     MACO              Offs=00047F  Size=0000D3  Align=00001  Fill=0000
 careertext.o:
     CTXT              Offs=000000  Size=0005DE  Align=00001  Fill=0000
+bootsect.o:
+    BOOTSECT          Offs=000000  Size=000100  Align=00100  Fill=0000
 main.o:
     CODE              Offs=000000  Size=004711  Align=00001  Fill=0000
     RODATA            Offs=000000  Size=0003D4  Align=00001  Fill=0000
@@ -392,6 +394,7 @@ Segment list:
 Name                   Start     End    Size  Align
 ----------------------------------------------------
 ZEROPAGE              000002  00001B  00001A  00001
+BOOTSECT              000B00  000BFF  000100  00100
 MACO                  001300  00194D  00064E  00001
 LOADADDR              001BFF  001C00  000002  00001
 EXEHDR                001C01  001C0C  00000C  00001
@@ -1043,33 +1046,33 @@ __MAIN_START__ ([linker generated]):
 __OVERLAYADDR__ (overlayaddr.o):
     [linker generated]        careers-cc65config.cfg:4
 __OVERLAYSIZE__ ([linker generated]):
-    [linker generated]        careers-cc65config.cfg:32
+    [linker generated]        careers-cc65config.cfg:33
+    [linker generated]        careers-cc65config.cfg:33
     [linker generated]        careers-cc65config.cfg:32
     [linker generated]        careers-cc65config.cfg:31
-    [linker generated]        careers-cc65config.cfg:30
+    [linker generated]        careers-cc65config.cfg:31
     [linker generated]        careers-cc65config.cfg:30
     [linker generated]        careers-cc65config.cfg:29
-    [linker generated]        careers-cc65config.cfg:28
+    [linker generated]        careers-cc65config.cfg:29
     [linker generated]        careers-cc65config.cfg:28
     [linker generated]        careers-cc65config.cfg:27
-    [linker generated]        careers-cc65config.cfg:26
+    [linker generated]        careers-cc65config.cfg:27
     [linker generated]        careers-cc65config.cfg:26
     [linker generated]        careers-cc65config.cfg:25
-    [linker generated]        careers-cc65config.cfg:24
+    [linker generated]        careers-cc65config.cfg:25
     [linker generated]        careers-cc65config.cfg:24
     [linker generated]        careers-cc65config.cfg:23
-    [linker generated]        careers-cc65config.cfg:22
+    [linker generated]        careers-cc65config.cfg:23
     [linker generated]        careers-cc65config.cfg:22
     [linker generated]        careers-cc65config.cfg:21
-    [linker generated]        careers-cc65config.cfg:20
+    [linker generated]        careers-cc65config.cfg:21
     [linker generated]        careers-cc65config.cfg:20
     [linker generated]        careers-cc65config.cfg:19
-    [linker generated]        careers-cc65config.cfg:18
+    [linker generated]        careers-cc65config.cfg:19
     [linker generated]        careers-cc65config.cfg:18
     [linker generated]        careers-cc65config.cfg:17
+    [linker generated]        careers-cc65config.cfg:17
     [linker generated]        careers-cc65config.cfg:16
-    [linker generated]        careers-cc65config.cfg:16
-    [linker generated]        careers-cc65config.cfg:15
     [linker generated]        careers-cc65config.cfg:12
 __STACKSIZE__ ([linker generated]):
     crt0.o                    c128/crt0.s:11
