@@ -2149,7 +2149,7 @@ void main()
     cputsxy(42,10,"Load old game?");
     choice = menupulldown(69,11,6);
     windowrestore();
-    if(choice==1) { loadoverlay(8); gameendflag=7; game_reset; loadgame(); }
+    if(choice==1) { loadoverlay(8); gameendflag=7; game_reset(); loadgame(); }
 
     srand(clock());
 

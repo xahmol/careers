@@ -15,7 +15,7 @@ SOURCESMAIN = src/main.c src/ring1.c src/ring2.c src/ring3.c src/ring4.c src/car
 SOURCESLIB = src/vdc_core_assembly.s src/sidplay_assembly.s src/careertext.s src/bootsect.s
 OBJECTS = bootsect.bin careers.maco.prg careers.chrs.prg careers.chra.prg careers.tscr.prg careers.scrn.prg careers.ctxt.prg careers.mus1.prg careers.mus2.prg careers.mus3.prg careers.ovl1.prg careers.ovl2.prg careers.ovl3.prg careers.ovl4.prg careers.ovl5.prg careers.ovl6.prg careers.ovl7.prg careers.ovl8.prg careers.ovl9.prg
 
-ZIP = careers-v010-$(shell date "+%Y%m%d-%H%M").zip
+ZIP = careers-v090-$(shell date "+%Y%m%d-%H%M").zip
 D64 = careers.d64
 D71 = careers.d71
 D81 = careers.d81
